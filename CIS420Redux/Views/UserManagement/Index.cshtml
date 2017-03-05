@@ -1,0 +1,34 @@
+﻿@model List<CIS420Redux.Models.ViewModels.SelectUserRolesViewModel>
+
+@{
+    ViewBag.Title = "User Roles";
+}
+
+<h2>User Roles</h2>
+<div class="col-md-12">
+    <div class="col-md-4"><b>User Name</b></div>
+    <div class="col-md-4"><b>Roles</b></div>
+</div>
+@{ var list = Model.ToList();
+    for (int i = 0; i < list.Count; i++)
+    {
+            <div class="col-md-12">
+                <div class="col-md-4">@Html.DisplayFor(modelItem => list[i].UserName)</div>
+                <div class="col-md-4">
+                    @foreach (var role in list[i].Roles)
+                    {
+                        <p>@role.RoleName</p>
+
+                    }
+                </div>
+
+                <div class="col-md-4">
+                    <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
+                </div>
+            </div>
+    }
+}
+
+<br />
+<br />
+<br />

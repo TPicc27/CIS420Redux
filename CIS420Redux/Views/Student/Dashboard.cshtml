@@ -1,0 +1,37 @@
+﻿@model CIS420Redux.Models.ViewModels.Student.StudentIndexViewModel
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+
+<div class="panel panel-primary" style="margin-top:30px;">
+    <div class="panel-heading">
+        <h3>Student Dashboard</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel-primary">
+                    <div class="panel-heading">
+                        <h4>Partial 1</h4>
+                    </div>
+                    <div class="panel-body>
+                        @Html.Partial("_StudentsPartial", Model.StudentsList)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="panel-primary">
+                    <div class="panel-heading">
+                        <h4>Partial 2 </h4>
+                    </div>
+                    <div class="panel-body">
+                        @*@Html.Partial("_TodosPartial", Model.TodosList)*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
