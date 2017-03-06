@@ -31,7 +31,7 @@ textarea {
   height: 42px;
 }
 .wrapper {    
-	margin-top: 80px;
+	margin-top: 50px;
 	margin-bottom: 20px;
 }
 
@@ -62,9 +62,15 @@ input[type="text"] {
 }
 
 input[type="password"] {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.btn btn-default
+{
+   
+
 }
 
 .colorgraph {
