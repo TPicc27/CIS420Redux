@@ -9,4 +9,12 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            @Html.SubmitButton
+            <button type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("Index","UserManagement")'">Manage Users</button>
+            <button type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("Reports","Student")'">Reports</button>
+            <button type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("Reports","Student")'">Calendar</button>
+            <button type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("Reports","Student")'">Manage Alerts</button>
+            <button type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("Index","Student")'">CRM</button>
+            <button type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("Reports","Student")'">Search</button>
+         </div>
+     </div>
+</div>

@@ -28,7 +28,7 @@
                                 @{
                             if (User.IsInRole("Student"))
                             {
-                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Student")</li>
+                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Student",null, new { style = "color:red" })</li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
@@ -39,9 +39,10 @@
                         @{
                             if (User.IsInRole("Advisor"))
                             {
-                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Advisor")</li>
-                                            <li>@Html.ActionLink("Reports","Reports","Student")</li>
-                                            <li>@Html.ActionLink("Search","Search","Advisor")</li>
+                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Advisor",null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Reports","Reports","Student", null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Search","Search","Advisor",null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("CRM", "Index", "Student",null, new { style = "color:red" })</li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
@@ -50,11 +51,11 @@
                         @{
                             if (User.IsInRole("Admin"))
                             {
-                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Admin")</li>
-                                             <li>@Html.ActionLink("Manage Users", "Index", "UserManagement")</li>
-                                             <li>@Html.ActionLink("Index", "Index", "Student")</li>
-                                             <li>@Html.ActionLink("Reports", "Reports", "Student")</li>
-                                             <li>@Html.ActionLink("Search","Search","Admin")</li>
+                                            <li>@Html.ActionLink("Admin Home", "Dashboard", "Admin",null, new { style = "color:red" })</li>
+                                             <li>@Html.ActionLink("Manage Users", "Index", "UserManagement",null, new { style = "color:red" })</li>
+                                             <li>@Html.ActionLink("CRM", "Index", "Student",null, new { style = "color:red" })</li>
+                                             <li>@Html.ActionLink("Reports", "Reports", "Student",null, new { style = "color:red" })</li>
+                                             <li>@Html.ActionLink("Search","Search","Admin", null, new { style = "color:red" })</li>
                                              @*<li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
                                                 <li>@Html.ActionLink("Absence Management", "Index", "Absence")</li>
                                                  <li>@Html.ActionLink("User Management", "Index", "UserManagement")</li>*@
