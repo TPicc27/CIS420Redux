@@ -18,7 +18,7 @@ namespace CIS420Redux.Controllers
 
         public ActionResult Dashboard()
         {
-            var viewModel = new StudentIndexViewModel()
+            var viewModel = new HomeIndexViewModel()
             {
                 StudentsList = db.Students.Take(2),
                 TodosList = db.Events.Take(2)
@@ -43,6 +43,30 @@ namespace CIS420Redux.Controllers
         // GET: Student
         public ActionResult Index()
         {
+            var students = db.Students.Select(s => new StudentIndexViewModel()
+            {
+                Id = s.Id,
+                FirstName = s.FirstName,
+                LastName = s.LastName,
+                EnrollmentDate = s.EnrollmentDate
+            });
+
+            return View(students);
+        }
+
+        public ActionResult Reports()
+        {
+            return View();
+        }
+
+        public ActionResult StudentReport()
+        {
+            return View(db.Students.ToList());
+        }
+
+        public ActionResult GPAReport(decimal gpaThresold)
+        {
+            var Student = db.Students.Where(s => s.GPA >= gpaThresold).ToList();
             return View(db.Students.ToList());
         }
 
@@ -72,16 +96,26 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,LastName,FirstName,MiddleName,Address,City,State,ZipCode,Email,PhoneNumber,EnrollmentDate,GPA,Standing,HasGraduated,CampusId")] Student student)
+        public ActionResult Create(StudentCreateViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var student = new Student()
+                {
+                    Address = vm.Address,
+                    City = vm.City,
+                    EnrollmentDate = vm.EnrollmentDate,
+                    FirstName = vm.FirstName,
+                    LastName = vm.LastName,
+                    ZipCode = vm.ZipCode.ToString(),
+                    State = vm.State
+                };
                 db.Students.Add(student);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Student");
             }
 
-            return View(student);
+            return View(vm);
         }
 
         // GET: Student/Edit/5
@@ -104,15 +138,24 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,LastName,FirstName,MiddleName,Address,City,State,ZipCode,Email,PhoneNumber,EnrollmentDate,GPA,Standing,HasGraduated,CampusId")] Student student)
+        public ActionResult Edit(StudentIndexViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var student = db.Students.FirstOrDefault(s => s.Id == vm.Id);
+
+                if (student != null)
+                {
+                    student.FirstName = vm.FirstName;
+                    student.LastName = vm.LastName;
+                    student.EnrollmentDate = vm.EnrollmentDate;
+                }
+
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(student);
+            return View(vm);
         }
 
         // GET: Student/Delete/5

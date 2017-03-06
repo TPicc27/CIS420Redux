@@ -40,5 +40,15 @@ namespace CIS420Redux.Models
         public string CampusId { get; set; }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
+
+         public bool CPR_Compliant { get; set; }
+        public bool HIPPA_Compliant { get; set; }
+        public bool Bloodbourne_Compliant { get; set; }
+        public bool Liability_Compliant { get; set; }
+        public bool Immunization_Compliant { get; set; }
+        public bool Drug_Screen_Compliant { get; set; }
+        public bool CNA_Compliant { get; set; }
+        public bool Is_Compliant { get; set; }
+        public int AdvisorID { get; set; }
     }
 }

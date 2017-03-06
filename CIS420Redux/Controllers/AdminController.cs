@@ -19,6 +19,12 @@ namespace CIS420Redux.Controllers
             return View();
         }
 
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
         // GET: Admin
         public ActionResult Index()
         {

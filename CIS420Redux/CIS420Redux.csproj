@@ -208,6 +208,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\UdApplication.cs" />
+    <Compile Include="Models\ViewModels\Advisor\AdvisorIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\ListUserViewModel.cs" />
@@ -221,6 +222,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\IMG\image_hero %281%29.jpg" />
+    <Content Include="Content\IMG\image_hero %282%29.jpg" />
+    <Content Include="Content\IMG\image_hero %283%29.jpg" />
+    <Content Include="Content\IMG\image_hero%284%29.jpg" />
+    <Content Include="Content\IMG\image_hero.jpg" />
+    <Content Include="Content\IMG\Navbar Logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -295,6 +302,13 @@
     <Content Include="Views\Advisor\Dashboard.cshtml" />
     <Content Include="Views\UserManagement\Index.cshtml" />
     <Content Include="Views\UserManagement\Edit.cshtml" />
+    <Content Include="Views\UdApplication\Create.cshtml" />
+    <Content Include="Views\Advisor\AlertsPartial.cshtml" />
+    <Content Include="Views\Advisor\NCStudentsPartial.cshtml" />
+    <Content Include="Views\Advisor\AdvisorTodosPartial.cshtml" />
+    <Content Include="Views\Admin\Search.cshtml" />
+    <Content Include="Views\Advisor\Search.cshtml" />
+    <Content Include="Views\Student\Reports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,7 +319,6 @@
     <Folder Include="Views\Event\" />
     <Folder Include="Views\Program\" />
     <Folder Include="Views\Todo\" />
-    <Folder Include="Views\UdApplication\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

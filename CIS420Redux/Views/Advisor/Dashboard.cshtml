@@ -1,7 +1,39 @@
-﻿
+﻿@model CIS420Redux.Models.ViewModels.Advisor.AdvisorIndexViewModel
 @{
     ViewBag.Title = "Dashboard";
 }
 
-<h2>Advisor Dashboard</h2>
+<div class="panel panel-primary" style="margin-top:30px;">
+    <div class="panel-heading" style="background-color: red;">
+        <h3>Student Dashboard</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel-primary">
+                    <div class="panel-heading" style="background-color: red;">
+                        <h4>Alerts</h4>
+                    </div>
+                    <div class="panel-body">
+                        @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
 
+                <div class="panel-primary">
+                    <div class="panel-heading" style="background-color: red;">
+                        <h4>To-Dos</h4>
+                    </div>
+                    <div class="panel-body">
+                        @Html.Partial("AlertsPartial", Model.AlertList)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -101,7 +101,7 @@ namespace CIS420Redux
                 //Then we create a Admin user                
                 var user = new ApplicationUser();
                 user.UserName = "student@email.com"; //Use same UserName and Email for simplicity. 
-                user.Email = "sudent@email.com";    //Else you will need to modify the login action in the AccountController
+                user.Email = "student@email.com";    //Else you will need to modify the login action in the AccountController
                 string userPWD = "Password!1";
 
                 var chkUser = UserManager.Create(user, userPWD);

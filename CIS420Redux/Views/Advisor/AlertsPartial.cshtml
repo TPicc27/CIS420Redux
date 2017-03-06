@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<CIS420Redux.Models.Event>
-
 <table class="table">
     <tr>
         <th>
@@ -16,21 +15,20 @@
         </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                <p>@Html.DisplayFor(modelItem => item.Id)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                <p> @Html.DisplayFor(modelItem => item.StartDate) </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
+                <p>  @Html.DisplayFor(modelItem => item.EndDate)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                <p>  @Html.DisplayFor(modelItem => item.Description)</p>
             </td>
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -39,5 +37,5 @@
             </td>
         </tr>
     }
-
 </table>
+

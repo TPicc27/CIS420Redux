@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CIS420Redux.Models;
+using CIS420Redux.Models.ViewModels.Student;
+using CIS420Redux.Models.ViewModels.Advisor;
 
 namespace CIS420Redux.Controllers
 {
@@ -16,12 +18,38 @@ namespace CIS420Redux.Controllers
 
         public ActionResult Dashboard()
         {
-            return View();
+            var viewModel = new AdvisorIndexViewModel()
+            {
+                AdvisorTodosList = db.Events.Take(2),
+                //need a way to filter events, currently displays first 999
+                AlertList = db.Events.Take(999)
+            };
+
+            return View(viewModel);
         }
         // GET: Advisor
         public ActionResult Index()
         {
             return View(db.Advisors.ToList());
+        }
+
+        public PartialViewResult GetAlertList()
+        {
+            var alert = db.Events.Take(2);
+            //need to filter events somehow (upcoming events this week)
+            return PartialView("_AlertsPartial", alert);
+        }
+
+        public PartialViewResult AdvisorTodosList()
+        {
+            var todos = db.Events.Take(2);
+
+            return PartialView("AdvisorTodosPartial", todos);
+        }
+
+        public  ActionResult Search()
+        {
+            return View();
         }
 
         // GET: Advisor/Details/5

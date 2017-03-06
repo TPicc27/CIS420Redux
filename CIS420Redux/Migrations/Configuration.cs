@@ -9,7 +9,8 @@ namespace CIS420Redux.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(CIS420Redux.Models.ApplicationDbContext context)

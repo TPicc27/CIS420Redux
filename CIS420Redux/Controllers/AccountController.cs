@@ -79,7 +79,26 @@ namespace CIS420Redux.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var user = await UserManager.FindAsync(model.Email, model.Password);
+                    var roles = await UserManager.GetRolesAsync(user.Id);
+
+                    if (roles.Contains("SuperAdmin"))
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else if (roles.Contains("Admin"))
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else if (roles.Contains("Advisor"))
+                    {
+                        return RedirectToAction("Dashboard", "Advisor");
+                    }
+                    else if (roles.Contains("Student"))
+                    {
+                        return RedirectToAction("Dashboard", "Student");
+                    }
+                    else return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -87,7 +106,7 @@ namespace CIS420Redux.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return View("~/View/Account/Login.cshtml", model);
             }
         }
 
