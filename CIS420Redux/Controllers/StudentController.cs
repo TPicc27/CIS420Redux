@@ -48,6 +48,7 @@ namespace CIS420Redux.Controllers
                 Id = s.Id,
                 FirstName = s.FirstName,
                 LastName = s.LastName,
+                Email = s.Email,
                 EnrollmentDate = s.EnrollmentDate
             });
 
@@ -105,6 +106,7 @@ namespace CIS420Redux.Controllers
                     Address = vm.Address,
                     City = vm.City,
                     EnrollmentDate = vm.EnrollmentDate,
+                    Email = vm.Email,
                     FirstName = vm.FirstName,
                     LastName = vm.LastName,
                     ZipCode = vm.ZipCode.ToString(),
@@ -148,6 +150,7 @@ namespace CIS420Redux.Controllers
                 {
                     student.FirstName = vm.FirstName;
                     student.LastName = vm.LastName;
+                    student.Email = vm.Email;
                     student.EnrollmentDate = vm.EnrollmentDate;
                 }
 

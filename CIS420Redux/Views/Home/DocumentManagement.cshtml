@@ -1,0 +1,40 @@
+﻿@using CIS420Redux.Controllers
+@{
+    ViewBag.Title = "DocumentManagement";
+}
+
+<h2>DocumentManagement</h2>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>Upload Documents</h4>
+    </div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("UploadDocument", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div>
+                <label for="studentNumber">Student Number:</label>
+                <input type="text" name="studentNumber" id="studentNumber" />
+            </div>
+            <br />
+            <div>
+                <label for="file">Upload Form</label>
+                <input type="file" name="file" id="file" />
+            </div>
+            <br />
+            <input type="submit" />
+        }
+
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4>My Documents</h4>
+    </div>
+    <div class="panel-body">
+        @Html.ActionLink("Get Student #1's First Document", "GetDocument", new { controller = "Home", studentId = 1 }, new { @class = "btn btn-primary" })
+    </div>
+</div>
