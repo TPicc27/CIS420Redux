@@ -43,6 +43,11 @@ namespace CIS420Redux.Controllers
 
             return View();
         }
+        public ActionResult DocumentManagement()
+        {
+            return View();
+        }
+
 
     }
 }

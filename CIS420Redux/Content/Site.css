@@ -208,4 +208,7 @@ input[type="password"] {
     margin-bottom: 1em;
 }
 
-
+.navbar-right
+{
+    color: red;
+}

@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201703050246511_TestingPendingModelChanges.Designer.cs">
       <DependentUpon>201703050246511_TestingPendingModelChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703062055353_TestMigration.cs" />
+    <Compile Include="Migrations\201703062055353_TestMigration.Designer.cs">
+      <DependentUpon>201703062055353_TestMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -200,6 +204,7 @@
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -309,6 +314,8 @@
     <Content Include="Views\Admin\Search.cshtml" />
     <Content Include="Views\Advisor\Search.cshtml" />
     <Content Include="Views\Student\Reports.cshtml" />
+    <Content Include="Views\Student\GPAReport.cshtml" />
+    <Content Include="Views\Home\DocumentManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703050246511_TestingPendingModelChanges.resx">
       <DependentUpon>201703050246511_TestingPendingModelChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703062055353_TestMigration.resx">
+      <DependentUpon>201703062055353_TestMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

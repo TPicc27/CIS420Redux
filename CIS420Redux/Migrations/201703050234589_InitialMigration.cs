@@ -75,29 +75,30 @@ namespace CIS420Redux.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Students",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        LastName = c.String(),
-                        FirstName = c.String(),
-                        MiddleName = c.String(),
-                        Address = c.String(),
-                        City = c.String(),
-                        State = c.String(),
-                        ZipCode = c.String(),
-                        Email = c.String(),
-                        PhoneNumber = c.String(),
-                        EnrollmentDate = c.DateTime(nullable: false),
-                        GPA = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Standing = c.String(),
-                        HasGraduated = c.String(),
-                        CampusId = c.String(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    LastName = c.String(),
+                    FirstName = c.String(),
+                    MiddleName = c.String(),
+                    Address = c.String(),
+                    City = c.String(),
+                    State = c.String(),
+                    ZipCode = c.String(),
+                    Email = c.String(),
+                    PhoneNumber = c.String(),
+                    EnrollmentDate = c.DateTime(nullable: false),
+                    GPA = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    Standing = c.String(),
+                    HasGraduated = c.String(),
+                    CampusId = c.String(),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
+
             CreateTable(
                 "dbo.Events",
                 c => new

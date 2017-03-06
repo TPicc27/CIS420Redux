@@ -10,11 +10,12 @@ namespace CIS420Redux.Models
     {
         [DisplayName("ID")]
         public int Id { get; set; }
+        public int StudentNumber { get; set; }
         [DisplayName("Last Name")]
         public string LastName { get; set; }
         [DisplayName("First Name")]
         public string FirstName { get; set; }
-        [DisplayName("Last Name")]
+        [DisplayName("Middle Name")]
         public string MiddleName { get; set; }
 
         public string Address { get; set; }
@@ -37,7 +38,13 @@ namespace CIS420Redux.Models
         [DisplayName("Have You Graduated?")]
         public string HasGraduated { get; set; }
         [DisplayName("Campus ID")]
-        public string CampusId { get; set; }
+        public int CampusId { get; set; }
+        [DisplayName("Program ID")]
+        public int ProgramId { get; set; }
+
+        public virtual Campus Campus { get; set; }
+
+        public virtual Program Program { get; set; }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
 
