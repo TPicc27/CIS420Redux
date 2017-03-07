@@ -24,8 +24,7 @@ namespace CIS420Redux
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
             //If Admin role doesn't exist, create first Admin Role and a default Admin User    
-            //if (!roleManager.RoleExists("Admin"))
-            if(!HttpContext.Current.User.IsInRole("Admin"))
+            if(!roleManager.RoleExists("Admin"))
             {
                 //First we create Admin role   
                 var role = new IdentityRole();
