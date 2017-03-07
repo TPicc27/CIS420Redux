@@ -322,6 +322,8 @@
     <Content Include="Views\Enrollment\Create.cshtml" />
     <Content Include="Views\Enrollment\Edit.cshtml" />
     <Content Include="Views\Advisor\Advisors.cshtml" />
+    <Content Include="Views\UdApplication\Index.cshtml" />
+    <Content Include="Views\Student\StudentReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

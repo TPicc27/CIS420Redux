@@ -37,21 +37,7 @@ namespace CIS420Redux.Controllers
         {
             var Db = new ApplicationDbContext();
             var user = Db.Users.FirstOrDefault(u => u.Id == id);
-            var roleList = new List<SelectRoleEditorViewModel>();
-
-            var allRoles = Db.Roles;
-
-            foreach (var role in allRoles)
-            {
-                var rvm = new SelectRoleEditorViewModel()
-                {
-                    RoleId = role.Id,
-                    RoleName = role.Name
-                };
-                roleList.Add(rvm);
-            }
             var model = new EditUserViewModel(user);
-            model.Roles = roleList;
             return View(model);
         }
 
