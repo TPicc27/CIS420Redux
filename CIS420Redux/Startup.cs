@@ -1,4 +1,6 @@
-﻿using CIS420Redux.Models;
+﻿using System.Linq;
+using System.Web;
+using CIS420Redux.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -22,7 +24,7 @@ namespace CIS420Redux
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
             //If Admin role doesn't exist, create first Admin Role and a default Admin User    
-            if (!roleManager.RoleExists("Admin"))
+            if(!roleManager.RoleExists("Admin"))
             {
                 //First we create Admin role   
                 var role = new IdentityRole();

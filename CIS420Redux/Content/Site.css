@@ -286,7 +286,7 @@ input[type="password"] {
 {
     display: block;
     height: auto;
-    max-width: 75%;
+    max-width: 60%;
     padding: 15px;
 }
 .socialicons 
@@ -426,4 +426,26 @@ input[type="password"] {
 .navbar-right
 {
     color: red;
+}
+
+.btn-wrapper{
+    height: 200px;
+    width: 400px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+.btn-wrapper1{
+    height: 200px;
+    width: 400px;
+
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
 }

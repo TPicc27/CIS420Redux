@@ -32,17 +32,6 @@ namespace CIS420Redux.Controllers
             return View();
         }
 
-        public ActionResult Advising()
-        {
-            //currently just hard coded data, need to displ
-            ViewBag.FullName = "Joe Black";
-            ViewBag.Title = "Undergraduate Advisor";
-            ViewBag.Description = "Advises M-Z Lower Division Traditional Students";
-            ViewBag.WhereWhen = "HSC Advising Center, Room102A, Mon, Thurs, Fri from 8:30am - 3:30pm";
-            ViewBag.Email = "noemail@gmail.com";
-
-            return View();
-        }
         public ActionResult DocumentManagement()
         {
             return View();

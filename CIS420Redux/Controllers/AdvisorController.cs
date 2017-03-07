@@ -30,6 +30,17 @@ namespace CIS420Redux.Controllers
             return View(viewModel);
         }
 
+        public ActionResult StudentRecords()
+        {
+            var viewModel = new StudentRecordViewModel()
+            {
+                StudentRecordsList = db.Students.ToList(),
+                AdvisorTodosList = db.Events.Take(2)
+
+            };
+            return View(viewModel);
+
+        }
         // GET: Advisor
         public ActionResult Index()
         {
@@ -55,7 +66,13 @@ namespace CIS420Redux.Controllers
         //    };
         //    return View(viewModel);
         //}
+        public PartialViewResult StudentRecordsList()
+        {
+            var students = db.Students.ToList();
 
+            return PartialView("StudentRecordsPartial", students);
+            
+        }
         public PartialViewResult AdvisorTodosList()
         {
             var todos = db.Events.Take(2);
@@ -64,6 +81,11 @@ namespace CIS420Redux.Controllers
         }
 
         public  ActionResult Search()
+        {
+            return View();
+        }
+
+        public ActionResult Advisors()
         {
             return View();
         }

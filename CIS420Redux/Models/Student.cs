@@ -10,6 +10,7 @@ namespace CIS420Redux.Models
     {
         [DisplayName("ID")]
         public int Id { get; set; }
+        [DisplayName("Student Number")]
         public int StudentNumber { get; set; }
         [DisplayName("Last Name")]
         public string LastName { get; set; }
@@ -17,6 +18,8 @@ namespace CIS420Redux.Models
         public string FirstName { get; set; }
         [DisplayName("Middle Name")]
         public string MiddleName { get; set; }
+        [DisplayName("Date of Birth")]
+        public string DateOfBirth { get; set; }
 
         public string Address { get; set; }
 

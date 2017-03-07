@@ -15,6 +15,8 @@ namespace CIS420Redux.Models
 
         public int ProgramId { get; set; }
 
+        public string Grade { get; set; }
+
 
         public virtual Course Course { get; set; }
 

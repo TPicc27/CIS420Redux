@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CIS420Redux.Models.ViewModels
 {
@@ -33,5 +34,9 @@ namespace CIS420Redux.Models.ViewModels
 
         [Required]
         public string Email { get; set; }
+
+        public List<SelectRoleEditorViewModel> Roles { get; set;}
+
+        public ICollection<SelectListItem> RolesList { get; set; }
     }
 }

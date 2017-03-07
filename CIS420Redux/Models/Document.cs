@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CIS420Redux.Models
 {
-    public class Documents
+    public class Document
     {
         public int Id { get; set; }
         public int StudentId { get; set; }
