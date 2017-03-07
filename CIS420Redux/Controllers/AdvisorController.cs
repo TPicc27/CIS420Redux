@@ -52,6 +52,11 @@ namespace CIS420Redux.Controllers
             return View();
         }
 
+        public ActionResult Advisors()
+        {
+            return View();
+        }
+
         // GET: Advisor/Details/5
         public ActionResult Details(int? id)
         {
