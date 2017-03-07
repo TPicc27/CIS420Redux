@@ -4,20 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - School Of Nursing</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/gif" href="animated_favicon1.gif">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
-        <div class="container" style="background-color: white;">
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-bootsnipp animate">
+        <div class="container" >
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="[navbar-brand]" @Url.Action("Index", "Home") id="loginLink">
+                <a class="[navbar-brand]" href="@Url.Action("Index", "Home")" id="loginLink">
                     <img src="~/Content/IMG/Navbar Logo.png" class="img-responsive"/>
                 </a>
             </div>
@@ -28,7 +30,8 @@
                                 @{
                             if (User.IsInRole("Student"))
                             {
-                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Student",null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Home", "Dashboard", "Student",null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Advising","Advisors","Advisors")</li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
@@ -71,7 +74,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" >
         @RenderBody()
         <hr />
         <footer>
