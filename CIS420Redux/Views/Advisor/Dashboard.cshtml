@@ -5,30 +5,35 @@
 
 <div class="panel panel-primary" style="margin-top:30px;">
     <div class="panel-heading" style="background-color: red;">
-        <h3>Advisor Home</h3>
+        <h3>Advisor Dashboard</h3>
     </div>
     <div class="panel-body">
+        <div class="row">
             <div class="col-md-6">
                 <div class="panel-primary">
                     <div class="panel-heading" style="background-color: red;">
-                        <h4>Alerts</h4>
+                        <h3>Alerts</h3> 
+                                              
+                                    <h4>Students Out of Compliance</h4>
+                                </div>
+                                @Html.Partial("NCStudentsPartial", Model.NCStudentsList)
+                                </>
+                            </div>
+                        </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel-primary">
+                    <div class="panel-heading" style="background-color: red;">
+                        <h3>To-Dos</h3>
                     </div>
                     <div class="panel-body">
                         @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)
                     </div>
                 </div>
             </div>
-    
-            <div class="col-md-6">
-
-                <div class="panel-primary">
-                    <div class="panel-heading" style="background-color: red;">
-                        <h4>To-Dos</h4>
-                    </div>
-                    <div class="panel-body">
-                        @Html.Partial("AlertsPartial", Model.AlertList)
-                    </div>
-                </div>
-            </div>
+        </div>
     </div>
 </div>
