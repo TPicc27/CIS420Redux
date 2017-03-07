@@ -48,6 +48,7 @@ namespace CIS420Redux.Controllers
                 Id = s.Id,
                 FirstName = s.FirstName,
                 LastName = s.LastName,
+                Address = s.Address,
                 Email = s.Email,
                 EnrollmentDate = s.EnrollmentDate
             });
@@ -69,6 +70,15 @@ namespace CIS420Redux.Controllers
         {
             var Student = db.Students.Where(s => s.GPA >= gpaThresold).ToList();
             return View(db.Students.ToList());
+        }
+
+        public ActionResult Alerts()
+        {
+            DateTime start = DateTime.Today,
+                end = start.AddDays(7);
+                {
+                return View(db.Events.Take(3));
+            }
         }
 
         // GET: Student/Details/5
@@ -150,6 +160,7 @@ namespace CIS420Redux.Controllers
                 {
                     student.FirstName = vm.FirstName;
                     student.LastName = vm.LastName;
+                    student.Address = vm.Address;
                     student.Email = vm.Email;
                     student.EnrollmentDate = vm.EnrollmentDate;
                 }
