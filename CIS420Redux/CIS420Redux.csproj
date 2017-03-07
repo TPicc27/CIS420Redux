@@ -325,7 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Alert\" />
+    <Folder Include="Views\Advisor\Alert\" />
     <Folder Include="Views\Campus\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Event\" />
