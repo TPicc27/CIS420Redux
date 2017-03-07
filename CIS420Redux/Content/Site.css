@@ -72,7 +72,8 @@ textarea {
 .navbar-bootsnipp .navbar-nav > li > a {
     border: 0px solid rgb(227, 27, 35);
     color: rgb(120, 120, 120);
-    padding: 15px 14px;
+    padding: 29px 14px 29px;
+    font-size: 24px;
 }
 
 .navbar-bootsnipp .navbar-nav > li > form > .input-group > input,
@@ -175,6 +176,10 @@ textarea {
 .nav-padding {
     padding-top: 61px;
 }
+.navbar-toggle{
+    padding: 15px 10px;
+    margin-top: 27px;
+}
 
 @media screen and (min-width: 768px) {
     .navbar-bootsnipp .navbar-brand {
@@ -192,7 +197,7 @@ textarea {
     .navbar-bootsnipp .navbar-nav > li:not(.disabled) > a:focus {
         border-bottom-width: 5px;
         border-left-width: 0px;
-        padding-bottom: 10px;
+        padding-bottom: 23px;
         padding-left: 14px;
     }
 
@@ -242,7 +247,8 @@ textarea {
   padding: 30px 38px 66px;
   margin: 0 auto;
   background-color: #eee;
-  border: 3px dotted rgba(0,0,0,0.1);  
+  border: 3px dotted rgba(0,0,0,0.1);
+
   }
 
 .form-signin-heading {
