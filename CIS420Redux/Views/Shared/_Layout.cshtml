@@ -9,21 +9,21 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
-        <div class="container" style="background-color: white;">
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-bootsnipp animate">
+        <div class="container" >
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="[navbar-brand]" @Url.Action("Index", "Home") id="loginLink">
+                <a class="[navbar-brand]" href="@Url.Action("Index", "Home")" id="loginLink">
                     <img src="~/Content/IMG/Navbar Logo.png" class="img-responsive"/>
                 </a>
             </div>
             <div class="col-md-offset-3">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
                         <li>
                                 @{
                             if (User.IsInRole("Student"))
@@ -71,10 +71,10 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" >
         @RenderBody()
         <hr />
-        <footer>
+        <footer style="background-color: gray">
             <p>&copy; @DateTime.Now.Year - Nothing But .Net</p>
         </footer>
     </div>
