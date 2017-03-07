@@ -6,44 +6,40 @@
 
 <div class="panel panel-primary" style="margin-top:30px;">
     <div class="panel-heading" style="background-color: red;">
-        <h3>Student Dashboard</h3>
+        <h3>Student Home</h3>
     </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="panel-primary">
-                            <div class="panel-heading" style="background-color: red;">
-                                <h4>Student Information</h4>
-                            </div>
-                            <div class="panel-body">
-                                @Html.Partial("_StudentsPartial", Model.StudentsList)
-                            </div>
-                        </div>
-                    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <div class="panel-primary">
+                <div class="panel-heading" style="background-color: red;">
+                    <h4>Student Information</h4>
                 </div>
-            </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6">
-
-                    <div class="panel-primary">
-                        <div class="panel-heading" style="background-color: red;">
-                            <h4>To-Do List</h4>
-                        </div>
-                        <div class="panel-body">
-                            @Html.Partial("_TodosPartial", Model.TodosList)
-                        </div>
-                    </div>
+                <div class="panel-body">
+                    @Html.Partial("_StudentsPartial", Model.StudentsList)
                 </div>
             </div>
         </div>
+
+
+        <div class="col-md-6">
+
+            <div class="panel-primary">
+                <div class="panel-heading" style="background-color: red;">
+                    <h4>To-Do List</h4>
+                </div>
+                <div class="panel-body">
+                    @Html.Partial("_TodosPartial", Model.TodosList)
+                </div>
+            </div>
+        </div>
+    </div>
     <h4 style="text-align: left;">  Links:</h4>
     <p>
-    <label style="text-align: left;">  Upper Division Application:</label>
+        <label style="text-align: left;">  Upper Division Application:</label>
         @Html.ActionLink("LinkToUpperDivisionApplication", "UdApplication", new { style = "color: red; !important" })
-        </p>
+    </p>
     <p>
-    <label style="text-align: left;">  BSN Application:</label>
+        <label style="text-align: left;">  BSN Application:</label>
         <a href="https://louisville.edu/nursing/bsn">LinkToBSNApplication</a>
     </p>
     <p>
@@ -55,5 +51,6 @@
         <a href="https://louisville.edu/nursing/current-students">LinkToGraduateAdmission</a>
     </p>
 </div>
+
 
 
