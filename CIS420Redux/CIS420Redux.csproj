@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AdvisorController.cs" />
     <Compile Include="Controllers\AlertController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\ClincalComplianceController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\EnrollmentController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -205,12 +206,21 @@
     <Compile Include="Migrations\201703080213141_tepp.Designer.cs">
       <DependentUpon>201703080213141_tepp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703080341593_tyler1.cs" />
+    <Compile Include="Migrations\201703080341593_tyler1.Designer.cs">
+      <DependentUpon>201703080341593_tyler1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703080233537_teeg.cs" />
+    <Compile Include="Migrations\201703080233537_teeg.Designer.cs">
+      <DependentUpon>201703080233537_teeg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Advisor.cs" />
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\ClincalCompliance.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Enrollment.cs" />
@@ -397,6 +407,11 @@
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\ClincalCompliance\Create.cshtml" />
+    <Content Include="Views\ClincalCompliance\Delete.cshtml" />
+    <Content Include="Views\ClincalCompliance\Details.cshtml" />
+    <Content Include="Views\ClincalCompliance\Edit.cshtml" />
+    <Content Include="Views\ClincalCompliance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
