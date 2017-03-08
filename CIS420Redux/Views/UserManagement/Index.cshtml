@@ -13,16 +13,16 @@
     for (int i = 0; i < list.Count; i++)
     {
             <div class="col-md-12">
-                <div class="col-md-4">@Html.DisplayFor(modelItem => list[i].UserName)</div>
-                <div class="col-md-4">
+                <div class="col-md-8">@Html.DisplayFor(modelItem => list[i].UserName)</div>
+                 <div class="col-md-6">
                     @foreach (var role in list[i].Roles)
                     {
                         <p>@role.RoleName</p>
 
                     }
                 </div>
-
-                <div class="col-md-4">
+                
+                    <div class="col-md-4">
                     <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
                 </div>
             </div>

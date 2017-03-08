@@ -20,6 +20,7 @@ namespace CIS420Redux.Controllers
             return View(db.Campus.ToList());
         }
 
+
         // GET: Campus/Details/5
         public ActionResult Details(int? id)
         {

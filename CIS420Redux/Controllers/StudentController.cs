@@ -18,9 +18,11 @@ namespace CIS420Redux.Controllers
 
         public ActionResult Dashboard()
         {
+            var name = HttpContext.User.Identity.Name;
+
             var viewModel = new HomeIndexViewModel()
             {
-                StudentsList = db.Students.Take(2),
+                StudentsList = db.Students.Where(s => s.Email.ToLower().Contains(name)).FirstOrDefault(),
                 TodosList = db.Events.Take(2)
             };
             return View(viewModel);
