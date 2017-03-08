@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 83px;
     padding-bottom: 20px;
 }
 
@@ -17,7 +17,6 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
 select,
 textarea {
     max-width: 280px;
@@ -72,7 +71,8 @@ textarea {
 .navbar-bootsnipp .navbar-nav > li > a {
     border: 0px solid rgb(227, 27, 35);
     color: rgb(120, 120, 120);
-    padding: 15px 14px;
+    padding: 29px 14px 29px;
+    font-size: 24px;
 }
 
 .navbar-bootsnipp .navbar-nav > li > form > .input-group > input,
@@ -175,6 +175,10 @@ textarea {
 .nav-padding {
     padding-top: 61px;
 }
+.navbar-toggle{
+    padding: 15px 10px;
+    margin-top: 27px;
+}
 
 @media screen and (min-width: 768px) {
     .navbar-bootsnipp .navbar-brand {
@@ -192,7 +196,7 @@ textarea {
     .navbar-bootsnipp .navbar-nav > li:not(.disabled) > a:focus {
         border-bottom-width: 5px;
         border-left-width: 0px;
-        padding-bottom: 10px;
+        padding-bottom: 23px;
         padding-left: 14px;
     }
 
@@ -239,10 +243,11 @@ textarea {
 
 .form-signin {
   max-width: 420px;
-  padding: 30px 38px 66px;
-  margin: 0 auto;
+  padding: 30px 38px;
+  margin: 4% auto;
   background-color: #eee;
-  border: 3px dotted rgba(0,0,0,0.1);  
+  border: 3px dotted rgba(0,0,0,0.1);
+
   }
 
 .form-signin-heading {
@@ -280,8 +285,9 @@ input[type="password"] {
 {
     display: block;
     height: auto;
-    max-width: 60%;
+    max-width: 75%;
     padding: 15px;
+    margin-right: 5px;
 }
 .socialicons 
 {
@@ -297,6 +303,20 @@ input[type="password"] {
 {
     text-align: center;
     padding: 10px;
+}
+
+.panel-body .alignment {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.panel-body
+{
+    display:table;
+    width: 450px ;
+    margin-left: auto ;
+    margin-right: auto ;
+    
 }
 
 /********************************/
@@ -357,7 +377,7 @@ input[type="password"] {
     height: 100%;
     z-index: 2;
     background-color: #080d15;
-    opacity: .6;
+    opacity: .4;
 }
 
 /********************************/
