@@ -197,6 +197,10 @@
     <Compile Include="Migrations\201703062055353_TestMigration.Designer.cs">
       <DependentUpon>201703062055353_TestMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703080047388_teee.cs" />
+    <Compile Include="Migrations\201703080047388_teee.Designer.cs">
+      <DependentUpon>201703080047388_teee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -401,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703062055353_TestMigration.resx">
       <DependentUpon>201703062055353_TestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703080047388_teee.resx">
+      <DependentUpon>201703080047388_teee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
