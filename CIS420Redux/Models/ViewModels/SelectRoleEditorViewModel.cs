@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CIS420Redux.Models.ViewModels
 {
     public class SelectRoleEditorViewModel
     {
-        public SelectRoleEditorViewModel() { }  
+        public SelectRoleEditorViewModel() { }
         public SelectRoleEditorViewModel(IdentityRole role)
         {
             this.RoleId = role.Id;

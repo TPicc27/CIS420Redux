@@ -197,6 +197,22 @@
     <Compile Include="Migrations\201703062055353_TestMigration.Designer.cs">
       <DependentUpon>201703062055353_TestMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703072047580_sorrrytyler.cs" />
+    <Compile Include="Migrations\201703072047580_sorrrytyler.Designer.cs">
+      <DependentUpon>201703072047580_sorrrytyler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703072106521_tbone.cs" />
+    <Compile Include="Migrations\201703072106521_tbone.Designer.cs">
+      <DependentUpon>201703072106521_tbone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703072252311_tekk.cs" />
+    <Compile Include="Migrations\201703072252311_tekk.Designer.cs">
+      <DependentUpon>201703072252311_tekk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703072341142_teee.cs" />
+    <Compile Include="Migrations\201703072341142_teee.Designer.cs">
+      <DependentUpon>201703072341142_teee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -374,14 +390,26 @@
     <Content Include="Views\Advisor\StudentRecordsPartial.cshtml" />
     <Content Include="Views\Advisor\StudentRecords.cshtml" />
     <Content Include="Views\Student\Alerts.cshtml" />
+    <Content Include="Views\Campus\Create.cshtml" />
+    <Content Include="Views\Campus\Index.cshtml" />
+    <Content Include="Views\Program\Index.cshtml" />
+    <Content Include="Views\Program\Create.cshtml" />
+    <Content Include="Views\Campus\Edit.cshtml" />
+    <Content Include="Views\Campus\Details.cshtml" />
+    <Content Include="Views\Campus\Delete.cshtml" />
+    <Content Include="Views\Program\Edit.cshtml" />
+    <Content Include="Views\Program\Details.cshtml" />
+    <Content Include="Views\Program\Delete.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Advisor\Alert\" />
-    <Folder Include="Views\Campus\" />
-    <Folder Include="Views\Course\" />
     <Folder Include="Views\Event\" />
-    <Folder Include="Views\Program\" />
     <Folder Include="Views\Todo\" />
   </ItemGroup>
   <ItemGroup>
@@ -401,6 +429,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703062055353_TestMigration.resx">
       <DependentUpon>201703062055353_TestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703072047580_sorrrytyler.resx">
+      <DependentUpon>201703072047580_sorrrytyler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703072106521_tbone.resx">
+      <DependentUpon>201703072106521_tbone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703072252311_tekk.resx">
+      <DependentUpon>201703072252311_tekk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703072341142_teee.resx">
+      <DependentUpon>201703072341142_teee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

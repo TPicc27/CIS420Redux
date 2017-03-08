@@ -7,7 +7,8 @@ namespace CIS420Redux.Models.ViewModels
 {
     public class HomeIndexViewModel
     {
-        public IEnumerable<CIS420Redux.Models.Student> StudentsList { get; set; }
+        public CIS420Redux.Models.Student StudentsList { get; set; }
         public IEnumerable<Event> TodosList { get; set; }
+
     }
 }

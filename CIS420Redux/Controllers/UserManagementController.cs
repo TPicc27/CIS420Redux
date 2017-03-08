@@ -1,13 +1,13 @@
-﻿using CIS420Redux.Models;
-using CIS420Redux.Models.ViewModels;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using CIS420Redux.Models;
+using CIS420Redux.Models.ViewModels;
+using System;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace CIS420Redux.Controllers
+namespace SoNWebApp.Controllers
 {
     public class UserManagementController : Controller
     {
@@ -18,9 +18,15 @@ namespace CIS420Redux.Controllers
 
 
         [Authorize(Roles = "Admin")]
-        public ActionResult Index()
+        public ActionResult Index(string searchString1)
         {
-            var users = _db.Users;
+
+            var users = from x in _db.Users
+                        select x;
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                users = users.Where(x => x.Email.Contains(searchString1));
+            }
             var model = new List<SelectUserRolesViewModel>();
             foreach (var user in users)
             {
@@ -28,6 +34,7 @@ namespace CIS420Redux.Controllers
                 u.Id = user.Id;
                 model.Add(u);
             }
+
             return View(model);
         }
 
@@ -37,7 +44,27 @@ namespace CIS420Redux.Controllers
         {
             var Db = new ApplicationDbContext();
             var user = Db.Users.FirstOrDefault(u => u.Id == id);
+
+            var roleList = new List<SelectRoleEditorViewModel>();
+
+            var allRoles = Db.Roles;
+
+            foreach (var role in allRoles)
+            {
+                //var roleName = allRoles.FirstOrDefault(r => r.Id == role.Id).Name.ToList();
+
+                var rvm = new SelectRoleEditorViewModel()
+                {
+                    RoleId = role.Id,
+                    RoleName = role.Name
+                };
+                roleList.Add(rvm);
+            }
+
+
             var model = new EditUserViewModel(user);
+            model.Roles = roleList;
+
             return View(model);
         }
 
@@ -51,6 +78,8 @@ namespace CIS420Redux.Controllers
             {
                 var Db = new ApplicationDbContext();
                 var user = Db.Users.First(u => u.UserName == model.UserName);
+                //user.Roles = model.RoleName;
+
 
                 //Didn't implement ability to modify FirstName or LastName, but this is how you would do it.
                 //user.FirstName = model.FirstName;
@@ -67,5 +96,66 @@ namespace CIS420Redux.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+        //[Authorize(Roles = "Admin")]
+        //public ActionResult Delete(string id = null)
+        //{
+        //    var Db = new ApplicationDbContext();
+        //    var user = Db.Users.First(u => u.UserName == id);
+        //    var model = new EditUserViewModel(user);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return System.Web.UI.WebControls.View(model);
+        //}
+
+
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Admin")]
+        //public ActionResult DeleteConfirmed(string id)
+
+        //{
+        //    var Db = new ApplicationDbContext();
+        //    var user = Db.Users.First(u => u.UserName == id);
+        //    Db.Users.Remove(user);
+        //    Db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
+
+        //[Authorize(Roles = "Admin")]
+        //public ActionResult UserRoles(string id)
+        //{
+        //    var Db = new ApplicationDbContext();
+        //    var user = Db.Users.First(u => u.UserName == id);
+        //    var model = new SelectUserRolesViewModel(user);
+        //    return System.Web.UI.WebControls.View(model);
+        //}
+
+
+        //[HttpPost]
+        //[Authorize(Roles = "Admin")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult UserRoles(SelectUserRolesViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var idManager = new IdentityManager();
+        //        var Db = new ApplicationDbContext();
+        //        var user = Db.Users.First(u => u.UserName == model.UserName);
+        //        idManager.ClearUserRoles(user.Id);
+        //        foreach (var role in model.Roles)
+        //        {
+        //            if (role.Selected)
+        //            {
+        //                idManager.AddUserToRole(user.Id, role.RoleName);
+        //            }
+        //        }
+        //        return RedirectToAction("index");
+        //    }
+        //    return View();
     }
 }
