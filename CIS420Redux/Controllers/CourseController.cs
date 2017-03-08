@@ -46,7 +46,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Subject,CatalogNumber,Credits,ProgramId")] Course course)
+        public ActionResult Create([Bind(Include = "Id,Title,Subject,CatalogNumber,Credits,ProgramId,CampusId")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Subject,CatalogNumber,Credits,ProgramId")] Course course)
+        public ActionResult Edit([Bind(Include = "Id,Title,Subject,CatalogNumber,Credits,ProgramId,CampusId")] Course course)
         {
             if (ModelState.IsValid)
             {
