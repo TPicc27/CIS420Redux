@@ -210,10 +210,6 @@
     <Compile Include="Migrations\201703080341593_tyler1.Designer.cs">
       <DependentUpon>201703080341593_tyler1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703080233537_teeg.cs" />
-    <Compile Include="Migrations\201703080233537_teeg.Designer.cs">
-      <DependentUpon>201703080233537_teeg.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
