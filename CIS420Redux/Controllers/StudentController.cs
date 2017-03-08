@@ -31,7 +31,8 @@ namespace CIS420Redux.Controllers
 
         public PartialViewResult GetStudentsList()
         {
-            var students = db.Students.Take(2);
+            var name = HttpContext.User.Identity.Name;
+            var students = db.Students.Where(s => s.Email.ToLower().Contains(name)).FirstOrDefault();
             return PartialView("_StudentsPartial", students);
         }
 

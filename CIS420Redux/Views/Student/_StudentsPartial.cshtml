@@ -36,33 +36,28 @@
         <th>
             @Html.DisplayNameFor(model => model.Program.Name)
         </th>
-        </tr>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+ 
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(model => model.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(model=> model.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(model => model.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(model => model.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                @Html.DisplayFor(model => model.PhoneNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                @Html.DisplayFor(model => model.EnrollmentDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Program.Name)
+                @Html.DisplayFor(model => model.Program.Name)
             </td>
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -70,6 +65,9 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
-    }
+    }        </tr>
+        
+
+
 
 </table>

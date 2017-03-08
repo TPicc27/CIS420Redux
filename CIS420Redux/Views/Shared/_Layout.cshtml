@@ -30,6 +30,7 @@
                             if (User.IsInRole("Student"))
                             {
                                             <li>@Html.ActionLink("Home", "Dashboard", "Student",null, new { style = "color:red" })</li>
+                                            <li>Calendar</li>
                                             <li>@Html.ActionLink("Alerts","Alerts","Student")</li>
                                             <li>@Html.ActionLink("Advising","Advisors","Advisor")</li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
