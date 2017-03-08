@@ -22,10 +22,6 @@ textarea {
     max-width: 280px;
 }
 
-.panel-primary {
-    border-color: transparent;
-}
-
 /********************************/
 /*          Top Navbar          */
 /********************************/
@@ -425,40 +421,25 @@ input[type="password"] {
     .hero h1 { font-size: 4em; }    
 }
 @media (min-width: 769px) {
-    .container {
-        max-width: initial;
-        padding-left: 0px;
-        padding-right: 0px;
+    .container {max-width: initial;
+    padding-left: 0px;
+    padding-right: 0px;
     }
 
-    *[role="form"] {
-        max-width: 530px;
-        padding: 15px;
-        margin: 0 auto;
-        background-color: #fff;
-        border-radius: 0.3em;
-    }
-
-        *[role="form"] h2 {
-            margin-left: 5em;
-            margin-bottom: 1em;
-        }
-
-    .navbar-right {
-        color: red;
-    }
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
 }
 
-/********************************/
-/*           Dashboard          */
-/********************************/
-.dashstyle {
-    border: 3px solid rgb(53, 52, 52); 
-    text-align: center;
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
 }
 
-.btn-color {
-    color: rgb(255, 255, 255);
-    background-color: rgb(70, 66, 66);
-    border-color: rgb(46, 43, 43);
+.navbar-right
+{
+    color: red;
 }
