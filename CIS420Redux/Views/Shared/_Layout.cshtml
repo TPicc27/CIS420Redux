@@ -42,7 +42,7 @@
                         @{
                             if (User.IsInRole("Advisor"))
                             {
-                                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Advisor",null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Home", "Dashboard", "Advisor",null, new { style = "color:red" })</li>
                                             <li>@Html.ActionLink("Student Records", "StudentRecords", "Advisor", null, new { style = "color: red" })</li>
                                             <li>@Html.ActionLink("Reports","Reports","Student", null, new { style = "color:red" })</li>
                                             <li>@Html.ActionLink("Search","Search","Advisor",null, new { style = "color:red" })</li>
