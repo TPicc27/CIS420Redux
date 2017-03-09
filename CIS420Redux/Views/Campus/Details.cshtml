@@ -1,8 +1,10 @@
 ﻿@model CIS420Redux.Models.Campus
 
-<div>
-    <h4>Campus</h4>
-    <hr />
+<div class="panel panel-primary" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Detail of Campus</h3>
+    </div>
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -45,7 +47,6 @@
         </dd>
 
     </dl>
-</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

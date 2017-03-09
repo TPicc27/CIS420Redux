@@ -4,9 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2 style="text-align: center;">CRM</h2>
-<button class="btn btn-primary col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Student")'">Create New</button>
-<button class="btn btn-primary col-md-2 pull-right" style="margin-bottom:10px;">Email Students</button>
+
+<div class="panel panel-primary" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>CRM</h3>
+    </div>
+</div>
+
+<button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Student")'">Create New</button>
+<button class="btn btn-danger col-md-2 pull-right" style="margin-bottom:10px;">Email Students</button>
 <table class="table" id="StudentTable">
     <tr>
         <th>

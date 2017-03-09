@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CIS420Redux.Models.Program>
+﻿@model IEnumerable<CIS420Redux.Models.Todo>
 
 @{
     ViewBag.Title = "Index";
@@ -6,17 +6,23 @@
 
 <div class="panel panel-primary" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
-        <h3>Programs</h3>
+        <h3>To-Does</h3>
     </div>
 </div>
 
 <p>
-    <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Program")'">Create New</button>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
         </th>
         <th></th>
     </tr>
@@ -24,7 +30,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

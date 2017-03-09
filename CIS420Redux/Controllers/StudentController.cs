@@ -31,7 +31,8 @@ namespace CIS420Redux.Controllers
 
         public PartialViewResult GetStudentsList()
         {
-            var students = db.Students.Take(2);
+            var name = HttpContext.User.Identity.Name;
+            var students = db.Students.Where(s => s.Email.ToLower().Contains(name)).FirstOrDefault();
             return PartialView("_StudentsPartial", students);
         }
 
@@ -52,7 +53,9 @@ namespace CIS420Redux.Controllers
                 LastName = s.LastName,
                 Address = s.Address,
                 Email = s.Email,
-                EnrollmentDate = s.EnrollmentDate
+                EnrollmentDate = s.EnrollmentDate,
+                CampusId = s.CampusId,
+                ProgramId = s.ProgramId
             });
 
             return View(students);
@@ -68,10 +71,16 @@ namespace CIS420Redux.Controllers
             return View(db.Students.ToList());
         }
 
-        public ActionResult GPAReport(decimal gpaThresold)
+        public ActionResult GPAReport(decimal gpaThreshold)
         {
-            var Student = db.Students.Where(s => s.GPA >= gpaThresold).ToList();
-            return View(db.Students.ToList());
+            var Student = db.Students.Where(s => s.GPA >= gpaThreshold).ToList();
+            return View(Student);
+        }
+
+        public ActionResult StudentSearch(int programThreshold)
+        {
+            var Student = db.Students.Where(s => s.ProgramId >= programThreshold).ToList();
+            return View(Student);
         }
 
         public ActionResult Alerts()
@@ -82,6 +91,7 @@ namespace CIS420Redux.Controllers
                 return View(db.Events.Take(3));
             }
         }
+
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)
@@ -122,7 +132,9 @@ namespace CIS420Redux.Controllers
                     FirstName = vm.FirstName,
                     LastName = vm.LastName,
                     ZipCode = vm.ZipCode.ToString(),
-                    State = vm.State
+                    State = vm.State,
+                    CampusId = vm.CampusId,
+                    ProgramId = vm.ProgramId
                 };
                 db.Students.Add(student);
                 db.SaveChanges();
@@ -165,6 +177,8 @@ namespace CIS420Redux.Controllers
                     student.Address = vm.Address;
                     student.Email = vm.Email;
                     student.EnrollmentDate = vm.EnrollmentDate;
+                    student.CampusId = vm.CampusId;
+                    student.ProgramId = vm.ProgramId;
                 }
 
                 db.Entry(student).State = EntityState.Modified;

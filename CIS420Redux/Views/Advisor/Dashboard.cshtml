@@ -8,25 +8,27 @@
         <h3>Advisor Home</h3>
     </div>
     <div class="panel-body">
-            <div class="col-md-6">
-                <div class="panel-primary">
-                    <div class="panel-heading" style="background-color: red;">
-                        <h3>Alerts-Students out of Compliance</h3> 
-
-                                </div>
-                                @Html.Partial("NCStudentsPartial", Model.NCStudentsList)
-                                
-                            </div>
-                        </div>
         <div class="row">
+            <div class="col-md-6">
+                <div class="panel-primary" style="float: left;">
+                    <div class="panel-heading" style="background-color: red;">
+                        <h3>Alerts-Students out of Compliance</h3>
+
+                    </div>
+
+                        @Html.Partial("NCStudentsPartial", Model.NCStudentsList)
+
+                </div>
+            </div>
+
             <div class="col-md-6">
                 <div class="panel-primary">
                     <div class="panel-heading" style="background-color: red;">
                         <h3>To-Dos</h3>
                     </div>
-                    <div class="panel-body">
+                    
                         @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)
-                    </div>
+                  
                 </div>
             </div>
         </div>

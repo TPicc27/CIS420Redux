@@ -4,10 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Campuses</h2>
+<div class="panel panel-primary" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Campuses</h3>
+    </div>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Campus")'">Create New</button>
 </p>
 <table class="table">
     <tr>

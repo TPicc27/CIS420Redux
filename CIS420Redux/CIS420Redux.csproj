@@ -210,9 +210,9 @@
     <Compile Include="Migrations\201703080341593_tyler1.Designer.cs">
       <DependentUpon>201703080341593_tyler1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703080233537_teeg.cs" />
-    <Compile Include="Migrations\201703080233537_teeg.Designer.cs">
-      <DependentUpon>201703080233537_teeg.cs</DependentUpon>
+    <Compile Include="Migrations\201703081030151_tyty.cs" />
+    <Compile Include="Migrations\201703081030151_tyty.Designer.cs">
+      <DependentUpon>201703081030151_tyty.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -412,12 +412,20 @@
     <Content Include="Views\ClincalCompliance\Details.cshtml" />
     <Content Include="Views\ClincalCompliance\Edit.cshtml" />
     <Content Include="Views\ClincalCompliance\Index.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Enrollment\Index.cshtml" />
+    <Content Include="Views\Todo\Create.cshtml" />
+    <Content Include="Views\Todo\Index.cshtml" />
+    <Content Include="Views\Todo\Delete.cshtml" />
+    <Content Include="Views\Todo\Edit.cshtml" />
+    <Content Include="Views\Todo\Details.cshtml" />
+    <Content Include="Views\Student\StudentSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Advisor\Alert\" />
-    <Folder Include="Views\Event\" />
-    <Folder Include="Views\Todo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -442,6 +450,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703080213141_tepp.resx">
       <DependentUpon>201703080213141_tepp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703080341593_tyler1.resx">
+      <DependentUpon>201703080341593_tyler1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081030151_tyty.resx">
+      <DependentUpon>201703081030151_tyty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
