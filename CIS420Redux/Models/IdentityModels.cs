@@ -47,6 +47,7 @@ namespace CIS420Redux.Models
 
         public DbSet<Event> Events { get; set; }
 
+
         public System.Data.Entity.DbSet<CIS420Redux.Models.Admin> Admins { get; set; }
 
         public System.Data.Entity.DbSet<CIS420Redux.Models.Advisor> Advisors { get; set; }
@@ -56,5 +57,8 @@ namespace CIS420Redux.Models
         public System.Data.Entity.DbSet<CIS420Redux.Models.Alert> Alerts { get; set; }
 
         public System.Data.Entity.DbSet<CIS420Redux.Models.Todo> Todoes { get; set; }
+
+        public System.Data.Entity.DbSet<CIS420Redux.Models.ClincalCompliance> ClincalCompliances { get; set; }
+
     }
 }

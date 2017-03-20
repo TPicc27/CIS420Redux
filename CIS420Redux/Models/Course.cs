@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -12,13 +13,13 @@ namespace CIS420Redux.Models
         public string Title { get; set; }
 
         public string Subject { get; set; }
-
-        public string CatlogNumber { get; set; }
+        [DisplayName("Catalog Number")]
+        public string CatalogNumber { get; set; }
 
         public string Credits { get; set; }
+        [DisplayName("Program ID")]
+        public int ProgramId { get; set; }
 
-        public string ProgramId { get; set; }
-
-        public string CampusId { get; set; }
+        public virtual Program Program { get; set; }
     }
 }
