@@ -17,6 +17,7 @@ namespace CIS420Redux.Controllers
         // GET: ClincalCompliance
         public ActionResult Index()
         {
+            
             return View(db.ClincalCompliances.ToList());
         }
 

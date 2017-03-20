@@ -9,8 +9,10 @@ using System.Web.Mvc;
 
 namespace CIS420Redux.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        
        public ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()
