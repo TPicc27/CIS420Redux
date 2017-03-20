@@ -9,8 +9,8 @@
         <h3>Users Roles</h3>
     </div>
 </div>
-<table>
-    <thead class="col-md-8">
+<table align="center" class="col-md-12">
+    <thead class="col-md-12">
         <tr>
         <th class="col-md-4"><b>User Name</b></th>
         <th class="col-md-4"><b>Roles</b></th>
@@ -21,8 +21,8 @@
         {
             <tbody class="col-md-12">
                 <tr>
-                <td class="col-md-8">@Html.DisplayFor(modelItem => list[i].UserName)</td>
-                <td class="col-md-6">
+                <td class="col-md-4">@Html.DisplayFor(modelItem => list[i].UserName)</td>
+                <td class="col-md-4">
                     @foreach (var role in list[i].Roles)
                     {
                         <p>@role.RoleName</p>
@@ -30,7 +30,7 @@
                     }
                 </td>
 
-                <td class="col-md-4">
+                <td class="col-md-2">
                     <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
                 </td>
                 </tr>
