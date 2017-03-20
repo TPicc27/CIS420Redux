@@ -178,6 +178,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\POSController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
@@ -214,6 +215,10 @@
     <Compile Include="Migrations\201703081030151_tyty.Designer.cs">
       <DependentUpon>201703081030151_tyty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703110113246_POStyler.cs" />
+    <Compile Include="Migrations\201703110113246_POStyler.Designer.cs">
+      <DependentUpon>201703110113246_POStyler.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -227,6 +232,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\POS.cs" />
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Todo.cs" />
@@ -290,7 +296,10 @@
     <Content Include="Content\IMG\image_hero %283%29.jpg" />
     <Content Include="Content\IMG\image_hero%284%29.jpg" />
     <Content Include="Content\IMG\image_hero.jpg" />
+    <Content Include="Content\IMG\MEPN POS.png" />
     <Content Include="Content\IMG\Navbar Logo.png" />
+    <Content Include="Content\IMG\RN-BSN POS 001.png" />
+    <Content Include="Content\IMG\Traditional BSN POS 001.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -422,6 +431,11 @@
     <Content Include="Views\Todo\Edit.cshtml" />
     <Content Include="Views\Todo\Details.cshtml" />
     <Content Include="Views\Student\StudentSearch.cshtml" />
+    <Content Include="Views\POS\Create.cshtml" />
+    <Content Include="Views\POS\Delete.cshtml" />
+    <Content Include="Views\POS\Details.cshtml" />
+    <Content Include="Views\POS\Edit.cshtml" />
+    <Content Include="Views\POS\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -456,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081030151_tyty.resx">
       <DependentUpon>201703081030151_tyty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703110113246_POStyler.resx">
+      <DependentUpon>201703110113246_POStyler.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

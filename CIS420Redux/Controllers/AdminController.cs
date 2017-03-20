@@ -14,6 +14,7 @@ namespace CIS420Redux.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         public ActionResult Dashboard()
         {
             return View();

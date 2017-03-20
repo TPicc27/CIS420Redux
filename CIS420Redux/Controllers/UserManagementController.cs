@@ -60,7 +60,7 @@ namespace SoNWebApp.Controllers
                 };
                 roleList.Add(rvm);
             }
-
+            ViewBag.Name = new SelectList(_db.Roles.ToList(), "Name", "Name");
 
             var model = new EditUserViewModel(user);
             model.Roles = roleList;
