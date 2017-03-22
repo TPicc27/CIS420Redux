@@ -47,25 +47,6 @@ namespace CIS420Redux.Controllers
             return View(db.Advisors.ToList());
         }
 
-        //public PartialViewResult GetAlertList()
-        //{
-        //    var alert = db.Events.Take(2);
-        //    need to filter events somehow(upcoming events this week)
-        //    return PartialView("_AlertsPartial", alert);
-        //}
-        //public ActionResult Alerts()
-        //{
-        //    //
-        //    DateTime start = DateTime.Today,
-        //        end = start.AddDays(7);
-
-        //    var viewModel = new StudentIndexViewModel()
-        //    {
-        //        //select only events within 7 days of current date
-        //        AlertList = db.Events.Where(d => d.StartDate > start && d.StartDate < end)
-        //    };
-        //    return View(viewModel);
-        //}
         public PartialViewResult StudentRecordsList()
         {
             var students = db.Students.ToList();

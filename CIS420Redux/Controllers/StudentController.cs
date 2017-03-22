@@ -87,11 +87,10 @@ namespace CIS420Redux.Controllers
         {
             DateTime start = DateTime.Today,
                 end = start.AddDays(7);
-                {
-                return View(db.Events.Take(3));
-            }
-        }
 
+            var alertModel = db.Events.Where(d => d.StartDate > start && d.StartDate < end);
+            return View("Alerts", alertModel);   
+        }
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)

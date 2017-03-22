@@ -1,14 +1,20 @@
-﻿@model  IEnumerable<CIS420Redux.Models.Event>
+﻿@model IEnumerable<CIS420Redux.Models.Event>
 @{
     ViewBag.Title = "Alerts";
 }
 
 <div class="panel panel-primary" style="margin-top:30px;">
-<div class="panel-heading" style="background-color: red;">
-      <h3>To-Do List</h3>
+    <div class="panel-heading" style="background-color: red;">
+        <h2 style="text-align: center; color: white;">Alerts</h2>
+    </div>
 </div>
-                <table>
+            <h5 align="center">@Model.Count() Upcoming Event(s) this Week</h5>
+            <div>
+                <table class="table">
                     <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Description)
                         </th>
@@ -22,8 +28,11 @@
                     </tr>
 
                     @foreach (var item in Model)
-                    {
+            {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
@@ -33,12 +42,16 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.EndDate)
                             </td>
-
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            </td>
                         </tr>
                     }
-                </table> 
-          </div>
-       </div>
+
+                </table>
+            </div>
+        </div>
     </div>
-
-
+</div>
