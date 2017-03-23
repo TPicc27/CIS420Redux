@@ -81,15 +81,15 @@ namespace CIS420Redux.Controllers
         {
             var Student = db.Students.Where(s => s.ProgramId >= programThreshold).ToList();
             return View(Student);
-        }
+        }      
 
         public ActionResult Alerts()
         {
             DateTime start = DateTime.Today,
-                end = start.AddDays(7);
+                 end = start.AddDays(7);
 
             var alertModel = db.Events.Where(d => d.StartDate > start && d.StartDate < end);
-            return View("Alerts", alertModel);   
+            return View("Alerts", alertModel);       
         }
 
         // GET: Student/Details/5

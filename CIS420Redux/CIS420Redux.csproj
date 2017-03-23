@@ -385,11 +385,11 @@
     <Content Include="Views\UserManagement\Index.cshtml" />
     <Content Include="Views\UserManagement\Edit.cshtml" />
     <Content Include="Views\UdApplication\Create.cshtml" />
-    <Content Include="Views\Advisor\AlertsPartial.cshtml" />
+    <Content Include="Views\Advisor\EventAlertsPartial.cshtml" />
     <Content Include="Views\Advisor\NCStudentsPartial.cshtml" />
     <Content Include="Views\Advisor\AdvisorTodosPartial.cshtml" />
     <Content Include="Views\Admin\Search.cshtml" />
-    <Content Include="Views\Advisor\Search.cshtml" />
+    <Content Include="Views\Campus\Search.cshtml" />
     <Content Include="Views\Student\Reports.cshtml" />
     <Content Include="Views\Student\GPAReport.cshtml" />
     <Content Include="Views\Home\DocumentManagement.cshtml" />
