@@ -436,6 +436,7 @@
     <Content Include="Views\POS\Details.cshtml" />
     <Content Include="Views\POS\Edit.cshtml" />
     <Content Include="Views\POS\Index.cshtml" />
+    <Content Include="Views\Admin\ManageToDos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
