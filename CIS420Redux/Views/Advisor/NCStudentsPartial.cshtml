@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<CIS420Redux.Models.Student>
-<h5 align="center">- @Model.Count() Student(s) Out of Clinical Compliance -</h5>
+<h5 align="center">@Model.Count() Student(s) Out of Clinical Compliance</h5>
 <div style="height: 300px; overflow-y: auto">   
 
     <table class="table">
@@ -19,7 +19,6 @@
             <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-            <th></th>
         </tr>
         @foreach (var item in Model)
         {
