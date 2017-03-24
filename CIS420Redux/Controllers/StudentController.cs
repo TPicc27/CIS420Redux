@@ -44,7 +44,7 @@ namespace CIS420Redux.Controllers
         }
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var students = db.Students.Select(s => new StudentIndexViewModel()
             {
@@ -53,12 +53,18 @@ namespace CIS420Redux.Controllers
                 LastName = s.LastName,
                 Address = s.Address,
                 Email = s.Email,
+                PhoneNumber = s.PhoneNumber,
                 EnrollmentDate = s.EnrollmentDate,
                 CampusId = s.CampusId,
                 ProgramId = s.ProgramId
             });
 
-            return View(students);
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString));
+            }
+
+            return View(students.ToList());
         }
 
         public ActionResult Reports()
