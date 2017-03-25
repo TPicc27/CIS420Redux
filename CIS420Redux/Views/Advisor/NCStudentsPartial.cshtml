@@ -1,50 +1,45 @@
 ﻿@model IEnumerable<CIS420Redux.Models.Student>
-<h5 align ="center">@Model.Count() Student(s) Out of Clinical Compliance</h5>
-<table class="table">
-    <tr>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<h5 align="center">@Model.Count() Student(s) Out of Clinical Compliance</h5>
+<div style="max-height: 300px; overflow-y: auto">   
+    <table class="table">
         <tr>
-            <td style="border-style: solid; border-width: 2px; text-align:center">
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center">
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center">
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center">
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center">
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-            </td>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
         </tr>
-    }
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+               
+            </tr>
+        }
+    </table>
 
-
-
+</div>

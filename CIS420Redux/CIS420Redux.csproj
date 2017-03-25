@@ -180,6 +180,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\POSController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\StudentCCController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\UdApplicationController.cs" />
@@ -219,6 +220,22 @@
     <Compile Include="Migrations\201703110113246_POStyler.Designer.cs">
       <DependentUpon>201703110113246_POStyler.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703212147589_ClincalComplianceStudentId.cs" />
+    <Compile Include="Migrations\201703212147589_ClincalComplianceStudentId.Designer.cs">
+      <DependentUpon>201703212147589_ClincalComplianceStudentId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703212251105_ClincalComplianceEnum.cs" />
+    <Compile Include="Migrations\201703212251105_ClincalComplianceEnum.Designer.cs">
+      <DependentUpon>201703212251105_ClincalComplianceEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221508525_ClinicalComplianceType.cs" />
+    <Compile Include="Migrations\201703221508525_ClinicalComplianceType.Designer.cs">
+      <DependentUpon>201703221508525_ClinicalComplianceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221544250_AnotherClinicalCompliance.cs" />
+    <Compile Include="Migrations\201703221544250_AnotherClinicalCompliance.Designer.cs">
+      <DependentUpon>201703221544250_AnotherClinicalCompliance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -242,8 +259,10 @@
     <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\ListUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\POS\PotentialClassIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\SelectRoleEditorViewModel.cs" />
     <Compile Include="Models\ViewModels\SelectUserRolesViewModel.cs" />
+    <Compile Include="Models\ViewModels\StudentCCIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\Student\StudentCreateViewModel.cs" />
     <Compile Include="Models\ViewModels\Student\StudentIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -391,11 +410,11 @@
     <Content Include="Views\UserManagement\Index.cshtml" />
     <Content Include="Views\UserManagement\Edit.cshtml" />
     <Content Include="Views\UdApplication\Create.cshtml" />
-    <Content Include="Views\Advisor\AlertsPartial.cshtml" />
+    <Content Include="Views\Advisor\EventAlertsPartial.cshtml" />
     <Content Include="Views\Advisor\NCStudentsPartial.cshtml" />
     <Content Include="Views\Advisor\AdvisorTodosPartial.cshtml" />
     <Content Include="Views\Admin\Search.cshtml" />
-    <Content Include="Views\Advisor\Search.cshtml" />
+    <Content Include="Views\Campus\Search.cshtml" />
     <Content Include="Views\Student\Reports.cshtml" />
     <Content Include="Views\Student\GPAReport.cshtml" />
     <Content Include="Views\Home\DocumentManagement.cshtml" />
@@ -442,10 +461,13 @@
     <Content Include="Views\POS\Details.cshtml" />
     <Content Include="Views\POS\Edit.cshtml" />
     <Content Include="Views\POS\Index.cshtml" />
+    <Content Include="Views\POS\CoursePartial.cshtml" />
+    <Content Include="Views\POS\ImagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Advisor\Alert\" />
+    <Folder Include="Views\StudentCC\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -479,6 +501,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703110113246_POStyler.resx">
       <DependentUpon>201703110113246_POStyler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212147589_ClincalComplianceStudentId.resx">
+      <DependentUpon>201703212147589_ClincalComplianceStudentId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212251105_ClincalComplianceEnum.resx">
+      <DependentUpon>201703212251105_ClincalComplianceEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221508525_ClinicalComplianceType.resx">
+      <DependentUpon>201703221508525_ClinicalComplianceType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221544250_AnotherClinicalCompliance.resx">
+      <DependentUpon>201703221544250_AnotherClinicalCompliance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

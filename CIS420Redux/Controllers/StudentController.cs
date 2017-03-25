@@ -44,7 +44,7 @@ namespace CIS420Redux.Controllers
         }
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var students = db.Students.Select(s => new StudentIndexViewModel()
             {
@@ -53,12 +53,18 @@ namespace CIS420Redux.Controllers
                 LastName = s.LastName,
                 Address = s.Address,
                 Email = s.Email,
+                PhoneNumber = s.PhoneNumber,
                 EnrollmentDate = s.EnrollmentDate,
                 CampusId = s.CampusId,
                 ProgramId = s.ProgramId
             });
 
-            return View(students);
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString));
+            }
+
+            return View(students.ToList());
         }
 
         public ActionResult Reports()
@@ -81,17 +87,16 @@ namespace CIS420Redux.Controllers
         {
             var Student = db.Students.Where(s => s.ProgramId >= programThreshold).ToList();
             return View(Student);
-        }
+        }      
 
         public ActionResult Alerts()
         {
             DateTime start = DateTime.Today,
-                end = start.AddDays(7);
-                {
-                return View(db.Events.Take(3));
-            }
-        }
+                 end = start.AddDays(7);
 
+            var alertModel = db.Events.Where(d => d.StartDate > start && d.StartDate < end);
+            return View("Alerts", alertModel);       
+        }
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CIS420Redux.Models;
+using CIS420Redux.Models.ViewModels;
+using CIS420Redux.Models.ViewModels.POS;
 
 namespace CIS420Redux.Controllers
 {
@@ -64,17 +66,22 @@ namespace CIS420Redux.Controllers
         // GET: POS/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             POS pOS = db.POS.Find(id);
-            if (pOS == null)
+            var viewModel = new PotentialClassIndexViewModel()
             {
-                return HttpNotFound();
-            }
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", pOS.StudentId);
-            return View(pOS);
+                CourseList = pOS,
+                posImage = db.Students.FirstOrDefault(s => s.Id == pOS.StudentId)
+            };
+            //if (pOS == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", pOS.StudentId);
+            return View(viewModel);
         }
 
         // POST: POS/Edit/5
@@ -118,6 +125,20 @@ namespace CIS420Redux.Controllers
             db.POS.Remove(pOS);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public PartialViewResult CourseList()
+        {
+            var courses = db.POS.ToList();
+            return PartialView("CoursePartial", courses);
+        }
+       
+        public PartialViewResult ImageList(int ?id)
+        {
+            POS pOS = db.POS.Find(id);
+            var document = db.Students.Where(s => s.Id == id);
+
+            return PartialView("ImagePartial", document);
         }
 
         protected override void Dispose(bool disposing)

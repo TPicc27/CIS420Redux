@@ -18,6 +18,7 @@ namespace CIS420Redux.Models.ViewModels.Student
         public string State { get; set; }
         public int ZipCode { get; set; }
         public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         [Display(Name = "Enrollment Date")]
         public DateTime EnrollmentDate { get; set; }
 

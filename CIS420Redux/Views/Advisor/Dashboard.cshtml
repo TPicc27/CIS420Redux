@@ -2,35 +2,45 @@
 @{
     ViewBag.Title = "Dashboard";
 }
-
-<div class="panel panel-primary" style="margin-top:30px;">
+<div class="panel panel-primary" style="margin-top:30px; padding: 0px; margin-right: -1px;">           
     <div class="panel-heading" style="background-color: #AD0000;">
         <h3>Advisor Home</h3>
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6">
-                <div class="panel-primary" style="float: left;">
+                <div class="panel-primary" style="float: left; min-width: 400px">
                     <div class="panel-heading" style="background-color: #AD0000;">
                         <h3 style="text-align: center">Alerts</h3>
-
                     </div>
-
-                        @Html.Partial("NCStudentsPartial", Model.NCStudentsList)
-
+                        @if (Model.NCStudentsList != null && Model.NCStudentsList.Any())
+                        {
+                            @Html.Partial("NCStudentsPartial", Model.NCStudentsList)
+                        }
+                        else
+                        {
+                            <h5 align="center">No Students Out of Clinical Compliance</h5>
+                        }
+                         
+                    @if (Model.EventAlertList != null && Model.EventAlertList.Any())
+                    {
+                        @Html.Partial("EventAlertsPartial", Model.EventAlertList)
+                    }
+                    else
+                    {
+                        <h5 align="center">No Events in the Upcoming Week</h5>
+                    }
                 </div>
-            </div>
-
+            </div> 
             <div class="col-md-6">
                 <div class="panel-primary">
-                    <div class="panel-heading" style="background-color: #AD0000;">
+                    <div class="panel-heading" style=" background-color: #AD0000; min-width: 400px">
                         <h3 style="text-align: center">To-Dos</h3>
-                    </div>
-                    
-                        @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)
-                  
+                    </div>                    
+                        @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)                  
                 </div>
             </div>
         </div>
     </div>
 </div>
+   
