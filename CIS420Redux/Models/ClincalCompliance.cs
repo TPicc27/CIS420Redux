@@ -12,8 +12,12 @@ namespace CIS420Redux.Models
     { public int ID { get; set; }
       
       public string Type { get; set; }
-        [DisplayName("Expiration Date")]
+      [DisplayName("Expiration Date")]
       public DateTime ExpirationDate { get; set; }
+      [DisplayName("Has Date Expired?")]
+      public bool IsExpired { get; set; }
+      [DisplayName("Are You Compliant?")]
+      public bool IsCompliant { get; set; }
       [DisplayName("Student ID")]
       public int StudentId { get; set; }
 

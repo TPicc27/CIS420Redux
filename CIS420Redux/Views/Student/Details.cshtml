@@ -122,6 +122,33 @@
             @Html.DisplayFor(model => model.CampusId)
         </dd>
 
+        <dt>
+            @Html.DisplayFor(model => model.Enrollments)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Courses</th>
+                    <th>Semester</th>
+                    <th>Grade</th>
+                </tr>
+                @foreach(var item in Model.Enrollments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.Subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Semester)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Grade)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
     </dl>
 </div>
 <p>

@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mapping\ClinicalComplianceMapping.cs" />
     <Compile Include="Migrations\201703050234589_InitialMigration.cs" />
     <Compile Include="Migrations\201703050234589_InitialMigration.Designer.cs">
       <DependentUpon>201703050234589_InitialMigration.cs</DependentUpon>
@@ -236,11 +237,33 @@
     <Compile Include="Migrations\201703221544250_AnotherClinicalCompliance.Designer.cs">
       <DependentUpon>201703221544250_AnotherClinicalCompliance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703242237589_Calendar.cs" />
+    <Compile Include="Migrations\201703242237589_Calendar.Designer.cs">
+      <DependentUpon>201703242237589_Calendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703242321313_EnrollmentTyler.cs" />
+    <Compile Include="Migrations\201703242321313_EnrollmentTyler.Designer.cs">
+      <DependentUpon>201703242321313_EnrollmentTyler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703250029213_CCareyoucompliant.cs" />
+    <Compile Include="Migrations\201703250029213_CCareyoucompliant.Designer.cs">
+      <DependentUpon>201703250029213_CCareyoucompliant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703271538049_DocumentManagement.cs" />
+    <Compile Include="Migrations\201703271538049_DocumentManagement.Designer.cs">
+      <DependentUpon>201703271538049_DocumentManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272117030_ClinicalComplianceExpired.cs" />
+    <Compile Include="Migrations\201703272117030_ClinicalComplianceExpired.Designer.cs">
+      <DependentUpon>201703272117030_ClinicalComplianceExpired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Advisor.cs" />
     <Compile Include="Models\Alert.cs" />
+    <Compile Include="Models\Calendar.cs" />
+    <Compile Include="Models\CalendarContext.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\ClincalCompliance.cs" />
     <Compile Include="Models\Course.cs" />
@@ -419,7 +442,6 @@
     <Content Include="Views\Student\GPAReport.cshtml" />
     <Content Include="Views\Home\DocumentManagement.cshtml" />
     <Content Include="Views\Enrollment\Create.cshtml" />
-    <Content Include="Views\Enrollment\Edit.cshtml" />
     <Content Include="Views\Advisor\Advisors.cshtml" />
     <Content Include="Views\UdApplication\Index.cshtml" />
     <Content Include="Views\Student\StudentReport.cshtml" />
@@ -463,11 +485,14 @@
     <Content Include="Views\POS\Index.cshtml" />
     <Content Include="Views\POS\CoursePartial.cshtml" />
     <Content Include="Views\POS\ImagePartial.cshtml" />
+    <Content Include="Views\Student\GetStudentClinicalCompliances.cshtml" />
+    <Content Include="Views\Enrollment\Edit.cshtml" />
+    <Content Include="Views\Enrollment\Delete.cshtml" />
+    <Content Include="Views\Enrollment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Advisor\Alert\" />
-    <Folder Include="Views\StudentCC\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -513,6 +538,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703221544250_AnotherClinicalCompliance.resx">
       <DependentUpon>201703221544250_AnotherClinicalCompliance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703242237589_Calendar.resx">
+      <DependentUpon>201703242237589_Calendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703242321313_EnrollmentTyler.resx">
+      <DependentUpon>201703242321313_EnrollmentTyler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703250029213_CCareyoucompliant.resx">
+      <DependentUpon>201703250029213_CCareyoucompliant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703271538049_DocumentManagement.resx">
+      <DependentUpon>201703271538049_DocumentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272117030_ClinicalComplianceExpired.resx">
+      <DependentUpon>201703272117030_ClinicalComplianceExpired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
