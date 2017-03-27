@@ -66,23 +66,42 @@ namespace CIS420Redux.Controllers
         // GET: POS/Edit/5
         public ActionResult Edit(int? id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
+            if (id == null)
+            {
+                var curentUserEmail = HttpContext.User.Identity.Name;
+                var student = db.Students.FirstOrDefault(s => s.Email == curentUserEmail);
+
+                var pos = db.POS.FirstOrDefault(p => p.StudentId == student.Id);
+
+                var programOfStudy = db.POS.FirstOrDefault(p => p.Id == pos.Id);
+
+                var programOfStudyViewModel = new PotentialClassIndexViewModel()
+                {
+                    CourseList = programOfStudy,
+                    posImage = db.Students.FirstOrDefault(s => s.Id == programOfStudy.StudentId)
+
+                };
+
+                return View(programOfStudyViewModel);
+
+            }
+
             POS pOS = db.POS.Find(id);
+
             var viewModel = new PotentialClassIndexViewModel()
             {
                 CourseList = pOS,
                 posImage = db.Students.FirstOrDefault(s => s.Id == pOS.StudentId)
+
             };
             //if (pOS == null)
             //{
             //    return HttpNotFound();
             //}
-            //ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", pOS.StudentId);
             return View(viewModel);
         }
+
+
 
         // POST: POS/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -133,7 +152,7 @@ namespace CIS420Redux.Controllers
             return PartialView("CoursePartial", courses);
         }
        
-        public PartialViewResult ImageList(int ?id)
+        public PartialViewResult posImage(int ?id)
         {
             POS pOS = db.POS.Find(id);
             var document = db.Students.Where(s => s.Id == id);

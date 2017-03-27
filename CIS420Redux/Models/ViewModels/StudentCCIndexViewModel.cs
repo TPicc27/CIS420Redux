@@ -9,9 +9,15 @@ namespace CIS420Redux.Models.ViewModels
     {
         public int ID { get; set; }
 
-        public IEnumerable<ClincalCompliance> TypeList { get; set; }
+        public ICollection<ClincalCompliance> TypeList { get; set; }
 
-        public string isComplaint { get; set; }
+        public int DocumentId { get; set; }
+
+        public Document Documents { get; set; }
+
+        public DateTime ExpirationDate { get; set; }
+
+        public string IsComplaint { get; set; }
 
     }
 }

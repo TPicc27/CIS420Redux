@@ -75,12 +75,16 @@ namespace CIS420Redux.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClincalCompliance clincalCompliance = db.ClincalCompliances.Find(id);
-            if (clincalCompliance == null)
+            ClincalCompliance clincalcompliances = db.ClincalCompliances.Find(id);
+            var types = GetAllTypes();
+
+            clincalcompliances.Types = GetSelectListItems(types);
+
+            if (clincalcompliances == null)
             {
                 return HttpNotFound();
             }
-            return View(clincalCompliance);
+            return View(clincalcompliances);
         }
 
         // POST: ClincalCompliance/Edit/5
@@ -88,15 +92,18 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance clincalCompliance)
+        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
         {
+            var types = GetAllTypes();
+
+            model.Types = GetSelectListItems(types);
             if (ModelState.IsValid)
             {
-                db.Entry(clincalCompliance).State = EntityState.Modified;
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(clincalCompliance);
+            return View(model);
         }
 
         // GET: ClincalCompliance/Delete/5

@@ -39,6 +39,48 @@ namespace CIS420Redux.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UploadDocument(int studentNumber, HttpPostedFileBase file)
+        {
+
+            byte[] uploadedFile = new byte[file.InputStream.Length];
+            file.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+            var student = db.Students.FirstOrDefault(s => s.StudentNumber == studentNumber);
+
+            if (student != null)
+            {
+                var documentModel = new Document
+                {
+                    StudentId = student.Id,
+                    StudentNumber = studentNumber,
+                    UploadedBy = HttpContext.User.Identity.Name,
+                    ContentLength = file.ContentLength,
+                    ContentType = file.ContentType,
+                    FileName = file.FileName,
+                    FileBytes = uploadedFile
+                };
+
+                db.Documents.Add(documentModel);
+                db.SaveChanges();
+            }
+
+            return View("DocumentManagement");
+        }
+
+        public ActionResult GetDocument(int studentId)
+        {
+            var allDocumentsForStudent = db.Documents.Where(d => d.StudentId == studentId);
+
+            var oneDocumentFromStudent = allDocumentsForStudent.FirstOrDefault();
+
+            if (oneDocumentFromStudent != null)
+            {
+                return File(oneDocumentFromStudent.FileBytes, "application/octet-stream", oneDocumentFromStudent.FileName);
+            }
+            return RedirectToAction("DocumentManagement");
+        }
+
 
     }
 }

@@ -50,19 +50,44 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CourseId,StudentId,ProgramId,Grade")] Enrollment enrollment)
+        public ActionResult Create([Bind(Include = "Id,CourseId,StudentId,ProgramId,Semester,Grade")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
                 db.Enrollments.Add(enrollment);
                 db.SaveChanges();
+                var enrollments = db.Enrollments.Where(e => e.StudentId == enrollment.StudentId);
+                var actualGradeList = new List<decimal>();
+                foreach (var enrollmentGrade in enrollments)
+                {
+                    var actualGrade = GetCourseGrade(enrollmentGrade.Grade);
+                    actualGradeList.Add(actualGrade);
+                }
+
+
+                var testGpaSum = actualGradeList.Sum();
+                var testGpaGradeCount = actualGradeList.Count() * 4;
+
+                var testGpa = (testGpaSum / testGpaGradeCount) * 4.0M;
+
+
+                //GradePointAverage = db.Students.FirstOrDefault(s => s.ID == id).GPA.ToString();
+                //GradePointAverage = actualgrade;            
+
+
+                Student student = db.Students.FirstOrDefault(s => s.Id == enrollment.StudentId);
+                student.GPA = testGpa;
+
+
+
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Title", enrollment.CourseId);
             ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", enrollment.ProgramId);
             ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", enrollment.StudentId);
             return View(enrollment);
+
         }
 
         // GET: Enrollment/Edit/5
@@ -88,7 +113,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CourseId,StudentId,ProgramId,Grade")] Enrollment enrollment)
+        public ActionResult Edit([Bind(Include = "Id,CourseId,StudentId,ProgramId,Semester,Grade")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
@@ -127,6 +152,67 @@ namespace CIS420Redux.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public decimal GetCourseGrade(string courseLetterGrade)
+        {
+            var actualgrade = 0.0M;
+
+            if (courseLetterGrade == "A+")
+            {
+                actualgrade = 4.0M;
+            }
+            else if (courseLetterGrade == "A")
+            {
+                actualgrade = 4.0M;
+            }
+            else if (courseLetterGrade == "A-")
+            {
+                actualgrade = 3.7M;
+            }
+            else if (courseLetterGrade == "B+")
+            {
+                actualgrade = 3.3M;
+            }
+            else if (courseLetterGrade == "B")
+            {
+                actualgrade = 3.0M;
+            }
+            else if (courseLetterGrade == "B-")
+            {
+                actualgrade = 2.7M;
+            }
+            else if (courseLetterGrade == "C+")
+            {
+                actualgrade = 2.3M;
+            }
+            else if (courseLetterGrade == "C")
+            {
+                actualgrade = 2.0M;
+            }
+            else if (courseLetterGrade == "C-")
+            {
+                actualgrade = 1.7M;
+            }
+            else if (courseLetterGrade == "D+")
+            {
+                actualgrade = 1.3M;
+            }
+            else if (courseLetterGrade == "D")
+            {
+                actualgrade = 1.0M;
+            }
+            else if (courseLetterGrade == "D-")
+            {
+                actualgrade = 0.7M;
+            }
+            else if (courseLetterGrade == "F")
+            {
+                actualgrade = 0.0M;
+            }
+
+            return actualgrade;
+        }
+
 
         protected override void Dispose(bool disposing)
         {

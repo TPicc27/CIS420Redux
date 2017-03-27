@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<CIS420Redux.Models.ViewModels.Student.StudentIndexViewModel>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-
-<div class="panel panel-primary" style="margin-top: 15px;">
+@{<div class="panel panel-primary" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
         <h3>CRM</h3>
     </div>
 </div>
+    ViewBag.Title = "Index";
+}
+
+
+
 <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Student")'">Create New</button>
 @using (Html.BeginForm())
 {
