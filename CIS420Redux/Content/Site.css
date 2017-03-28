@@ -22,6 +22,10 @@ textarea {
     max-width: 280px;
 }
 
+.panel-primary {
+    border-color: none
+}
+
 /********************************/
 /*          Top Navbar          */
 /********************************/
@@ -412,6 +416,18 @@ input[type="password"] {
     }
 
 /********************************/
+/*          Table Styling       */
+/********************************/
+.tr:nth-child(even){
+    background-color: #dddddd;
+}
+.td .th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+/********************************/
 /*          Media Queries       */
 /********************************/
 @media screen and (min-width: 980px){
@@ -421,25 +437,26 @@ input[type="password"] {
     .hero h1 { font-size: 4em; }    
 }
 @media (min-width: 769px) {
-    .container {max-width: initial;
-    padding-left: 0px;
-    padding-right: 0px;
+    .container {
+        max-width: initial;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
-*[role="form"] {
-    max-width: 530px;
-    padding: 15px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 0.3em;
-}
+    *[role="form"] {
+        max-width: 530px;
+        padding: 15px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 0.3em;
+    }
 
-*[role="form"] h2 {
-    margin-left: 5em;
-    margin-bottom: 1em;
-}
+        *[role="form"] h2 {
+            margin-left: 5em;
+            margin-bottom: 1em;
+        }
 
-.navbar-right
-{
-    color: red;
+    .navbar-right {
+        color: red;
+    }
 }

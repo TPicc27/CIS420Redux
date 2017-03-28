@@ -14,9 +14,6 @@ namespace CIS420Redux.Models
         public int ContentLength { get; set; }
         public string ContentType { get; set; }
         public string FileName { get; set; }
-        public string UploadedBy
-        {
-            get; set;
-        }
+        public string UploadedBy{ get; set; }
     }
 }

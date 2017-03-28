@@ -44,7 +44,7 @@ namespace CIS420Redux.Controllers
         }
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var students = db.Students.Select(s => new StudentIndexViewModel()
             {
@@ -52,13 +52,22 @@ namespace CIS420Redux.Controllers
                 FirstName = s.FirstName,
                 LastName = s.LastName,
                 Address = s.Address,
+                City = s.City,
+                State = s.State,
+                ZipCode = s.ZipCode,
                 Email = s.Email,
+                PhoneNumber = s.PhoneNumber,
                 EnrollmentDate = s.EnrollmentDate,
                 CampusId = s.CampusId,
                 ProgramId = s.ProgramId
             });
 
-            return View(students);
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString));
+            }
+
+            return View(students.ToList());
         }
 
         public ActionResult Reports()
@@ -81,32 +90,49 @@ namespace CIS420Redux.Controllers
         {
             var Student = db.Students.Where(s => s.ProgramId >= programThreshold).ToList();
             return View(Student);
-        }
+        }      
 
         public ActionResult Alerts()
         {
             DateTime start = DateTime.Today,
-                end = start.AddDays(7);
-                {
-                return View(db.Events.Take(3));
-            }
-        }
+                 end = start.AddDays(7);
 
+            var alertModel = db.Events.Where(d => d.StartDate > start && d.StartDate < end);
+            return View("Alerts", alertModel);       
+        }
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            //actualgrade = db.Enrollments.FirstOrDefault(e => e.StudentID == id).Grade;
+
+            var enrollments = db.Enrollments.Where(e => e.StudentId == id);
+            var actualGradeList = new List<decimal>();
+            foreach (var enrollment in enrollments)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var actualGrade = GetCourseGrade(enrollment.Grade);
+                actualGradeList.Add(actualGrade);
             }
-            Student student = db.Students.Find(id);
-            if (student == null)
-            {
-                return HttpNotFound();
-            }
+
+
+            var testGpaSum = actualGradeList.Sum();
+            var testGpaGradeCount = actualGradeList.Count() * 4;
+
+            var testGpa = (testGpaSum / testGpaGradeCount) * 4.0M;
+
+
+            //GradePointAverage = db.Students.FirstOrDefault(s => s.ID == id).GPA.ToString();
+            //GradePointAverage = actualgrade;            
+
+
+            Student student = db.Students.FirstOrDefault(s => s.Id == id);
+            student.GPA = testGpa;
+
+            db.SaveChanges();
+
             return View(student);
         }
+
 
         // GET: Student/Create
         public ActionResult Create()
@@ -213,6 +239,102 @@ namespace CIS420Redux.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+
+
+        public ActionResult GetStudentClinicalCompliances()
+        {
+            var userIdentity = HttpContext.User.Identity.Name;
+
+            var student = db.Students.FirstOrDefault(s => s.Email == userIdentity);
+
+            var clinicalCompliances = db.ClincalCompliances.Where(c => c.Student.Id == student.Id).ToList();
+
+            //var isStudentCompliant = db.ClincalCompliances.Any(cc => cc.Student.Id == student.Id && cc.IsCompliant == false);
+
+            var viewModel = new StudentCCIndexViewModel
+            {
+                TypeList = clinicalCompliances
+            };
+
+            return View(viewModel);
+        }
+
+        public decimal GetCourseGrade(string courseLetterGrade)
+        {
+            var actualgrade = 0.0M;
+
+            if (courseLetterGrade == "A+")
+            {
+                actualgrade = 4.0M;
+            }
+            else if (courseLetterGrade == "A")
+            {
+                actualgrade = 4.0M;
+            }
+            else if (courseLetterGrade == "A-")
+            {
+                actualgrade = 3.7M;
+            }
+            else if (courseLetterGrade == "B+")
+            {
+                actualgrade = 3.3M;
+            }
+            else if (courseLetterGrade == "B")
+            {
+                actualgrade = 3.0M;
+            }
+            else if (courseLetterGrade == "B-")
+            {
+                actualgrade = 2.7M;
+            }
+            else if (courseLetterGrade == "C+")
+            {
+                actualgrade = 2.3M;
+            }
+            else if (courseLetterGrade == "C")
+            {
+                actualgrade = 2.0M;
+            }
+            else if (courseLetterGrade == "C-")
+            {
+                actualgrade = 1.7M;
+            }
+            else if (courseLetterGrade == "D+")
+            {
+                actualgrade = 1.3M;
+            }
+            else if (courseLetterGrade == "D")
+            {
+                actualgrade = 1.0M;
+            }
+            else if (courseLetterGrade == "D-")
+            {
+                actualgrade = 0.7M;
+            }
+            else if (courseLetterGrade == "F")
+            {
+                actualgrade = 0.0M;
+            }
+
+            return actualgrade;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {

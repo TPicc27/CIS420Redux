@@ -60,5 +60,8 @@ namespace CIS420Redux.Models
 
         public System.Data.Entity.DbSet<CIS420Redux.Models.ClincalCompliance> ClincalCompliances { get; set; }
 
+        public System.Data.Entity.DbSet<CIS420Redux.Models.POS> POS { get; set; }
+
+        public System.Data.Entity.DbSet<CIS420Redux.Models.Document> Documents { get; set; }
     }
 }

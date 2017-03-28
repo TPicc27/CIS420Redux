@@ -17,6 +17,7 @@ namespace CIS420Redux.Controllers
         // GET: ClincalCompliance
         public ActionResult Index()
         {
+            
             return View(db.ClincalCompliances.ToList());
         }
 
@@ -34,11 +35,16 @@ namespace CIS420Redux.Controllers
             }
             return View(clincalCompliance);
         }
-
         // GET: ClincalCompliance/Create
         public ActionResult Create()
         {
-            return View();
+            var types = GetAllTypes();
+
+            var model = new ClincalCompliance();
+
+            model.Types = GetSelectListItems(types);
+
+            return View(model);
         }
 
         // POST: ClincalCompliance/Create
@@ -46,17 +52,21 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Type,ExpirationDate,Status")] ClincalCompliance clincalCompliance)
+        public ActionResult Create([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
         {
+            var types = GetAllTypes();
+
+            model.Types = GetSelectListItems(types);
+
             if (ModelState.IsValid)
             {
-                db.ClincalCompliances.Add(clincalCompliance);
+                db.ClincalCompliances.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(clincalCompliance);
+            return View(model);
         }
+
 
         // GET: ClincalCompliance/Edit/5
         public ActionResult Edit(int? id)
@@ -65,12 +75,16 @@ namespace CIS420Redux.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClincalCompliance clincalCompliance = db.ClincalCompliances.Find(id);
-            if (clincalCompliance == null)
+            ClincalCompliance clincalcompliances = db.ClincalCompliances.Find(id);
+            var types = GetAllTypes();
+
+            clincalcompliances.Types = GetSelectListItems(types);
+
+            if (clincalcompliances == null)
             {
                 return HttpNotFound();
             }
-            return View(clincalCompliance);
+            return View(clincalcompliances);
         }
 
         // POST: ClincalCompliance/Edit/5
@@ -78,15 +92,18 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,Status")] ClincalCompliance clincalCompliance)
+        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
         {
+            var types = GetAllTypes();
+
+            model.Types = GetSelectListItems(types);
             if (ModelState.IsValid)
             {
-                db.Entry(clincalCompliance).State = EntityState.Modified;
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(clincalCompliance);
+            return View(model);
         }
 
         // GET: ClincalCompliance/Delete/5
@@ -123,5 +140,38 @@ namespace CIS420Redux.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public IEnumerable<string> GetAllTypes()
+        {
+            return new List<string>
+            {
+                "CPR",
+                "HIPAA",
+                "Bloobourne Path.",
+                "Liability Insurance",
+                "Immunizations",
+                "Drug Screening",
+                "CNA",
+            };
+        }
+        public IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
+        {
+            var selectList = new List<SelectListItem>();
+
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+
+                    Value = element,
+                    Text = element
+                });
+            }
+
+            return selectList;
+        }
     }
+
+
 }
+  

@@ -12,7 +12,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </head>
-<body>
+<body style="color: #fff">
     <div class="navbar navbar-inverse navbar-fixed-top navbar-bootsnipp animate">
         <div class="container" >
             <div class="navbar-header">
@@ -29,57 +29,57 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                                @{
-                            if (User.IsInRole("Student"))
-                            {
-                                            <li>@Html.ActionLink("Home", "Dashboard", "Student",null, new { style = "color:red" })</li>
+                            @{
+                                if (User.IsInRole("Student"))
+                                {
+                                <li>@Html.ActionLink("Home", "Dashboard", "Student", null, new { style = "color:red" })</li>
                                             <li><a href="~/Calendar/Demo/selectable.html" style="color: red;">Calendar</a></li>
-                                            <li>@Html.ActionLink("Clinical Compliance", "Index", "ClincalCompliance", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("Program of Study", "", "", null, new { style = "color:red" })</li>
-                                            <li> @Html.ActionLink("Alerts", "Index", "Event",null, new { style = "color:red" }) </li>
-                                            <li> @Html.ActionLink("Advising", "Advisors", "Advisor",null, new { style = "color:red" }) </li>
+                                            <li><a href="@Url.Action("Edit","POS")"><font color="red">Program of Study</font></a></li>
+                                            <li> @Html.ActionLink("Clinical Compliance", "GetStudentClinicalCompliances", "Student", null, new { style = "color:red" }) </li>
+                                            <li> @Html.ActionLink("Alerts", "Index", "Event", null, new { style = "color:red" }) </li>
+                                            <li> @Html.ActionLink("Advising", "Advisors", "Advisor", null, new { style = "color:red" }) </li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
                                         <li>@Html.ActionLink("Absence Management", "Index", "Absence")</li>*@
-                            }}
-                       
-                                
-                        @{
-                            if (User.IsInRole("Advisor"))
-                            {
-                                            <li>@Html.ActionLink("Home", "Dashboard", "Advisor",null, new { style = "color:red" })</li>
+                                }}
+
+
+                            @{
+                                if (User.IsInRole("Advisor"))
+                                {
+                                    <li>@Html.ActionLink("Home", "Dashboard", "Advisor", null, new { style = "color:red" })</li>
                                             <li><a href="~/Calendar/Demo/selectable.html" style="color: red;">Calendar</a></li>
                                             <li>@Html.ActionLink("Student Records", "StudentRecords", "Advisor", null, new { style = "color: red" })</li>
-                                            <li>@Html.ActionLink("Reports","Reports","Student", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("Search","Search","Advisor",null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("CRM", "Index", "Student",null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Reports", "Reports", "Student", null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Search", "Search", "Admin", null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("CRM", "Index", "Student", null, new { style = "color:red" })</li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
                                         <li>@Html.ActionLink("Absence Management", "Index", "Absence")</li>*@
-                            }}
-                        @{
-                            if (User.IsInRole("Admin"))
-                            {
-                                            <li>@Html.ActionLink("Admin Home", "Dashboard", "Admin",null, new { style = "color:red" })</li>
+                                }}
+                            @{
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <li>@Html.ActionLink("Admin Home", "Dashboard", "Admin", null, new { style = "color:red" })</li>
                                             <li><a href="~/Calendar/Demo/selectable.html" style="color: red;">Calendar</a></li>
-                                             <li>@Html.ActionLink("Manage Users", "Index", "UserManagement",null, new { style = "color:red" })</li>
-                                             <li>@Html.ActionLink("CRM", "Index", "Student",null, new { style = "color:red" })</li>
-                                             <li>@Html.ActionLink("Reports", "Reports", "Student",null, new { style = "color:red" })</li>
-                                             <li>@Html.ActionLink("Search","Search","Admin", null, new { style = "color:red" })</li>
-                                             @*<li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
-                                                <li>@Html.ActionLink("Absence Management", "Index", "Absence")</li>
-                                                 <li>@Html.ActionLink("User Management", "Index", "UserManagement")</li>*@
-                            
+                                            <li>@Html.ActionLink("Manage Users", "Index", "UserManagement", null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("CRM", "Index", "Student", null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Reports", "Reports", "Student", null, new { style = "color:red" })</li>
+                                            <li>@Html.ActionLink("Search", "Search", "Admin", null, new { style = "color:red" })</li>
+                                            @*<li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
+                                        <li>@Html.ActionLink("Absence Management", "Index", "Absence")</li>
+                                         <li>@Html.ActionLink("User Management", "Index", "UserManagement")</li>*@
 
 
-                            }}
-                    </ul>
+
+                                }}
+                            </ul>
 
 
-                    @Html.Partial("_LoginPartial")
-                </div>
+                            @Html.Partial("_LoginPartial")
+                        </div>
             </div>
         </div>
     </div>

@@ -178,7 +178,9 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\POSController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\StudentCCController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\UdApplicationController.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mapping\ClinicalComplianceMapping.cs" />
     <Compile Include="Migrations\201703050234589_InitialMigration.cs" />
     <Compile Include="Migrations\201703050234589_InitialMigration.Designer.cs">
       <DependentUpon>201703050234589_InitialMigration.cs</DependentUpon>
@@ -214,11 +217,53 @@
     <Compile Include="Migrations\201703081030151_tyty.Designer.cs">
       <DependentUpon>201703081030151_tyty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703110113246_POStyler.cs" />
+    <Compile Include="Migrations\201703110113246_POStyler.Designer.cs">
+      <DependentUpon>201703110113246_POStyler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703212147589_ClincalComplianceStudentId.cs" />
+    <Compile Include="Migrations\201703212147589_ClincalComplianceStudentId.Designer.cs">
+      <DependentUpon>201703212147589_ClincalComplianceStudentId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703212251105_ClincalComplianceEnum.cs" />
+    <Compile Include="Migrations\201703212251105_ClincalComplianceEnum.Designer.cs">
+      <DependentUpon>201703212251105_ClincalComplianceEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221508525_ClinicalComplianceType.cs" />
+    <Compile Include="Migrations\201703221508525_ClinicalComplianceType.Designer.cs">
+      <DependentUpon>201703221508525_ClinicalComplianceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703221544250_AnotherClinicalCompliance.cs" />
+    <Compile Include="Migrations\201703221544250_AnotherClinicalCompliance.Designer.cs">
+      <DependentUpon>201703221544250_AnotherClinicalCompliance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703242237589_Calendar.cs" />
+    <Compile Include="Migrations\201703242237589_Calendar.Designer.cs">
+      <DependentUpon>201703242237589_Calendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703242321313_EnrollmentTyler.cs" />
+    <Compile Include="Migrations\201703242321313_EnrollmentTyler.Designer.cs">
+      <DependentUpon>201703242321313_EnrollmentTyler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703250029213_CCareyoucompliant.cs" />
+    <Compile Include="Migrations\201703250029213_CCareyoucompliant.Designer.cs">
+      <DependentUpon>201703250029213_CCareyoucompliant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703271538049_DocumentManagement.cs" />
+    <Compile Include="Migrations\201703271538049_DocumentManagement.Designer.cs">
+      <DependentUpon>201703271538049_DocumentManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703272117030_ClinicalComplianceExpired.cs" />
+    <Compile Include="Migrations\201703272117030_ClinicalComplianceExpired.Designer.cs">
+      <DependentUpon>201703272117030_ClinicalComplianceExpired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Advisor.cs" />
     <Compile Include="Models\Alert.cs" />
+    <Compile Include="Models\Calendar.cs" />
+    <Compile Include="Models\CalendarContext.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\ClincalCompliance.cs" />
     <Compile Include="Models\Course.cs" />
@@ -227,6 +272,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\POS.cs" />
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Todo.cs" />
@@ -236,8 +282,10 @@
     <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\ListUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\POS\PotentialClassIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\SelectRoleEditorViewModel.cs" />
     <Compile Include="Models\ViewModels\SelectUserRolesViewModel.cs" />
+    <Compile Include="Models\ViewModels\StudentCCIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\Student\StudentCreateViewModel.cs" />
     <Compile Include="Models\ViewModels\Student\StudentIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,13 +294,22 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\IMG\Andre R. Brewer.jpeg" />
     <Content Include="Content\IMG\animated_favicon1.gif" />
     <Content Include="Content\IMG\image_hero %281%29.jpg" />
     <Content Include="Content\IMG\image_hero %282%29.jpg" />
     <Content Include="Content\IMG\image_hero %283%29.jpg" />
     <Content Include="Content\IMG\image_hero%284%29.jpg" />
     <Content Include="Content\IMG\image_hero.jpg" />
+    <Content Include="Content\IMG\Jessica Jackey.png" />
+    <Content Include="Content\IMG\Jessica Roussel.jpeg" />
+    <Content Include="Content\IMG\MEPN POS.png" />
     <Content Include="Content\IMG\Navbar Logo.png" />
+    <Content Include="Content\IMG\RN-BSN POS 001.png" />
+    <Content Include="Content\IMG\Shaun Sowell.png" />
+    <Content Include="Content\IMG\Terri Knott.jpg" />
+    <Content Include="Content\IMG\Traditional BSN POS 001.png" />
+    <Content Include="Content\IMG\Trish Hart.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -334,16 +391,15 @@
     <Content Include="Views\UserManagement\Index.cshtml" />
     <Content Include="Views\UserManagement\Edit.cshtml" />
     <Content Include="Views\UdApplication\Create.cshtml" />
-    <Content Include="Views\Advisor\AlertsPartial.cshtml" />
+    <Content Include="Views\Advisor\EventAlertsPartial.cshtml" />
     <Content Include="Views\Advisor\NCStudentsPartial.cshtml" />
     <Content Include="Views\Advisor\AdvisorTodosPartial.cshtml" />
     <Content Include="Views\Admin\Search.cshtml" />
-    <Content Include="Views\Advisor\Search.cshtml" />
+    <Content Include="Views\Campus\Search.cshtml" />
     <Content Include="Views\Student\Reports.cshtml" />
     <Content Include="Views\Student\GPAReport.cshtml" />
     <Content Include="Views\Home\DocumentManagement.cshtml" />
     <Content Include="Views\Enrollment\Create.cshtml" />
-    <Content Include="Views\Enrollment\Edit.cshtml" />
     <Content Include="Views\Advisor\Advisors.cshtml" />
     <Content Include="Views\UdApplication\Index.cshtml" />
     <Content Include="Views\Student\StudentReport.cshtml" />
@@ -380,6 +436,17 @@
     <Content Include="Views\Todo\Edit.cshtml" />
     <Content Include="Views\Todo\Details.cshtml" />
     <Content Include="Views\Student\StudentSearch.cshtml" />
+    <Content Include="Views\POS\Create.cshtml" />
+    <Content Include="Views\POS\Delete.cshtml" />
+    <Content Include="Views\POS\Details.cshtml" />
+    <Content Include="Views\POS\Edit.cshtml" />
+    <Content Include="Views\POS\Index.cshtml" />
+    <Content Include="Views\POS\CoursePartial.cshtml" />
+    <Content Include="Views\POS\ImagePartial.cshtml" />
+    <Content Include="Views\Student\GetStudentClinicalCompliances.cshtml" />
+    <Content Include="Views\Enrollment\Edit.cshtml" />
+    <Content Include="Views\Enrollment\Delete.cshtml" />
+    <Content Include="Views\Enrollment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +481,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703081030151_tyty.resx">
       <DependentUpon>201703081030151_tyty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703110113246_POStyler.resx">
+      <DependentUpon>201703110113246_POStyler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212147589_ClincalComplianceStudentId.resx">
+      <DependentUpon>201703212147589_ClincalComplianceStudentId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212251105_ClincalComplianceEnum.resx">
+      <DependentUpon>201703212251105_ClincalComplianceEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221508525_ClinicalComplianceType.resx">
+      <DependentUpon>201703221508525_ClinicalComplianceType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703221544250_AnotherClinicalCompliance.resx">
+      <DependentUpon>201703221544250_AnotherClinicalCompliance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703242237589_Calendar.resx">
+      <DependentUpon>201703242237589_Calendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703242321313_EnrollmentTyler.resx">
+      <DependentUpon>201703242321313_EnrollmentTyler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703250029213_CCareyoucompliant.resx">
+      <DependentUpon>201703250029213_CCareyoucompliant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703271538049_DocumentManagement.resx">
+      <DependentUpon>201703271538049_DocumentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272117030_ClinicalComplianceExpired.resx">
+      <DependentUpon>201703272117030_ClinicalComplianceExpired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
