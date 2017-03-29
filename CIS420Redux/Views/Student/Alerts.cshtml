@@ -3,14 +3,14 @@
     ViewBag.Title = "Alerts";
 }
 
-<div class="panel panel-primary" style="margin-top:30px;">
-    <div class="panel-heading" style="background-color: #AD0000;">
+<div class="panel" style="margin-top:15px;">
+    <div class="panel-heading" style="background-color: rgb(277, 27, 35);">
         <h2 style="text-align: center; color: white;">Alerts</h2>
     </div>
 </div>
             <h5 align="center">@Model.Count() Upcoming Event(s) for Week</h5>
             <div>
-                <table class="table">
+                <table class="table" style="color: #000000">
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.Id)
@@ -31,7 +31,7 @@
 
                     @foreach (var item in Model)
             {
-                        <tr>
+                        <tr style="color: #000000">
                             <td>
                                 @Html.DisplayFor(modelItem => item.Id)
                             </td>

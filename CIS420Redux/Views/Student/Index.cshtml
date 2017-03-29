@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CIS420Redux.Models.ViewModels.Student.StudentIndexViewModel>
 
-@{<div class="panel panel-primary" style="margin-top: 15px;">
+@{<div class="panel" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
         <h3>CRM</h3>
     </div>
@@ -20,7 +20,7 @@
 }
 
 <button class="btn btn-danger col-md-2 pull-right" style="margin-bottom:10px;">Email Students</button>
-<table class="table" id="StudentTable">
+<table class="table" id="StudentTable" style="color: #000000">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.LastName)

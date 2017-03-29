@@ -4,7 +4,7 @@
 }
 
 
-    <div class="panel panel-primary" style="margin-top: 15px;">
+    <div class="panel" style="margin-top: 15px;">
         <div class="panel-heading" style="background-color: rgb(227, 27, 35)">
             <h3 style="text-align:center">Student Home</h3>
         </div>
@@ -15,7 +15,7 @@
                         <div class="panel-heading"style="background-color: rgb(227, 27, 35)">
                             <h4>Student Information</h4>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="color: #000000">
                             @Html.Partial("_StudentsPartial", Model.StudentsList)
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         <div class="panel-heading"style="background-color: rgb(227, 27, 35)">
                             <h4>To-Dos </h4>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="color: #000000">
                             @Html.Partial("_TodosPartial", Model.TodosList)
                         </div>
                     </div>

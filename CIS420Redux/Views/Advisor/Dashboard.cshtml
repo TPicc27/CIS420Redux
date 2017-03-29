@@ -2,15 +2,15 @@
 @{
     ViewBag.Title = "Dashboard";
 }
-<div class="panel panel-primary" style="margin-top:30px; padding: 0px; margin-right: -1px;">           
-    <div class="panel-heading" style="background-color: #AD0000;">
-        <h3>Advisor Home</h3>
+<div class="panel" style="margin-top:15px; padding: 0px; margin-right: -1px;">           
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35);">
+        <h3 style="text-align: center">Advisor Home</h3>
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="panel-primary" style="float: left; min-width: 400px">
-                    <div class="panel-heading" style="background-color: #AD0000;">
+                    <div class="panel-heading" style="background-color: rgb(227, 27, 35)">
                         <h3 style="text-align: center">Alerts</h3>
                     </div>
                         @if (Model.NCStudentsList != null && Model.NCStudentsList.Any())
@@ -19,7 +19,7 @@
                         }
                         else
                         {
-                            <h5 align="center">No Students Out of Clinical Compliance</h5>
+                            <h5 align="center" style="color: #000000">No Students Out of Clinical Compliance</h5>
                         }
                          
                     @if (Model.EventAlertList != null && Model.EventAlertList.Any())
@@ -28,13 +28,13 @@
                     }
                     else
                     {
-                        <h5 align="center">No Events in the Upcoming Week</h5>
+                        <h5 align="center" style="color: #000000">No Events in the Upcoming Week</h5>
                     }
                 </div>
             </div> 
             <div class="col-md-6">
                 <div class="panel-primary">
-                    <div class="panel-heading" style=" background-color: #AD0000; min-width: 400px">
+                    <div class="panel-heading" style=" background-color: rgb(227, 27, 35); min-width: 400px">
                         <h3 style="text-align: center">To-Dos</h3>
                     </div>                    
                         @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)                  
