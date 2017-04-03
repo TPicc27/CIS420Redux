@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<div class="panel panel-primary" style="margin-top: 15px;">
+<div class="panel" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
         <h3>Campuses</h3>
     </div>
@@ -14,7 +14,7 @@
     <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Campus")'">Create New</button>
 </p>
 <table class="table">
-    <tr>
+    <tr style="color: #000000">
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -34,7 +34,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr style="color: #000000">
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>

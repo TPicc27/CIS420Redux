@@ -22,6 +22,14 @@ textarea {
     max-width: 280px;
 }
 
+.panel-primary {
+    border-color: none
+}
+
+.button {
+
+}
+
 /********************************/
 /*          Top Navbar          */
 /********************************/
