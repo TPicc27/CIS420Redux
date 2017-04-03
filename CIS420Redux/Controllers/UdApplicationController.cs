@@ -38,6 +38,7 @@ namespace CIS420Redux.Controllers
         // GET: UdApplication/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -46,7 +47,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,MiddleName,LastName,Email,Address1,Address2,City,State,ZipCode,HomePhone,CellPhone,CampusId,SelectProgram,Semester,CurrentCourses,PersonalQualties,HealthCare,Crimes,SchoolTrouble,HonorablyDischarge,DischargedEmployment,Harassment,DrugsOrAlcohol,DrugsOrAlcoholEssay,AccurateKnowledge")] UdApplication udApplication)
+        public ActionResult Create([Bind(Include = "StudentNumber,Id,FirstName,MiddleName,LastName,Email,Address1,Address2,City,State,ZipCode,HomePhone,CellPhone,CampusId,SelectProgram,Semester,CurrentCourses,PersonalQualties,HealthCare,Crimes,SchoolTrouble,HonorablyDischarge,DischargedEmployment,Harassment,DrugsOrAlcohol,DrugsOrAlcoholEssay,AccurateKnowledge,Status")] UdApplication udApplication)
         {
             if (ModelState.IsValid)
             {
@@ -66,6 +67,12 @@ namespace CIS420Redux.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UdApplication udApplication = db.UDApplications.Find(id);
+
+            var model = new UdApplication();
+            var statuses = GetStatusList();
+
+           udApplication.StatusList = GetSelectListItems(statuses);
+
             if (udApplication == null)
             {
                 return HttpNotFound();
@@ -78,8 +85,11 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,MiddleName,LastName,Email,Address1,Address2,City,State,ZipCode,HomePhone,CellPhone,CampusId,SelectProgram,Semester,CurrentCourses,PersonalQualties,HealthCare,Crimes,SchoolTrouble,HonorablyDischarge,DischargedEmployment,Harassment,DrugsOrAlcohol,DrugsOrAlcoholEssay,AccurateKnowledge")] UdApplication udApplication)
+        public ActionResult Edit([Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,Email,Address1,Address2,City,State,ZipCode,HomePhone,CellPhone,CampusId,SelectProgram,Semester,CurrentCourses,PersonalQualties,HealthCare,Crimes,SchoolTrouble,HonorablyDischarge,DischargedEmployment,Harassment,DrugsOrAlcohol,DrugsOrAlcoholEssay,AccurateKnowledge,Status")] UdApplication udApplication)
         {
+            var statuses = GetStatusList();
+
+            udApplication.StatusList = GetSelectListItems(statuses);
             if (ModelState.IsValid)
             {
                 db.Entry(udApplication).State = EntityState.Modified;
@@ -113,6 +123,32 @@ namespace CIS420Redux.Controllers
             db.UDApplications.Remove(udApplication);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IEnumerable<string> GetStatusList()
+        {
+            return new List<string>
+            {
+               "Accepted",
+               "Decline",
+               "Waiting"
+            };
+        }
+        public IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
+        {
+            var selectList = new List<SelectListItem>();
+
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+
+                    Value = element,
+                    Text = element
+                });
+            }
+
+            return selectList;
         }
 
         protected override void Dispose(bool disposing)

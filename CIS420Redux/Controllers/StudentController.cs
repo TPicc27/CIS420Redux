@@ -19,11 +19,11 @@ namespace CIS420Redux.Controllers
         public ActionResult Dashboard()
         {
             var name = HttpContext.User.Identity.Name;
-
+            var student = db.Students.FirstOrDefault(s => s.Email == name);
             var viewModel = new HomeIndexViewModel()
             {
                 StudentsList = db.Students.Where(s => s.Email.ToLower().Contains(name)).FirstOrDefault(),
-                TodosList = db.Events.Take(2)
+                TodosList = db.Events.Where(e => e.StudentId == student.Id)
             };
             return View(viewModel);
         }
@@ -38,7 +38,9 @@ namespace CIS420Redux.Controllers
 
         public PartialViewResult GetTodosList()
         {
-            var todos = db.Events.Take(2);
+            var name = HttpContext.User.Identity.Name;
+            var student = db.Students.FirstOrDefault(s => s.Email == name);
+            var todos = db.Events.Where(e => e.StudentId == student.Id);
 
             return PartialView("_TodosPartial", todos);
         }
@@ -49,7 +51,9 @@ namespace CIS420Redux.Controllers
             var students = db.Students.Select(s => new StudentIndexViewModel()
             {
                 Id = s.Id,
+                StudentNumber = s.StudentNumber,
                 FirstName = s.FirstName,
+                MiddleName = s.MiddleName,
                 LastName = s.LastName,
                 Address = s.Address,
                 City = s.City,
@@ -137,6 +141,9 @@ namespace CIS420Redux.Controllers
         // GET: Student/Create
         public ActionResult Create()
         {
+            var states = GetAllStates();
+            var model = new ClincalCompliance();
+            //model.State = GetSelectListItems(types);
             return View();
         }
 
@@ -151,12 +158,15 @@ namespace CIS420Redux.Controllers
             {
                 var student = new Student()
                 {
+                    StudentNumber = vm.StudentNumber,
+                    MiddleName = vm.MiddleName,
                     Address = vm.Address,
                     City = vm.City,
                     EnrollmentDate = vm.EnrollmentDate,
                     Email = vm.Email,
                     FirstName = vm.FirstName,
                     LastName = vm.LastName,
+                    PhoneNumber = vm.PhoneNumber,
                     ZipCode = vm.ZipCode.ToString(),
                     State = vm.State,
                     CampusId = vm.CampusId,
@@ -200,8 +210,10 @@ namespace CIS420Redux.Controllers
                 {
                     student.FirstName = vm.FirstName;
                     student.LastName = vm.LastName;
+                    student.MiddleName = vm.MiddleName;
                     student.Address = vm.Address;
                     student.Email = vm.Email;
+                    student.PhoneNumber = vm.PhoneNumber;
                     student.EnrollmentDate = vm.EnrollmentDate;
                     student.CampusId = vm.CampusId;
                     student.ProgramId = vm.ProgramId;
@@ -250,14 +262,28 @@ namespace CIS420Redux.Controllers
 
             var student = db.Students.FirstOrDefault(s => s.Email == userIdentity);
 
+            //var clinicalCompliances = db.ClincalCompliances.ToList();
             var clinicalCompliances = db.ClincalCompliances.Where(c => c.Student.Id == student.Id).ToList();
 
             //var isStudentCompliant = db.ClincalCompliances.Any(cc => cc.Student.Id == student.Id && cc.IsCompliant == false);
+            var ccdocidList = clinicalCompliances.Select(d => d.DocumentId);
+            var documents = db.Documents.Where(d => ccdocidList.Contains(d.Id));
 
-            var viewModel = new StudentCCIndexViewModel
+            var viewModel = clinicalCompliances.Select(c => new StudentCCIndexViewModel
             {
-                TypeList = clinicalCompliances
-            };
+                ExpirationDate = c.ExpirationDate,
+                DocumentId = c.DocumentId,
+                IsComplaint = c.IsCompliant,
+                ID = c.ID,                
+                Type = c.Type,
+                StudentNumber = student.StudentNumber
+            });        
+                        
+            foreach(var doc in documents)
+            {
+                viewModel.FirstOrDefault(v => v.DocumentId == doc.Id).Document = doc;                
+            }
+
 
             return View(viewModel);
         }
@@ -321,14 +347,79 @@ namespace CIS420Redux.Controllers
 
             return actualgrade;
         }
+        public IEnumerable<string> GetAllStates()
+        {
+            return new List<string>
+            {
+               "Alabama",
+               "Alaska",
+               "Arizona",
+              "Arkansas",
+              "California",
+              "Colorado",
+               "Connecticut",
+               "District of Columbia",
+               "Delaware",
+               "Florida",
+               "Georgia", 
+                "Hawaii",
+                "Idaho",
+                "Illinois",
+                "Indiana",
+                "Iowa",
+                "Kansas",
+                "Kentucky",
+                "Louisiana",
+                "Maine",
+                "Maryland",
+                "Massachusetts",
+                "Michigan",
+                "Minnesota",
+                "Mississippi",
+                "Missouri",
+                "Montana",
+                "Nebraska",
+                "Nevada",
+                "New Hampshire",
+                "New Jersey",
+                "New Mexico",
+                "New York",
+                "North Carolina",
+                "North Dakota",
+                "Ohio",
+                "Oklahoma",
+                "Oregon",
+                "Pennsylvania",
+                "Rhode Island",
+                "South Carolina",
+                "South Dakota",
+                "Tennessee",
+                "Texas",
+                "Utah",
+                "Vermont",
+                "Virginia",
+                "Washington",
+                "West Virginia",
+                "Wisconsin",
+                "Wyoming", 
+            };
+        }
+        public IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
+        {
+            var selectList = new List<SelectListItem>();
 
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
 
+                    Value = element,
+                    Text = element
+                });
+            }
 
-
-
-
-
-
+            return selectList;
+        }
 
 
 

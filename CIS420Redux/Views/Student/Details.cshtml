@@ -11,6 +11,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.StudentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentNumber)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
 
@@ -104,22 +111,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Standing)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HasGraduated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HasGraduated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CampusId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CampusId)
         </dd>
 
         <dt>

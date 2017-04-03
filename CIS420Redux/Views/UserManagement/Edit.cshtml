@@ -44,15 +44,21 @@
                 @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
-
         <div class="form-group">
-            @Html.Label("Role Name", new { @class = "col-md-2 control-label" })
+            @*@Html.Label("Add Role Name", new { @class = "col-md-2 control-label" })*@
             <div class="col-md-10">
-                @*@Html.DropDownList("Name")*@
-                @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, "Select Role", new { style = "width:125px" })
-                @Html.ValidationMessageFor(model => model.RoleName)
+               @Html.DropDownListFor(m => m.AddRoleName, Model.RoleNames, "Add a New Role", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.AddRoleName, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @*@Html.Label("Remove Role Name", new { @class = "col-md-2 control-label" })*@
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.RemoveRoleName, Model.RoleNames, "Delete a Role", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RemoveRoleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+@* 
         @*<div class="form-group">
                 @Html.LabelFor(model => model.Roles, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">

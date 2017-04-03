@@ -21,9 +21,11 @@ namespace CIS420Redux.Models
       [DisplayName("Student ID")]
       public int StudentId { get; set; }
 
+      public int DocumentId { get; set; }
+
       public virtual Student Student { get; set; }
 
-     public IEnumerable<SelectListItem> Types { get; set; }
+      public IEnumerable<SelectListItem> Types { get; set; }
 
     }
 }

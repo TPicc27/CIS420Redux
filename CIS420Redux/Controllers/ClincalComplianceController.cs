@@ -17,7 +17,7 @@ namespace CIS420Redux.Controllers
         // GET: ClincalCompliance
         public ActionResult Index()
         {
-            
+            var pOS = db.POS.Include(p => p.Student);
             return View(db.ClincalCompliances.ToList());
         }
 
@@ -44,6 +44,8 @@ namespace CIS420Redux.Controllers
 
             model.Types = GetSelectListItems(types);
 
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName");
+
             return View(model);
         }
 
@@ -52,7 +54,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
+        public ActionResult Create([Bind(Include = "ID,Type,ExpirationDate,StudentId,DocumentId")] ClincalCompliance model)
         {
             var types = GetAllTypes();
 
@@ -60,10 +62,16 @@ namespace CIS420Redux.Controllers
 
             if (ModelState.IsValid)
             {
+                model.ExpirationDate = DateTime.Today;
+                if(model.ExpirationDate == DateTime.Today)
+                {
+                    model.IsExpired = true;
+                }
                 db.ClincalCompliances.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CCDocuments", "Advisor");
             }
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", model.StudentId);
             return View(model);
         }
 
@@ -92,7 +100,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
+        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,StudentId,DocumentId")] ClincalCompliance model)
         {
             var types = GetAllTypes();
 

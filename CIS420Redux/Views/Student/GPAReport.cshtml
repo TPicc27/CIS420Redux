@@ -3,16 +3,18 @@
     ViewBag.Title = "GPAReports";
 }
 
-<h2>GPAReports</h2>
+<div class="panel panel-primary" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Post Grades</h3>
+    </div>
+</div>
+
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StudentNumber)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FirstName)
-        <th/>
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
@@ -31,9 +33,6 @@
     @foreach(var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.StudentNumber)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
