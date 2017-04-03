@@ -34,7 +34,7 @@
                                 {
                                 <li>@Html.ActionLink("Home", "Dashboard", "Student", null, new { style = "color:#AD0000" })</li>
                                             <li><a href="~/Calendar/Demo/selectable.html" style="color: #AD0000;">Calendar</a></li>
-                                            <li><a href="@Url.Action("Edit","POS")"><font color="red">Program of Study</font></a></li>
+                                            <li>@Html.ActionLink("Program of Study", "Edit", "POS", null, new { style = "color:#AD0000" })</li>
                                             <li> @Html.ActionLink("Clinical Compliance", "GetStudentClinicalCompliances", "Student", null, new { style = "color:#AD0000" }) </li>
                                             <li> @Html.ActionLink("Alerts", "Index", "Event", null, new { style = "color:#AD0000" }) </li>
                                             <li> @Html.ActionLink("Advising", "Advisors", "Advisor", null, new { style = "color:#AD0000" }) </li>

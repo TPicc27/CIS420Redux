@@ -4,12 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Edit Student</h3>
+    </div>
+</div>
 
 <div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal"style="color: #000000">
         <dt>
             @Html.DisplayNameFor(model => model.StudentNumber)
         </dt>
@@ -114,16 +116,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.Enrollments)
+            @Html.DisplayNameFor(model => model.Enrollments)
         </dt>
         <dd>
-            <table class="table">
+            <table class="table table-bordered table-responsive table-hover">
                 <tr>
                     <th>Courses</th>
                     <th>Semester</th>
                     <th>Grade</th>
                 </tr>
-                @foreach(var item in Model.Enrollments)
+                @foreach (var item in Model.Enrollments)
                 {
                     <tr>
                         <td>
@@ -139,10 +141,8 @@
                 }
             </table>
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+    <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Student")'">Back To List</button>
+</div>

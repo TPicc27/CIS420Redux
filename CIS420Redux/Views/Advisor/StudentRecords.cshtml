@@ -12,7 +12,7 @@
                 <div class="panel-primary">
                     <div class="panel-heading"style="background-color: rgb(227, 27, 35);">
                         <h3 class="col-md-7">Student Records</h3>
-                        <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("StudentRecords", "Advisor")'">Post Grades</button>
+                        <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("Index", "Enrollment")'">Post Grades</button>
                     </div>
                     <div class="panel-body" style="color: #000000">
                         @Html.Partial("StudentRecordsPartial",Model.StudentRecordsList)
