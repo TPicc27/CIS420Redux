@@ -1,5 +1,5 @@
 ﻿@using CIS420Redux.Models.ViewModels
-@model StudentCCIndexViewModel
+@model IEnumerable<StudentCCIndexViewModel>
 @{
     ViewBag.Title = "GetStudentClinicalCompliances";
 }
@@ -12,10 +12,13 @@
 
 <p>
     <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("DocumentManagement","Home")'">Upload Document</button>
-    <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("Index","UserManagement")'">View Documents</button>
+    <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("ViewDocument","Home")'">View Documents</button>
 </p>
 <table class="table">
     <tr style="color: #000000">
+        <th>
+            Student Number
+        </th>
         <th>
             Complaince Name
         </th>
@@ -23,15 +26,21 @@
             Expiration Date
         </th>
         <th>
-            Is Complaint
+            Is Compliant
+        </th>
+        <th>
+            Document
         </th>
         <th></th>
     </tr>
 
 
-    @foreach (var item in Model.TypeList)
+    @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentNumber)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
@@ -39,7 +48,10 @@
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsCompliant)
+                @Html.DisplayFor(modelItem => item.IsComplaint)
+            </td>
+            <td>
+                @Html.ActionLink("Download Document", "GetDocument", "Home", new { documentId = item.DocumentId }, new { @class = "btn btn-primary" })
             </td>
             @*<td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |

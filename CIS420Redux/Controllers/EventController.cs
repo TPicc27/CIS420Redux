@@ -17,6 +17,8 @@ namespace CIS420Redux.Controllers
         // GET: Event
         public ActionResult Index()
         {
+            var name = HttpContext.User.Identity.Name;
+            var students = db.Students.Where(s => s.Email == name);
             return View(db.Events.ToList());
         }
 
@@ -46,7 +48,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Location,StartDate,EndDate,IsRecruitment")] Event @event)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Location,StartDate,EndDate,IsRecruitment,StudentId")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +80,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Location,StartDate,EndDate,IsRecruitment")] Event @event)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Location,StartDate,EndDate,IsRecruitment,StudentId")] Event @event)
         {
             if (ModelState.IsValid)
             {

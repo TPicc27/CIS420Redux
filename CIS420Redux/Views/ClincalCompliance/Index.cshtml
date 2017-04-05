@@ -15,7 +15,7 @@
 <table class="table">
     <tr style="color: #000000">
         <th>
-            @Html.DisplayNameFor(model => model.StudentId)
+            @Html.DisplayNameFor(model => model.Student.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
@@ -23,13 +23,16 @@
         <th>
             @Html.DisplayNameFor(model => model.ExpirationDate)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DocumentId)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr style="color: #000000">
         <td>
-            @Html.DisplayFor(modelItem => item.StudentId)
+            @Html.DisplayFor(modelItem => item.Student.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Type)
@@ -37,6 +40,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.ExpirationDate)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.DocumentId)
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

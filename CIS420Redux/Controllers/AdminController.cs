@@ -127,6 +127,11 @@ namespace CIS420Redux.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult StudentTodos()
+        {
+            return View(db.Events.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

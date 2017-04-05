@@ -7,8 +7,15 @@
     <div class="panel-heading" style="background-color: rgb(277, 27, 35);">
         <h2 style="text-align: center; color: white;">Alerts</h2>
     </div>
-</div>
-            <h5 align="center">@Model.Count() Upcoming Event(s) for Week</h5>
+</div> 
+    @if (Model.Count() == 0)
+    {
+        <h5 align="center" ; style="color:black;">No Upcoming Events for Week</h5> 
+    }
+    else
+    {
+    <h5 align="center" ; style="color:black;">@Model.Count() Upcoming Event(s) for Week</h5>
+
             <div>
                 <table class="table" style="color: #000000">
                     <tr>
@@ -30,7 +37,7 @@
                     </tr>
 
                     @foreach (var item in Model)
-            {
+                    {
                         <tr style="color: #000000">
                             <td>
                                 @Html.DisplayFor(modelItem => item.Id)
@@ -55,8 +62,9 @@
                         </tr>
                     }
 
-                </table>
+                </table>                
             </div>
+    }
         </div>
     </div>
 </div>

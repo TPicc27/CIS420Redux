@@ -5,7 +5,7 @@
 }
 <div class="panel panel-primary" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
-        <h3>Alerts</h3>
+        <h3>To-dos</h3>
     </div>
 </div>
 
@@ -39,9 +39,9 @@
         </td>
   
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
-           @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id })|
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

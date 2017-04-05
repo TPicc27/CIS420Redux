@@ -4,13 +4,14 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Delete Student</h3>
+    </div>
+</div>
+<h3 style="color: black;">Are you sure you want to delete this?</h3>
 <div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal"style="color: #000000">
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
@@ -100,22 +101,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Standing)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Standing)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HasGraduated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HasGraduated)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CampusId)
         </dt>
 
@@ -129,8 +114,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
         </div>
     }
 </div>

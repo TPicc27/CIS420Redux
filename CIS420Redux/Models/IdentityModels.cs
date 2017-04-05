@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using CIS420Redux.Mapping;
 
 namespace CIS420Redux.Models
 {
@@ -17,6 +18,8 @@ namespace CIS420Redux.Models
             return userIdentity;
         }
     }
+
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -34,6 +37,12 @@ namespace CIS420Redux.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ClinicalComplianceMapping());
+
+            base.OnModelCreating(modelBuilder);
         }
         public DbSet<Student> Students { get; set; }
 

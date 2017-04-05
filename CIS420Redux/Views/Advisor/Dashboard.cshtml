@@ -36,8 +36,16 @@
                 <div class="panel">
                     <div class="panel-heading" style=" background-color: rgb(227, 27, 35); min-width: 400px">
                         <h3 style="text-align: center">To-Dos</h3>
-                    </div>                    
-                        @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)                  
+                    </div>   
+                    @if (Model.AdvisorTodosList != null && Model.AdvisorTodosList.Any())
+                    {
+                        @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)
+                    }
+                    else
+                    {
+                        <h5 align="center" style="color: #000000">No Available To-Dos</h5>
+                    }               
+                                        
                 </div>
             </div>
         </div>

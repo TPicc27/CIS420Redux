@@ -6,6 +6,7 @@ using CIS420Redux.Models;
 using CIS420Redux.Models.ViewModels;
 using System;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace SoNWebApp.Controllers
 {
@@ -61,9 +62,10 @@ namespace SoNWebApp.Controllers
                 roleList.Add(rvm);
             }
             ViewBag.Name = new SelectList(_db.Roles.ToList(), "Name", "Name");
-
             var model = new EditUserViewModel(user);
             model.Roles = roleList;
+            var roles = Roles();
+            model.RoleNames = GetRolesListItems(roles);
 
             return View(model);
         }
@@ -74,11 +76,31 @@ namespace SoNWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(EditUserViewModel model)
         {
+            var roles = Roles();
+            model.RoleNames = GetRolesListItems(roles);
             if (ModelState.IsValid)
             {
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
                 var Db = new ApplicationDbContext();
                 var user = Db.Users.First(u => u.UserName == model.UserName);
-                //user.Roles = model.RoleName;
+
+                if (model.AddRoleName == null)
+                { 
+                     model.AddRoleName = "none";
+                }
+                else
+                {
+                    UserManager.AddToRole(user.Id, model.AddRoleName.ToLower());
+                }
+                if (model.RemoveRoleName == null)
+                {
+                    model.RemoveRoleName = "none";
+                }
+                else
+                {
+                    UserManager.RemoveFromRole(user.Id, model.RemoveRoleName.ToLower());
+                }
+
 
 
                 //Didn't implement ability to modify FirstName or LastName, but this is how you would do it.
@@ -157,5 +179,33 @@ namespace SoNWebApp.Controllers
         //        return RedirectToAction("index");
         //    }
         //    return View();
+
+
+        public IEnumerable<string> Roles()
+        {
+            return new List<string>
+            {
+                  "Super Admin",
+                  "Admin",
+                  "Advisor",
+                  "Student"
+            };
+        }
+        public IEnumerable<SelectListItem> GetRolesListItems(IEnumerable<string> elements)
+        {
+            var selectList = new List<SelectListItem>();
+
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+
+                    Value = element,
+                    Text = element
+                });
+            }
+
+            return selectList;
+        }
     }
 }
