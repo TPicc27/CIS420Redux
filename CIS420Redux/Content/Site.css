@@ -7,7 +7,6 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-        background-image: url('IMG/WebsiteLogo.png');
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,13 +24,6 @@ textarea {
 
 .panel-primary {
     border-color: none
-}
-
-.bgimg{
-        background-image: url('IMG/WebsiteLogo.png');
-}
-.imglay{
-    background-size: cover;
 }
 
 /********************************/
