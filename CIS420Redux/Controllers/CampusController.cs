@@ -55,7 +55,7 @@ namespace CIS420Redux.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+     
             return View(campus);
         }
 

@@ -301,6 +301,10 @@
     <Compile Include="Migrations\201704020159439_Application.Designer.cs">
       <DependentUpon>201704020159439_Application.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704051712330_StudentTodos.cs" />
+    <Compile Include="Migrations\201704051712330_StudentTodos.Designer.cs">
+      <DependentUpon>201704051712330_StudentTodos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -499,6 +503,7 @@
     <Content Include="Views\UdApplication\Edit.cshtml" />
     <Content Include="Views\UdApplication\Details.cshtml" />
     <Content Include="Views\UdApplication\Delete.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -596,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704020159439_Application.resx">
       <DependentUpon>201704020159439_Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704051712330_StudentTodos.resx">
+      <DependentUpon>201704051712330_StudentTodos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

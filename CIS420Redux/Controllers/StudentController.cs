@@ -23,8 +23,8 @@ namespace CIS420Redux.Controllers
             var viewModel = new HomeIndexViewModel()
             {
                 StudentsList = db.Students.Where(s => s.Email.ToLower().Contains(name)).FirstOrDefault(),
-                TodosList = db.Events.Where(e => e.StudentId == student.Id)
-            };
+                TodosList = db.Events.Take(5)
+        };
             return View(viewModel);
         }
 
@@ -38,9 +38,7 @@ namespace CIS420Redux.Controllers
 
         public PartialViewResult GetTodosList()
         {
-            var name = HttpContext.User.Identity.Name;
-            var student = db.Students.FirstOrDefault(s => s.Email == name);
-            var todos = db.Events.Where(e => e.StudentId == student.Id);
+            var todos = db.Events.Take(5);
 
             return PartialView("_TodosPartial", todos);
         }
@@ -65,8 +63,7 @@ namespace CIS420Redux.Controllers
                 CampusId = s.CampusId,
                 ProgramId = s.ProgramId
             });
-
-            if(!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 students = students.Where(s => s.LastName.Contains(searchString));
             }
@@ -144,6 +141,8 @@ namespace CIS420Redux.Controllers
             var states = GetAllStates();
             var model = new ClincalCompliance();
             //model.State = GetSelectListItems(types);
+            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name");
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name");
             return View();
         }
 
@@ -176,7 +175,8 @@ namespace CIS420Redux.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Student");
             }
-
+            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", vm.CampusId);
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", vm.ProgramId);
             return View(vm);
         }
 
@@ -192,6 +192,8 @@ namespace CIS420Redux.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", student.CampusId);
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", student.ProgramId);
             return View(student);
         }
 
@@ -223,6 +225,8 @@ namespace CIS420Redux.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", vm.CampusId);
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", vm.ProgramId);
             return View(vm);
         }
 

@@ -38,6 +38,7 @@ namespace CIS420Redux.Controllers
         // GET: Course/Create
         public ActionResult Create()
         {
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name");
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace CIS420Redux.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name",course.ProgramId);
             return View(course);
         }
 
@@ -70,6 +71,7 @@ namespace CIS420Redux.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", course.ProgramId);
             return View(course);
         }
 
@@ -86,6 +88,7 @@ namespace CIS420Redux.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", course.ProgramId);
             return View(course);
         }
 

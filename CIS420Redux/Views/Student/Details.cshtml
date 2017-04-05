@@ -5,7 +5,7 @@
 }
 
 <div class="panel" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+    <div class="panel-heading" style="background-color: #AD0000; text-align: center;">
         <h3>Edit Student</h3>
     </div>
 </div>
@@ -108,11 +108,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Standing)
+          Campus Name:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Standing)
+            @Html.DisplayFor(model => model.Campus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Program.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Program.Name)
         </dd>
 
         <dt>

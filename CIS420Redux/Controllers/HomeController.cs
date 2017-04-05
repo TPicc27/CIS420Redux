@@ -37,6 +37,7 @@ namespace CIS420Redux.Controllers
 
         public ActionResult DocumentManagement()
         {
+
             return View();
         }
 
@@ -67,15 +68,21 @@ namespace CIS420Redux.Controllers
                 db.Documents.Add(documentModel);
                 db.SaveChanges();
 
-                var documentRecord = db.Documents.FirstOrDefault(d => d.StudentId == student.Id && d.Type == type);
 
+
+                var documentRecord = db.Documents.FirstOrDefault(d => d.StudentId == student.Id && d.Type == type);
+            
 
                 var ccRecord = db.ClincalCompliances.FirstOrDefault(d => d.StudentId == student.Id && d.Type == type);
 
                 ccRecord.DocumentId = documentRecord.Id;
 
                 ccRecord.Type = documentRecord.Type;
-                
+
+                var complianceRecord = db.ClincalCompliances.FirstOrDefault(d => d.DocumentId == documentModel.Id);
+
+                complianceRecord.IsCompliant = true;
+
                 db.SaveChanges();
             }
 

@@ -31,5 +31,9 @@ namespace CIS420Redux.Models.ViewModels.Student
         public int CampusId { get; set; }
         public int ProgramId { get; set; }
         public IEnumerable<Event> AlertList { get; set; }
+
+        public virtual Program Program { get; set; }
+
+        public virtual Campus Campus { get; set; }
     }
 }

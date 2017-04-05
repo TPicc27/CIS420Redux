@@ -5,16 +5,13 @@
 }
 
 <div class="panel panel-primary" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+    <div class="panel-heading" style="background-color: #AD0000; text-align: center;">
         <h3>Manage Clinical Compliance</h3>
     </div>
 </div>
 
-<p>
-    <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("Create","ClincalCompliance")'">Create Clinical Compliance</button>
-</p>
-<table class="table">
-    <tr>
+<table class="table table-bordered table-responsive table-hover">
+    <tr style="color: black;">
         <th>
             Student Number
         </th>
@@ -45,7 +42,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr style="color: black;">
             <td>
                 @Html.DisplayFor(modelItem => item.StudentNumber)
             </td>

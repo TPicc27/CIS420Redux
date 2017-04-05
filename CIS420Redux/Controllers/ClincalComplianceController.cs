@@ -92,6 +92,7 @@ namespace CIS420Redux.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", clincalcompliances.StudentId);
             return View(clincalcompliances);
         }
 
@@ -111,6 +112,7 @@ namespace CIS420Redux.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", model.StudentId);
             return View(model);
         }
 

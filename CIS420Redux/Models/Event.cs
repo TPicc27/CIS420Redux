@@ -22,9 +22,5 @@ namespace CIS420Redux.Models
         public DateTime EndDate { get; set; }
         [DisplayName("Is Recruitment?")]
         public bool IsRecruitment { get; set; }
-        [DisplayName("Student ID")]
-        public int StudentId { get; set; }
-
-        public virtual Student Students { get; set; }
     }
 }

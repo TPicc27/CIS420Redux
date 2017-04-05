@@ -5,7 +5,7 @@
 }
 
 <div class="panel panel-primary" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+    <div class="panel-heading" style="background-color: #AD0000;; text-align: center;">
         <h3>Details of Program</h3>
     </div>
     </div>
@@ -13,7 +13,7 @@
     <div>
         <h4>Program</h4>
         <hr />
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal" style="color: black;">
             <dt>
                 @Html.DisplayNameFor(model => model.Name)
             </dt>
@@ -25,6 +25,5 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Program")'">Back to List</button>
     </p>
