@@ -5,13 +5,13 @@
 }
 
 <div class="panel panel-primary" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+    <div class="panel-heading" style="background-color:  #AD0000; text-align: center;">
         <h3>Campuses</h3>
     </div>
     </div>
-    <h3>Are you sure you want to delete this?</h3>
+    <h3 style="color: black;">Are you sure you want to delete this?</h3>
     <div>
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal" style="color: black;">
             <dt>
                 @Html.DisplayNameFor(model => model.Title)
             </dt>
@@ -44,11 +44,11 @@
                 @Html.DisplayFor(model => model.Credits)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.ProgramId)
+                @Html.DisplayNameFor(model => model.Program.Name)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.ProgramId)
+                @Html.DisplayFor(model => model.Program.Name)
             </dd>
 
 
@@ -59,7 +59,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
                 @Html.ActionLink("Back to List", "Index")
             </div>
         }

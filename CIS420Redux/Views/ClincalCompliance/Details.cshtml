@@ -5,7 +5,7 @@
 }
 
 <div class="panel" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+    <div class="panel-heading" style="background-color: #AD0000; text-align: center;">
         <h3>Details of Clinical Compliance</h3>
     </div>
 </div>
@@ -38,6 +38,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "ClincalCompliance")'">Back to List</button>
 </p>

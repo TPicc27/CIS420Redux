@@ -85,7 +85,7 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,Email,Address1,Address2,City,State,ZipCode,HomePhone,CellPhone,CampusId,SelectProgram,Semester,CurrentCourses,PersonalQualties,HealthCare,Crimes,SchoolTrouble,HonorablyDischarge,DischargedEmployment,Harassment,DrugsOrAlcohol,DrugsOrAlcoholEssay,AccurateKnowledge,Status")] UdApplication udApplication)
+        public ActionResult Edit([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,Email,Address1,Address2,City,State,ZipCode,HomePhone,CellPhone,CampusId,SelectProgram,Semester,CurrentCourses,PersonalQualties,HealthCare,Crimes,SchoolTrouble,HonorablyDischarge,DischargedEmployment,Harassment,DrugsOrAlcohol,DrugsOrAlcoholEssay,AccurateKnowledge,Status")] UdApplication udApplication)
         {
             var statuses = GetStatusList();
 

@@ -5,14 +5,14 @@
 }
 
 <div class="panel" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
-        <h3>Clinical Compliance</h3>
+    <div class="panel-heading" style="background-color: #AD0000; text-align: center;">
+        <h3>Manage Clinical Compliance</h3>
     </div>
 </div>
 <p>
     <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "ClincalCompliance")'">Create New</button>
 </p>
-<table class="table">
+<table class="table table-bordered table-responsive table-hover">
     <tr style="color: #000000">
         <th>
             @Html.DisplayNameFor(model => model.Student.LastName)
@@ -23,32 +23,30 @@
         <th>
             @Html.DisplayNameFor(model => model.ExpirationDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DocumentId)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr style="color: #000000">
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpirationDate)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.DocumentId)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-           @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr style="color: #000000">
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DocumentId)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

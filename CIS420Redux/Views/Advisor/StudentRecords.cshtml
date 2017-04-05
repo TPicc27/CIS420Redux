@@ -3,16 +3,16 @@
     ViewBag.Title = "StudentRecords";
 }
 <div class="panel" style="margin-top:15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35);">
+    <div class="panel-heading" style="background-color: #AD0000;">
         <h3 style="text-align:center">Student Records</h3>
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="panel-primary">
-                    <div class="panel-heading"style="background-color: rgb(227, 27, 35);">
-                        <h3 class="col-md-7">Student Records</h3>
-                        <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("Index", "Enrollment")'">Post Grades</button>
+                    <div class="panel-heading"style="background-color: #AD0000;">
+                        <h4 class="col-md-7">Student Records</h4>
+                        <button type="button" class="btn btn-default btn-lg" onclick="window.location.href = '@Url.Action("Index", "Enrollment")'">Post Grades</button>
                     </div>
                     <div class="panel-body" style="color: #000000">
                         @Html.Partial("StudentRecordsPartial",Model.StudentRecordsList)
@@ -22,7 +22,7 @@
             <div class="col-md-6">
 
                 <div class="panel-primary">
-                    <div class="panel-heading" style="background-color: rgb(227, 27, 35);">
+                    <div class="panel-heading" style="background-color: #AD0000;">
                         <h4>To-Dos </h4>
                     </div>
                     <div class="panel-body">

@@ -24,7 +24,7 @@ namespace CIS420Redux.Controllers
 
             var viewModel = new AdvisorIndexViewModel()
             {
-                AdvisorTodosList = db.Todoes.Take(2),
+                AdvisorTodosList = db.Todoes.Take(5),
                 EventAlertList = db.Events.Where(d => d.StartDate > start && d.StartDate < end),
                 NCStudentsList = db.Students.Where(d => d.Is_Compliant == false)
             };
@@ -36,7 +36,7 @@ namespace CIS420Redux.Controllers
             var viewModel = new StudentRecordViewModel()
             {
                 StudentRecordsList = db.Students.ToList(),
-                AdvisorTodosList = db.Todoes.Take(2)
+                AdvisorTodosList = db.Todoes.Take(5)
 
             };
             return View(viewModel);
