@@ -6,10 +6,9 @@
 
 <div class="panel" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: #AD0000; text-align: center;">
-        <h3>Edit Student</h3>
+        <h3>Details of Student</h3>
     </div>
 </div>
-
 <div>
     <dl class="dl-horizontal"style="color: #000000">
         <dt>
@@ -152,5 +151,6 @@
     </dl>
 </div>
 <div>
-    <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Student")'">Back To List</button>
+    <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Student")'">Back To List</button> |
+    <button class="btn btn-danger" style="display: inline-block"><a href="mailto:@Model.Email"></a>Student Email</button>
 </div>
