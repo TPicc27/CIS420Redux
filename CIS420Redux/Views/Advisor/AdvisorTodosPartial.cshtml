@@ -2,31 +2,31 @@
 
 <table class="table" style="color: #000000">
     <tr>        
-        <th>
+        <th  style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        <th  style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
-        <th>
+        <th  style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.EndDate)
         </th>        
-        <th></th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000"></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>            
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                 @Html.DisplayFor(modelItem => item.StartDate)
             </td>
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>            
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
