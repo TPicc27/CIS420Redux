@@ -83,12 +83,16 @@
             </div>
         </div>
     </div>
-    <div class="container body-content page" >
-        @RenderBody()
-        <hr />
-        <footer style="text-align: center; color: #000000">
-            <p>&copy; @DateTime.Now.Year - Nothing But .Net</p>
-        </footer>
+    <div class="imglay">
+        <div class="bgimg">
+        <div class="container body-content page">
+                @RenderBody()
+                <hr />
+                <footer style="text-align: center; color: #000000">
+                    <p>&copy; @DateTime.Now.Year - Nothing But .Net</p>
+                </footer>
+            </div>
+        </div>
     </div>
 </body>
 </html>

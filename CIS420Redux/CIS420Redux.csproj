@@ -310,6 +310,7 @@
     <Content Include="Content\IMG\Terri Knott.jpg" />
     <Content Include="Content\IMG\Traditional BSN POS 001.png" />
     <Content Include="Content\IMG\Trish Hart.jpeg" />
+    <Content Include="Content\IMG\WebsiteLogo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

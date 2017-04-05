@@ -3,38 +3,38 @@
 <div style="max-height: 300px; overflow-y: auto">  
 <table class="table" style="color: #000000">
     <tr>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.Id)
         </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             @Html.DisplayNameFor(model => model.Location)
         </th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                  @Html.DisplayFor(modelItem => item.StartDate) 
             </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                  @Html.DisplayFor(modelItem => item.EndDate)
             </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                  @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: rgb(227, 27, 35)">
+            <td style="border-style: solid; border-width: 2px; text-align:center">
                  @Html.DisplayFor(modelItem => item.Location)
          
         </tr>  

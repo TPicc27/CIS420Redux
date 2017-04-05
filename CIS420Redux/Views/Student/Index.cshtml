@@ -9,17 +9,19 @@
 }
 
 
-
-<button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Student")'">Create New</button>
+<div>
+<button class="btn btn-danger col-md-2 pull-left" style="display: inline-block" onclick="location.href='@Url.Action("Create", "Student")'">Create New</button>
 @using (Html.BeginForm())
 {
     <p>
         Find by name: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
+    
 }
+<button class="btn btn-danger col-md-2 pull-right" style="margin-bottom:10px; float:right">Email Students</button>
+</div>
 
-<button class="btn btn-danger col-md-2 pull-right" style="margin-bottom:10px;">Email Students</button>
 <table class="table" id="StudentTable" style="color: #000000">
     <tr>
         <th>
