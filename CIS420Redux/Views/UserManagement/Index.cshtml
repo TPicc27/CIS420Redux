@@ -9,30 +9,30 @@
         <h3>Users Roles</h3>
     </div>
 </div>
-<table align="center" class="col-md-12">
+<table class="table table-bordered table-responsive table-hover" style="color: black;">
     <thead class="col-md-12">
-        <tr>
-        <th class="col-md-4" style="color: #000000; font-size: 15px"><b>User Name</b></th>
-        <th class="col-md-4" style="color: #000000; font-size: 15px"><b>Roles</b></th>
-      </tr>
+        <tr style="border-style: solid; border-width: 2px;border-color: #000000;">
+            <th class="col-md-4" style="color: #000000; border-style: solid; border-width: 2px;border-color: #000000; font-size: 15px"><b>User Name</b></th>
+            <th class="col-md-4" style="color: #000000;  border-style: solid; border-width: 2px;border-color: #000000;font-size: 15px"><b>Roles</b></th>
+        </tr>
     </thead>
     @{ var list = Model.ToList();
         for (int i = 0; i < list.Count; i++)
         {
-            <tbody class="col-md-12" style="color: #000000">
-                <tr>
-                <td class="col-md-4">@Html.DisplayFor(modelItem => list[i].UserName)</td>
-                <td class="col-md-4">
-                    @foreach (var role in list[i].Roles)
-                    {
-                        <p>@role.RoleName</p>
+            <tbody class="col-md-12" style="color: #000000;">
+                <tr >
+                    <td class="col-md-4"style="border-style: solid; border-width: 2px;border-color: #000000;">@Html.DisplayFor(modelItem => list[i].UserName)</td>
+                    <td class="col-md-4" style="border-style: solid; border-width: 2px;border-color: #000000;">
+                        @foreach (var role in list[i].Roles)
+                        {
+                            <p>@role.RoleName</p>
 
-                    }
-                </td>
+                        }
+                    </td>
 
-                <td class="col-md-2">
-                    <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
-                </td>
+                    <td class="col-md-2"style="border-style: solid; border-width: 2px;border-color: #000000;">
+                        <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
+                    </td>
                 </tr>
             </tbody>
         }

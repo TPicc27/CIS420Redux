@@ -152,5 +152,6 @@
 </div>
 <div>
     <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Student")'">Back To List</button> |
-    <button class="btn btn-danger" style="display: inline-block"><a href="mailto:@Model.Email"></a>Student Email</button>
+    <form style="display: inline" action="mailto:@Model.Email"><button class="btn btn-danger" style="display: inline-block">Student Email</button>
+    </form>
 </div>

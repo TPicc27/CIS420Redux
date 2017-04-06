@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CIS420Redux.Models;
+using CIS420Redux.Models.ViewModels.Advisor;
 
 namespace CIS420Redux.Controllers
 {
@@ -130,6 +131,37 @@ namespace CIS420Redux.Controllers
         public ActionResult StudentTodos()
         {
             return View(db.Events.ToList());
+        }
+
+        public ActionResult ComplianceDocs()
+        {
+            var clinicalCompliances = db.ClincalCompliances.ToList();
+            //var clinicalCompliances = db.ClincalCompliances.Where(c => c.Student.Id == student.Id).ToList();
+
+            //var isStudentCompliant = db.ClincalCompliances.Any(cc => cc.Student.Id == student.Id && cc.IsCompliant == false);
+            var ccdocidList = clinicalCompliances.Select(d => d.DocumentId).ToList();
+            var documents = db.Documents.Where(d => ccdocidList.Contains(d.Id)).ToList();
+
+            var viewModel = clinicalCompliances.Select(c => new AdvisorCCIndexViewModel
+            {
+                ExpirationDate = c.ExpirationDate,
+                DocumentId = c.DocumentId,
+                IsComplaint = c.IsCompliant,
+                ID = c.ID,
+                Type = c.Type,
+                StudentNumber = c.Student.StudentNumber,
+                FirstName = c.Student.FirstName,
+                LastName = c.Student.LastName,
+                IsExpired = c.ExpirationDate < DateTime.Today ? false : true
+            });
+
+            foreach (var doc in documents)
+            {
+                viewModel.FirstOrDefault(v => v.DocumentId == doc.Id).Document = doc;
+            }
+
+
+            return View(viewModel);
         }
 
         protected override void Dispose(bool disposing)

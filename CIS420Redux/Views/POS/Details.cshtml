@@ -4,12 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>POS</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Details of Program of Study</h3>
+    </div>
+</div>
+    <dl class="dl-horizontal" style="color: black;">
         <dt>
             @Html.DisplayNameFor(model => model.Student.LastName)
         </dt>
@@ -115,8 +115,6 @@
         </dd>
 
     </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "POS")'">Back To List</button>
 </p>

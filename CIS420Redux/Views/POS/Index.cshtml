@@ -13,45 +13,54 @@
             <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "POS")'">Create New</button>
         </p>
     <table class="table table-bordered table-responsive table-hover">
-        <tr style="color: #000000">
+        <tr style="color: #000000; text-decoration: underline;">
             <th>
                 @Html.DisplayNameFor(model => model.Student.LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course1)
+                Fall 2017
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course2)
+              Course 1
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course3)
+                Course 2
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course4)
+              Course 3
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course5)
+               Course 4
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course6)
+                Spring 2017
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course7)
+                Course 5
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course8)
+                Course 6
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course9)
+                Course 7
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course10)
+                Course 8
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course11)
+                Fall 2018
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course12)
+               Course 9
+            </th>
+            <th>
+             Course 10
+            </th>
+            <th>
+                Course 11
+            </th>
+            <th>
+                Course 12
             </th>
             <th></th>
         </tr>
@@ -61,6 +70,9 @@
             <tr>
                 <td style="color: black">
                     @Html.DisplayFor(modelItem => item.Student.LastName)
+                </td>
+                <td>
+                    
                 </td>
                 <td style="color: black">
                     @Html.DisplayFor(modelItem => item.Course1)
@@ -74,6 +86,9 @@
                 <td style="color: black">
                     @Html.DisplayFor(modelItem => item.Course4)
                 </td>
+                <td>
+
+                </td>
                 <td style="color: black">
                     @Html.DisplayFor(modelItem => item.Course5)
                 </td>
@@ -85,6 +100,9 @@
                 </td>
                 <td style="color: black">
                     @Html.DisplayFor(modelItem => item.Course8)
+                </td>
+                <td>
+
                 </td>
                 <td style="color: black">
                     @Html.DisplayFor(modelItem => item.Course9)
