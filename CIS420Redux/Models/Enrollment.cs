@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CIS420Redux.Models
 {
@@ -25,5 +26,7 @@ namespace CIS420Redux.Models
         public virtual Student Student { get; set; }
 
         public virtual Program Program { get; set; }
+
+        public IEnumerable<SelectListItem> GradeList { get; set; }
     }
 }

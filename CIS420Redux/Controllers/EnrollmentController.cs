@@ -39,10 +39,15 @@ namespace CIS420Redux.Controllers
         // GET: Enrollment/Create
         public ActionResult Create()
         {
+            var grades = GetAllGrades();
+
+            var model = new Enrollment();
+
+            model.GradeList = GetSelectListItems(grades);
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Title");
             ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name");
             ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName");
-            return View();
+            return View(model);
         }
 
         // POST: Enrollment/Create
@@ -52,6 +57,9 @@ namespace CIS420Redux.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,CourseId,StudentId,ProgramId,Semester,Grade")] Enrollment enrollment)
         {
+            var grades = GetAllGrades();
+
+            enrollment.GradeList = GetSelectListItems(grades);
             if (ModelState.IsValid)
             {
                 db.Enrollments.Add(enrollment);
@@ -98,6 +106,9 @@ namespace CIS420Redux.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Enrollment enrollment = db.Enrollments.Find(id);
+            var grades = GetAllGrades();
+
+            enrollment.GradeList = GetSelectListItems(grades);
             if (enrollment == null)
             {
                 return HttpNotFound();
@@ -115,6 +126,9 @@ namespace CIS420Redux.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,CourseId,StudentId,ProgramId,Semester,Grade")] Enrollment enrollment)
         {
+            var grades = GetAllGrades();
+
+            enrollment.GradeList = GetSelectListItems(grades);
             if (ModelState.IsValid)
             {
                 db.Entry(enrollment).State = EntityState.Modified;
@@ -213,6 +227,41 @@ namespace CIS420Redux.Controllers
             return actualgrade;
         }
 
+        public IEnumerable<string> GetAllGrades()
+        {
+            return new List<string>
+            {
+                "A+",
+                "A",
+                "A-",
+                "B+",
+                "B",
+                "B-",
+                "C+",
+                "C",
+                "C-",
+                "D+",
+                "D",
+                "D-",
+                "F"
+            };
+        }
+        public IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
+        {
+            var selectList = new List<SelectListItem>();
+
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+
+                    Value = element,
+                    Text = element
+                });
+            }
+
+            return selectList;
+        }
 
         protected override void Dispose(bool disposing)
         {
