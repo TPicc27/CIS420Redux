@@ -16,6 +16,9 @@
 <table class="table table-bordered table-responsive table-hover">
     <tr style="color: #000000; text-decoration: underline;">
         <th>
+           ID
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -36,6 +39,9 @@
     @foreach (var item in Model)
     {
         <tr style="color: #000000">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
