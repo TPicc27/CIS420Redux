@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
+using System.Web.Mvc;
 
 namespace CIS420Redux.Models.ViewModels.Student
 {
@@ -31,6 +31,8 @@ namespace CIS420Redux.Models.ViewModels.Student
         public int CampusId { get; set; }
         public int ProgramId { get; set; }
         public IEnumerable<Event> AlertList { get; set; }
+
+        public IEnumerable<SelectListItem> States { get; set; }
 
         public virtual Program Program { get; set; }
 

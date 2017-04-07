@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CIS420Redux.Models.ViewModels.Student
 {
@@ -25,6 +26,9 @@ namespace CIS420Redux.Models.ViewModels.Student
         public string PhoneNumber { get; set; }
         [Display(Name = "Enrollment Date")]
         public DateTime EnrollmentDate { get; set; }
+
+
+        public IEnumerable<SelectListItem> States { get; set; }
 
         public int CampusId { get; set; }
 

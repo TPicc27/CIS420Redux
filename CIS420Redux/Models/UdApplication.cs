@@ -69,5 +69,7 @@ namespace CIS420Redux.Models
         public string Status { get; set; }
 
         public IEnumerable<SelectListItem> StatusList { get; set; }
+
+        public IEnumerable<SelectListItem> StateList { get; set; }
     }
 }
