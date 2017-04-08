@@ -26,6 +26,9 @@
             Expiration Date
         </th>
         <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+            IsExpired
+        </th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             Is Compliant
         </th>
         <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
@@ -45,6 +48,9 @@
             </td>
             <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.DisplayFor(modelItem => item.IsExpired)
             </td>
             <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
                 @Html.DisplayFor(modelItem => item.IsComplaint)

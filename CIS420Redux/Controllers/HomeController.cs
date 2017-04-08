@@ -77,16 +77,17 @@ namespace CIS420Redux.Controllers
 
                 ccRecord.DocumentId = documentRecord.Id;
 
-                ccRecord.Type = documentRecord.Type;
+                ccRecord.ExpirationDate = documentRecord.ExpirationDate;
+
+                db.SaveChanges();
 
                 var complianceRecord = db.ClincalCompliances.FirstOrDefault(d => d.DocumentId == documentModel.Id);
 
-                complianceRecord.IsCompliant = true;
-
                 db.SaveChanges();
+                return RedirectToAction("GetStudentClinicalCompliance", "Student", false);
             }
 
-            return View("DocumentManagement");
+            return RedirectToAction("GetStudentClinicalCompliance", "Student", false);
         }
 
         public ActionResult GetDocument(int documentId)
