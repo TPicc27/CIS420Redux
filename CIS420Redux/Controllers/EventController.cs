@@ -1,127 +1,113 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using CIS420Redux.Models;
+using DHTMLX.Common;
+using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Data;
 
 namespace CIS420Redux.Controllers
 {
     public class EventController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //Refer to this link in order to set up the Calendar.
+        //http://scheduler-net.com/docs/simple-.net-mvc-application-with-scheduler.html#step_2_add_the_scheduler_reference
 
-        // GET: Event
+        public readonly ApplicationDbContext _db = new ApplicationDbContext();
+
         public ActionResult Index()
-        {
-            return View(db.Events.ToList());
-        }
-
-        // GET: Event/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
+            return View();
 
-        // GET: Event/Create
-        public ActionResult Create()
+         }
+
+        public ActionResult Calendar()
         {
+
             return View();
         }
 
-        // POST: Event/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Location,StartDate,EndDate,IsRecruitment")] Event @event)
+        public JsonResult Data()
         {
-            if (ModelState.IsValid)
+            //Using Dxhtml JavaScript Edition (open source)
+            var events = _db.Events;
+
+            var formatedEvents = new List<object>();
+            foreach (var ev in events)
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var formattingEvent = new
+                {
+                    id = ev.Id,
+                    start_date = ev.StartDate.ToString(),
+                    end_date = ev.EndDate.ToString(),
+                    //start_date = ev.start_date.Date.ToString("yyyy-MM-dd"),
+                    //end_date = ev.end_date.Date.ToString("yyyy-MM-dd"),
+                    text = ev.Name
+                };
+                formatedEvents.Add(formattingEvent);
             }
 
-            return View(@event);
+
+
+            return Json(formatedEvents, JsonRequestBehavior.AllowGet);
+
+            //Using Dxhtml MVC Scheduler Edition (free trial)
+            //events for loading to scheduler
+            //return new SchedulerAjaxData(_db.Events);
         }
 
-        // GET: Event/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Save(string id, string text, string start_date, string end_date)
         {
-            if (id == null)
+
+            var existingEvent = _db.Events.FirstOrDefault(e => e.Id.ToString() == id);
+            var newStartDate = Convert.ToDateTime(start_date);
+            var newEndDate = Convert.ToDateTime(end_date);
+
+
+            if (existingEvent != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                existingEvent.StartDate = newStartDate;
+                existingEvent.EndDate = newEndDate;
+                existingEvent.Name = text;
             }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            else
             {
-                return HttpNotFound();
+
+                var newEvent = new Event()
+                {
+                    StartDate = newStartDate,
+                    EndDate = newEndDate,
+                    Name = text
+                };
+                _db.Events.Add(newEvent);
             }
-            return View(@event);
+
+            _db.SaveChanges();
+
+
+
+            return View("Index");
         }
 
-        // POST: Event/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Location,StartDate,EndDate,IsRecruitment")] Event @event)
+        public ActionResult Delete(string id, string text, string start_date, string end_date)
         {
-            if (ModelState.IsValid)
+
+            var existingEvent = _db.Events.FirstOrDefault(e => e.Id.ToString() == id);
+            var newStartDate = Convert.ToDateTime(start_date);
+            var newEndDate = Convert.ToDateTime(end_date);
+
+
+            if (existingEvent != null)
             {
-                db.Entry(@event).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                _db.Events.Remove(existingEvent);
+                _db.SaveChanges();
             }
-            return View(@event);
+
+            return View("Index");
         }
 
-        // GET: Event/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Event/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Event @event = db.Events.Find(id);
-            db.Events.Remove(@event);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

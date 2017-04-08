@@ -1,0 +1,28 @@
+@{
+    ViewBag.Title = "Scheduler | Drag and drop between schedulers";
+    ViewBag.SampleTitle = "Drag and drop between schedulers";
+    ViewBag.ShortDescription = "Events can be dragged from one calendar to another";
+    ViewBag.LongDescription = "Try to create event in one of calendars and then drop it to another one. <br />";
+}
+<style>
+    .column-left {
+        float:left;
+        border-right:1px solid #cecece;
+    }
+    .column-right {
+        float:right;
+        border-left:1px solid #cecece;
+    }
+    .column {
+        height:100%;
+        width:48%;
+    }
+</style>
+
+<div class="column column-left">
+@Html.Raw(Model.Sh1.Render()) %>
+</div>
+<div class="column column-right">
+@Html.Raw(Model.Sh2.Render()) %>
+</div>
+

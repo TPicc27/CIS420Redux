@@ -1,0 +1,49 @@
+@{
+    ViewBag.Title = "Scheduler | Load marked timespans ";
+    ViewBag.SampleTitle = "Load marked timespans";
+    ViewBag.ShortDescription = "Load blocked and marked times dynamically";
+    ViewBag.LongDescription = "Each time you scroll date, scheduler loads new portion of data with the blocked timespans.";
+}
+
+
+<script>
+
+    function customEvents() {
+        scheduler.serverList("blocked_time");//initialize server list before scheduler initialization
+
+        scheduler.attachEvent("onXLE", function () {
+            var blocked = scheduler.serverList("blocked_time");
+            for (var i = 0; i < blocked.length; i++) {
+                var span = blocked[i];
+
+                //add timespans from loaded data
+                span.start_date = scheduler.templates.xml_date(span.start_date);
+                span.end_date = scheduler.templates.xml_date(span.end_date);
+
+                scheduler.addMarkedTimespan({
+                    start_date: span.start_date,
+                    end_date: span.end_date,
+                    html: "Busy, " + scheduler.templates.event_header(span.start_date, span.end_date, span),
+                    type: "dhx_time_block",
+                    css: "blocked-time"
+                });
+
+                blocked.splice(i, 1);
+                i--;
+            }
+
+            // redraw scheduler to apply
+            scheduler.setCurrentView();
+        });
+    }
+</script>
+   
+@Html.Raw(Model.Render()) 
+
+<style>
+    .blocked-time {
+        opacity: 0.6;
+        text-align: center;
+        font-size: 18px;
+    }
+</style>

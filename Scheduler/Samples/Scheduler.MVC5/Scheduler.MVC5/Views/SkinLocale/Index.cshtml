@@ -1,0 +1,41 @@
+@{
+    ViewBag.Title = "Scheduler | Available skins";
+    ViewBag.SampleTitle = "Skins and languages";
+    ViewBag.ShortDescription = "Available skins and languages";
+    ViewBag.LongDescription = "There are four skins ('standart', 'glossy', 'terrace' and 'flat') and 28 languages available";
+}
+
+
+<form method="get" action="@Url.Action("Index", "SkinLocale")" id="top_form" style="text-align:center;padding:5px;font-family: 'Helvetica';" class="contenttext">
+
+Skin:<select id="skin_select" name="skin" >
+    @foreach(var skin in Enum.GetNames(typeof(DHTMLX.Scheduler.DHXScheduler.Skins)).Reverse()){
+        <option value="@skin" id="@skin">@skin</option>
+    }
+     </select>&nbsp;&nbsp;
+Language:<select id="language_select" name="language">
+
+    @foreach(var locale in (string[]) Enum.GetNames(typeof(DHTMLX.Scheduler.SchedulerLocalization.Localizations))){
+        <option value="@locale" id="@locale">@locale</option>
+    }
+</select>
+</form>
+<script type="text/javascript">
+    function $(id){
+        return document.getElementById(id);
+    }
+    $("skin_select").onchange = $("language_select").onchange = function () { $("top_form").submit(); };
+
+    @if(!string.IsNullOrEmpty(Model.Skin)){
+        <text>$("@Model.Skin").selected = "selected";</text>
+    }
+    @if(!string.IsNullOrEmpty(Model.Locale)){
+        <text>$("@Model.Locale").selected = "selected";</text>
+    }
+
+    
+    
+</script>
+
+    @Html.Raw(Model.Scheduler.Render())
+

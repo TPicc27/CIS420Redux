@@ -1,0 +1,31 @@
+@{
+    ViewBag.Title = "Scheduler | Reload Timeline sections ";
+    ViewBag.SampleTitle = "Reload Timeline sections";
+    ViewBag.ShortDescription = "Reload sections and data of Timeline and Units when date changes.";
+    ViewBag.LongDescription = "Check Timeline and Unit views. Each time you scroll date, scheduler reloads sections configuration and the data from the server.";
+}
+
+<script>
+
+    function customEvents() {
+
+        //reload events for each date range
+        scheduler.attachEvent("onBeforeViewChange", function (old_mode, old_date, mode, date) {
+            var toStr = scheduler.date.date_to_str("%m/%d/%Y");
+
+            var from = scheduler.date[mode + "_start"](new Date(date));
+            var to = scheduler.date.add(from, 1, mode);
+
+            //reload events each time displayed date range changes
+            if (!old_date || old_date.valueOf() != date.valueOf() || old_mode != mode) {
+                scheduler.clearAll();
+                scheduler.load("@Url.Action("Data")?from=" + encodeURIComponent(toStr(from)) + "&to=" + encodeURIComponent(toStr(to)), "json");
+            }
+            return true;
+        });
+
+    }
+</script>
+   
+@Html.Raw(Model.Render()) 
+
