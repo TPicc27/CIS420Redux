@@ -9,11 +9,11 @@
         <h3>Manage Clinical Compliance</h3>
     </div>
 </div>
-<p>
+<p style="margin-left: 1%; margin-bottom: 4%">
     <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "ClincalCompliance")'">Create New</button>
 </p>
 <table class="table table-bordered table-responsive table-hover">
-    <tr style="color: #000000">
+    <tr style="color: #000000; text-decoration: underline;">
         <th>
             @Html.DisplayNameFor(model => model.Student.LastName)
         </th>
@@ -28,7 +28,7 @@
 
     @foreach (var item in Model)
     {
-        <tr style="color: #000000">
+        <tr style="color: #000000; text-decoration: underline;">
             <td>
                 @Html.DisplayFor(modelItem => item.Student.LastName)
             </td>

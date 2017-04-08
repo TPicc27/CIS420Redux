@@ -11,14 +11,14 @@
         </div>
 
 
-        <div class="panel-body" style="border: 5px solid black;">
-            <div class="col-md-4">
+        <div class="panel-body" style="border: 5px dotted #b6b6b6">
+            <div class="col-md-6" style="text-align: center">
                 <p>@Html.ActionLink("Student above 2.0 GPA", "GPAReport", "Student", new { gpaThreshold = 2.00 }, false)</p>
                 <p>@Html.ActionLink("Student above 2.5 GPA", "GPAReport", "Student", new { gpaThreshold = 2.5M }, false)</p>
                 <p>@Html.ActionLink("Student above 3.0 GPA", "GPAReport", "Student", new { gpaThreshold = 3.0M }, false)</p>
                 <p>@Html.ActionLink("Student above 3.5 GPA", "GPAReport", "Student", new { gpaThreshold = 3.5M }, false)</p>
             </div>
-            <div class="col-md-4" style="margin-left: 50px;">
+            <div class="col-md-6"  style="text-align: center">
                 <p>@Html.ActionLink("All Students", "StudentReport")</p>
                 <p>@Html.ActionLink("Student in Traditonal BSN", "StudentSearch", "Student", new { programThreshold = 1}, false)</p>
                 <p>@Html.ActionLink("Student in RN-BSN", "StudentSearch", "Student", new { programThreshold = 2 }, false)</p>

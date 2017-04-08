@@ -10,33 +10,33 @@
     </div>
 </div>
 
-<p>
+<p style="margin-left: 1%; margin-bottom: 4%">
     <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Todo")'">Create New</button>
 </p>
 
-<table class="table" style="color: #000000">
-    <tr>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+<table class="table table-bordered table-responsive table-hover" style="color: #000000">
+    <tr style="color: #000000; text-decoration: underline">
+        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+        <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+        <th>
             @Html.DisplayNameFor(model => model.EndDate)
         </th>
         <th></th>
-    </tr>
+    </trstyle="color:>
 
 @foreach (var item in Model) {
-    <tr>
-        <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+    <tr  style="color: #000000; text-decoration: underline">
+        <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+        <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
-        <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+        <td>
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>

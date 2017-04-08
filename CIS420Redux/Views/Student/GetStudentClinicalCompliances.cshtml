@@ -10,12 +10,12 @@
     </div>
 </div>
 
-<p>
-    <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("DocumentManagement","Home")'">Upload Document</button>
-    <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("ViewDocument","Home")'">View Documents</button>
+<p style="margin-left: 1%">
+    <button type="button" class="btn btn-danger" onclick="window.location.href = '@Url.Action("DocumentManagement","Home")'">Upload Document</button>
+    <button type="button" class="btn btn-danger" onclick="window.location.href = '@Url.Action("ViewDocument","Home")'">View Documents</button>
 </p>
-<table class="table">
-    <tr style="color: #000000">
+<table class="table table-bordered table-responsive table-hover" style="color: #000000">
+    <tr style="color: #000000; text-decoration: underline;">
         <th>
             Student Number
         </th>
@@ -37,7 +37,7 @@
 
     @foreach (var item in Model)
     {
-        <tr style="color: black;">
+        <tr style="color: #000000; text-decoration: underline;">
             <td>
                 @Html.DisplayFor(modelItem => item.StudentNumber)
             </td>
@@ -54,10 +54,10 @@
                 @Html.ActionLink("Download Document", "GetDocument", "Home", new { documentId = item.DocumentId }, new { @class = "btn btn-primary" })
             </td>
             @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>*@
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>*@
         </tr>
     }
 
