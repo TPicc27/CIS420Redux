@@ -4,18 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<div class="panel panel-primary" style="margin-top: 15px;">
+<div class="panel" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
-        <h3>Clinical Compliance</h3>
+        <h3>Manage Clinical Compliance</h3>
     </div>
 </div>
-<p>
-    <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "ClincalCompliance")'">Create New</button>
-</p>
-<table class="table">
-    <tr>
+<div style="margin-bottom: 3%" class="col-md-12">
+    <p class="col-md-6">
+        <button class="btn btn-danger col-md-3 pull-left" onclick="location.href='@Url.Action("Create", "ClincalCompliance")'">Create New</button>
+    </p>
+    <p  class="col-md-6">
+        <button class="btn btn-danger col-md-3 pull-right" onclick="location.href='@Url.Action("ComplianceDocs","Admin")'">View Documents</button>
+    </p>
+</div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr style="color: #000000; text-decoration: underline;">
         <th>
-            @Html.DisplayNameFor(model => model.StudentId)
+            @Html.DisplayNameFor(model => model.Student.LastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
@@ -23,26 +28,42 @@
         <th>
             @Html.DisplayNameFor(model => model.ExpirationDate)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsExpired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCompliant)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpirationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-           @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr style="color: #000000">
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsExpired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCompliant)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DocumentId)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

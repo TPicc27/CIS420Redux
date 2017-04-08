@@ -1,44 +1,44 @@
 ﻿@model IEnumerable<CIS420Redux.Models.Event>
-<h5 align="center";>@Model.Count() Upcoming Event(s) this Week</h5>
-<div style="max-height: 300px; overflow-y: auto">  
-<table class="table">
-    <tr>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-                 @Html.DisplayFor(modelItem => item.StartDate) 
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-                 @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #AD0000">
-                 @Html.DisplayFor(modelItem => item.Location)
-         
-        </tr>  
-        
-    }
-</table>
+<h5 align="center" style="color:black";>@Model.Count() Upcoming Event(s) this Week</h5>
+<div style="max-height: 300px; overflow-y: auto">
+    <table class="table table-bordered table-responsive table-hover" style="color: #000000">
+        <tr style="color: #000000; text-decoration: underline;">
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="color: #000000; text-decoration: underline;">
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td style="border-style: solid; border-width: 2px; text-align:center">
+                    @Html.DisplayFor(modelItem => item.Location)
+
+            </tr>
+
+        }
+    </table>
 </div>

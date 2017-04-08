@@ -32,12 +32,12 @@
                             @{
                                 if (User.IsInRole("Student"))
                                 {
-                                <li>@Html.ActionLink("Home", "Dashboard", "Student", null, new { style = "color:red" })</li>
-                                            <li><a href="~/Calendar/Demo/selectable.html" style="color: red;">Calendar</a></li>
-                                            <li><a href="@Url.Action("Edit","POS")"><font color="red">Program of Study</font></a></li>
-                                            <li> @Html.ActionLink("Clinical Compliance", "GetStudentClinicalCompliances", "Student", null, new { style = "color:red" }) </li>
-                                            <li> @Html.ActionLink("Alerts", "Index", "Event", null, new { style = "color:red" }) </li>
-                                            <li> @Html.ActionLink("Advising", "Advisors", "Advisor", null, new { style = "color:red" }) </li>
+                                <li>@Html.ActionLink("Home", "Dashboard", "Student", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li><a href="~/Calendar/Demo/selectable.html" style="color: rgb(227, 27, 35);">Calendar</a></li>
+                                            <li>@Html.ActionLink("Program of Study", "Edit", "POS", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li> @Html.ActionLink("Clinical Compliance", "GetStudentClinicalCompliances", "Student", null, new { style = "color:rgb(227, 27, 35)" }) </li>
+                                            <li> @Html.ActionLink("Alerts", "Index", "Event", null, new { style = "color:rgb(227, 27, 35)" }) </li>
+                                            <li> @Html.ActionLink("Advising", "Advisors", "Advisor", null, new { style = "color:rgb(227, 27, 35)" }) </li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
@@ -48,12 +48,13 @@
                             @{
                                 if (User.IsInRole("Advisor"))
                                 {
-                                    <li>@Html.ActionLink("Home", "Dashboard", "Advisor", null, new { style = "color:red" })</li>
-                                            <li><a href="~/Calendar/Demo/selectable.html" style="color: red;">Calendar</a></li>
-                                            <li>@Html.ActionLink("Student Records", "StudentRecords", "Advisor", null, new { style = "color: red" })</li>
-                                            <li>@Html.ActionLink("Reports", "Reports", "Student", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("Search", "Search", "Admin", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("CRM", "Index", "Student", null, new { style = "color:red" })</li>
+                                    <li>@Html.ActionLink("Home", "Dashboard", "Advisor", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li><a href="~/Calendar/Demo/selectable.html" style="color: rgb(227, 27, 35)">Calendar</a></li>
+                                            <li>@Html.ActionLink("Student Records", "StudentRecords", "Advisor", null, new { style = "color: rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("Reports", "Reports", "Student", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("Compliance", "CCDocuments", "Advisor", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("Search", "Search", "Admin", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("CRM", "Index", "Student", null, new { style = "color:rgb(227, 27, 35)" })</li>
                                             @*<li>@Html.ActionLink("Calendar", "Index", "Event")</li>
                                         <li>@Html.ActionLink("Students", "Index", "Student")</li>
                                         <li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
@@ -62,12 +63,12 @@
                             @{
                                 if (User.IsInRole("Admin"))
                                 {
-                                    <li>@Html.ActionLink("Admin Home", "Dashboard", "Admin", null, new { style = "color:red" })</li>
-                                            <li><a href="~/Calendar/Demo/selectable.html" style="color: red;">Calendar</a></li>
-                                            <li>@Html.ActionLink("Manage Users", "Index", "UserManagement", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("CRM", "Index", "Student", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("Reports", "Reports", "Student", null, new { style = "color:red" })</li>
-                                            <li>@Html.ActionLink("Search", "Search", "Admin", null, new { style = "color:red" })</li>
+                                    <li>@Html.ActionLink("Admin Home", "Dashboard", "Admin", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li><a href="~/Calendar/Demo/selectable.html" style="color: rgb(227, 27, 35)">Calendar</a></li>
+                                            <li>@Html.ActionLink("Manage Users", "Index", "UserManagement", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("CRM", "Index", "Student", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("Reports", "Reports", "Student", null, new { style = "color:rgb(227, 27, 35)" })</li>
+                                            <li>@Html.ActionLink("Search", "Search", "Admin", null, new { style = "color:rgb(227, 27, 35)" })</li>
                                             @*<li>@Html.ActionLink("Enrollments", "Index", "Enrollment")</li>
                                         <li>@Html.ActionLink("Absence Management", "Index", "Absence")</li>
                                          <li>@Html.ActionLink("User Management", "Index", "UserManagement")</li>*@
@@ -83,12 +84,12 @@
             </div>
         </div>
     </div>
-    <div class="container body-content page" >
-        @RenderBody()
-        <hr />
-        <footer style="text-align: center">
-            <p>&copy; @DateTime.Now.Year - Nothing But .Net</p>
-        </footer>
-    </div>
+        <div class="container body-content page">
+                @RenderBody()
+                <hr />
+                <footer style="text-align: center; color: #000000">
+                    <p>&copy; @DateTime.Now.Year - Nothing But .Net</p>
+                </footer>
+            </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 83px;
     padding-bottom: 20px;
-}
+}b
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -20,10 +20,6 @@
 select,
 textarea {
     max-width: 280px;
-}
-
-.panel-primary {
-    border-color: none
 }
 
 /********************************/
@@ -459,4 +455,6 @@ input[type="password"] {
     .navbar-right {
         color: red;
     }
+    
+
 }

@@ -1,0 +1,66 @@
+﻿@model CIS420Redux.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color:  rgb(227, 27, 35); text-align: center;">
+        <h3>Details of To-Do's</h3>
+    </div>
+</div>
+<div>
+    <dl class="dl-horizontal" style="color: #000">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRecruitment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsRecruitment)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left: 1%">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -17,7 +17,7 @@ namespace CIS420Redux.Controllers
         // GET: ClincalCompliance
         public ActionResult Index()
         {
-            
+            var pOS = db.POS.Include(p => p.Student);
             return View(db.ClincalCompliances.ToList());
         }
 
@@ -40,9 +40,15 @@ namespace CIS420Redux.Controllers
         {
             var types = GetAllTypes();
 
+            var compliant = GetCompliantStatus();
+
             var model = new ClincalCompliance();
 
             model.Types = GetSelectListItems(types);
+
+            model.CompliantStatus = GetSelectListItems(compliant);
+
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName");
 
             return View(model);
         }
@@ -52,18 +58,36 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
+        public ActionResult Create([Bind(Include = "ID,Type,ExpirationDate,StudentId,DocumentId")] ClincalCompliance model)
         {
             var types = GetAllTypes();
 
+            var compliant = GetCompliantStatus();
+
             model.Types = GetSelectListItems(types);
+
+            model.CompliantStatus = GetSelectListItems(compliant);
+       
 
             if (ModelState.IsValid)
             {
+                model.ExpirationDate = DateTime.Today;
+
+                if (model.ExpirationDate <= DateTime.Today)
+                {
+                    model.IsExpired = true;
+                }
+                else
+                {
+                    model.IsExpired = false;
+
+                }
+                    
                 db.ClincalCompliances.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CCDocuments", "Advisor");
             }
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", model.StudentId);
             return View(model);
         }
 
@@ -78,12 +102,17 @@ namespace CIS420Redux.Controllers
             ClincalCompliance clincalcompliances = db.ClincalCompliances.Find(id);
             var types = GetAllTypes();
 
+            var compliant = GetCompliantStatus();
+
             clincalcompliances.Types = GetSelectListItems(types);
+
+            clincalcompliances.CompliantStatus = GetSelectListItems(compliant);
 
             if (clincalcompliances == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", clincalcompliances.StudentId);
             return View(clincalcompliances);
         }
 
@@ -92,17 +121,22 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,StudentId")] ClincalCompliance model)
+        public ActionResult Edit([Bind(Include = "ID,Type,ExpirationDate,IsCompliant,IsExpired,StudentId,DocumentId")] ClincalCompliance model)
         {
             var types = GetAllTypes();
 
+            var compliant = GetCompliantStatus();
+
             model.Types = GetSelectListItems(types);
+
+            model.CompliantStatus = GetSelectListItems(compliant);
             if (ModelState.IsValid)
             {
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CCDocuments", "Advisor");
             }
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", model.StudentId);
             return View(model);
         }
 
@@ -152,6 +186,15 @@ namespace CIS420Redux.Controllers
                 "Immunizations",
                 "Drug Screening",
                 "CNA",
+            };
+        }
+
+        public IEnumerable<string> GetCompliantStatus()
+        {
+            return new List<string>
+            {
+               "Yes",
+               "No"
             };
         }
         public IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)

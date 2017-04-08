@@ -3,20 +3,20 @@
     ViewBag.Title = "StudenReport";
 }
 
-<div class="panel panel-primary" style="margin-top: 15px;">
+<div class="panel" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
         <h3>Student Report</h3>
     </div>
 </div>
 
-<table class="table">
-    <tr>
+<table class="table table-bordered table-responsive table-hover" style="color: #000000;">
+    <tr style="text-decoration: underline;">
         <th>
             @Html.DisplayNameFor(model => model.StudentNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
-        <th />
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
@@ -26,14 +26,16 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayNameFor(model => model.StudentNumber)
+                @Html.DisplayFor(modelItem => item.StudentNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -47,6 +49,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
         </tr>
     }
 </table>
+<div  style="margin-left: 1%; margin-bottom: 4%; margin-top: 1%">
+    <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Reports", "Student")'">Back to List</button>
+</div>

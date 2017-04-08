@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CIS420Redux.Models.Document>
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Clinical Compliance</h3>
+    </div>
+</div>
+
+<p style="margin-left: 1%">
+    <button type="button" class="btn btn-danger btn-md" onclick="window.location.href = '@Url.Action("DocumentManagement","Home")'">Upload Document</button>
+    <button type="button" class="btn btn-danger btn-md" onclick="window.location.href = '@Url.Action("GetStudentClinicalCompliances","Student")'">Back To List</button>
+</p>
+<table class="table table-bordered table-responsive table-hover" style="color: #000000;">
+    <tr style="color: black; text-decoration: underline;">
+        <th>
+            Student Number
+        </th>
+        <th>
+            Complaince Name
+        </th>
+        <th>
+            Expiration Date
+        </th>
+        <th>
+            File Name
+        </th>
+        <th>
+            Download Document
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color: black;">
+            <td>
+                @Html.DisplayFor(modelItem => item.Students.StudentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.ActionLink("Download Document", "GetDocument", "Home", new { documentId = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete Document", "DeleteDocument", "Home", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

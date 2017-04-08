@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace CIS420Redux.Controllers
 {
@@ -36,11 +37,12 @@ namespace CIS420Redux.Controllers
 
         public ActionResult DocumentManagement()
         {
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult UploadDocument(int studentNumber, HttpPostedFileBase file)
+        public ActionResult UploadDocument(int studentNumber,DateTime expirationDate, string type, HttpPostedFileBase file)
         {
 
             byte[] uploadedFile = new byte[file.InputStream.Length];
@@ -54,33 +56,74 @@ namespace CIS420Redux.Controllers
                 {
                     StudentId = student.Id,
                     StudentNumber = studentNumber,
+                    ExpirationDate = expirationDate,
+                    Type = type,
                     UploadedBy = HttpContext.User.Identity.Name,
                     ContentLength = file.ContentLength,
                     ContentType = file.ContentType,
                     FileName = file.FileName,
-                    FileBytes = uploadedFile
+                    FileBytes = uploadedFile,
                 };
 
                 db.Documents.Add(documentModel);
                 db.SaveChanges();
+
+
+
+                var documentRecord = db.Documents.FirstOrDefault(d => d.StudentId == student.Id && d.Type == type);
+            
+
+                var ccRecord = db.ClincalCompliances.FirstOrDefault(d => d.StudentId == student.Id && d.Type == type);
+
+                ccRecord.DocumentId = documentRecord.Id;
+
+                ccRecord.ExpirationDate = documentRecord.ExpirationDate;
+
+                db.SaveChanges();
+
+                var complianceRecord = db.ClincalCompliances.FirstOrDefault(d => d.DocumentId == documentModel.Id);
+
+                db.SaveChanges();
+                return RedirectToAction("GetStudentClinicalCompliance", "Student", false);
             }
 
-            return View("DocumentManagement");
+            return RedirectToAction("GetStudentClinicalCompliance", "Student", false);
         }
 
-        public ActionResult GetDocument(int studentId)
+        public ActionResult GetDocument(int documentId)
         {
-            var allDocumentsForStudent = db.Documents.Where(d => d.StudentId == studentId);
+            var userIdentity = HttpContext.User.Identity.Name;
 
-            var oneDocumentFromStudent = allDocumentsForStudent.FirstOrDefault();
+            var student = db.Students.FirstOrDefault(s => s.Email == userIdentity);
+
+            var allDocumentsForStudent = db.Documents.Where(d => d.StudentId == student.Id);
+
+            var oneDocumentFromStudent = allDocumentsForStudent.Where(d => d.Id == documentId).FirstOrDefault();
 
             if (oneDocumentFromStudent != null)
             {
                 return File(oneDocumentFromStudent.FileBytes, "application/octet-stream", oneDocumentFromStudent.FileName);
             }
-            return RedirectToAction("DocumentManagement");
+            return RedirectToAction("GetStudentClinicalCompliances", "Student", false);
         }
 
+        public ActionResult ViewDocument()
+        {
+            var userIdentity = HttpContext.User.Identity.Name;
+            var student = db.Students.FirstOrDefault(s => s.Email == userIdentity);
+            var allDocumentsForStudent = db.Documents.Where(d => d.StudentId == student.Id);
+            return View(allDocumentsForStudent.ToList());
+        }
+
+        public ActionResult DeleteDocument(int? id)
+        {
+            Document documents = db.Documents.FirstOrDefault(d => d.Id == id);
+            db.Documents.Remove(documents);
+            db.SaveChanges();
+            return RedirectToAction("ViewDocument");
+        }
+
+        
 
     }
 }

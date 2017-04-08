@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+        <h3>Details of Alerts</h3>
+    </div>
+</div>
 <div>
-    <h4>To-Do</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="color: #000">
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -36,7 +37,7 @@
 
     </dl>
 </div>
-<p>
+<p style="margin-left: 1%">
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

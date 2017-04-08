@@ -261,6 +261,74 @@
     <Compile Include="Migrations\201703272117030_ClinicalComplianceExpired.Designer.cs">
       <DependentUpon>201703272117030_ClinicalComplianceExpired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703272218451_AddedDocumentIdToClinicalCompliance.cs" />
+    <Compile Include="Migrations\201703272218451_AddedDocumentIdToClinicalCompliance.Designer.cs">
+      <DependentUpon>201703272218451_AddedDocumentIdToClinicalCompliance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703290146368_EventsStudent.cs" />
+    <Compile Include="Migrations\201703290146368_EventsStudent.Designer.cs">
+      <DependentUpon>201703290146368_EventsStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703291455345_udapplicaiton.cs" />
+    <Compile Include="Migrations\201703291455345_udapplicaiton.Designer.cs">
+      <DependentUpon>201703291455345_udapplicaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703292344355_CCdoc.cs" />
+    <Compile Include="Migrations\201703292344355_CCdoc.Designer.cs">
+      <DependentUpon>201703292344355_CCdoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703292349102_CCdoc1.cs" />
+    <Compile Include="Migrations\201703292349102_CCdoc1.Designer.cs">
+      <DependentUpon>201703292349102_CCdoc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703292352297_ccdoc2.cs" />
+    <Compile Include="Migrations\201703292352297_ccdoc2.Designer.cs">
+      <DependentUpon>201703292352297_ccdoc2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703300132528_docs.cs" />
+    <Compile Include="Migrations\201703300132528_docs.Designer.cs">
+      <DependentUpon>201703300132528_docs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704012329280_Status.cs" />
+    <Compile Include="Migrations\201704012329280_Status.Designer.cs">
+      <DependentUpon>201704012329280_Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704020050254_UDapplication.cs" />
+    <Compile Include="Migrations\201704020050254_UDapplication.Designer.cs">
+      <DependentUpon>201704020050254_UDapplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704020112170_udapplicationmodelupdate.cs" />
+    <Compile Include="Migrations\201704020112170_udapplicationmodelupdate.Designer.cs">
+      <DependentUpon>201704020112170_udapplicationmodelupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704020159439_Application.cs" />
+    <Compile Include="Migrations\201704020159439_Application.Designer.cs">
+      <DependentUpon>201704020159439_Application.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704051712330_StudentTodos.cs" />
+    <Compile Include="Migrations\201704051712330_StudentTodos.Designer.cs">
+      <DependentUpon>201704051712330_StudentTodos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704071431571_state.cs" />
+    <Compile Include="Migrations\201704071431571_state.Designer.cs">
+      <DependentUpon>201704071431571_state.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704071720345_applicationstates.cs" />
+    <Compile Include="Migrations\201704071720345_applicationstates.Designer.cs">
+      <DependentUpon>201704071720345_applicationstates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704071735124_campusstate.cs" />
+    <Compile Include="Migrations\201704071735124_campusstate.Designer.cs">
+      <DependentUpon>201704071735124_campusstate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704071812246_gradelist.cs" />
+    <Compile Include="Migrations\201704071812246_gradelist.Designer.cs">
+      <DependentUpon>201704071812246_gradelist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704080201505_Compliantstatus.cs" />
+    <Compile Include="Migrations\201704080201505_Compliantstatus.Designer.cs">
+      <DependentUpon>201704080201505_Compliantstatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -281,6 +349,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\UdApplication.cs" />
+    <Compile Include="Models\ViewModels\Advisor\AdvisorCCIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\Advisor\AdvisorIndexViewModel.cs" />
     <Compile Include="Models\ViewModels\Advisor\StudentRecordViewModel.cs" />
     <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
@@ -314,7 +383,6 @@
     <Content Include="Content\IMG\Terri Knott.jpg" />
     <Content Include="Content\IMG\Traditional BSN POS 001.png" />
     <Content Include="Content\IMG\Trish Hart.jpeg" />
-    <Content Include="bin\DayPilot.Web.Mvc.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -630,9 +698,6 @@
     <Content Include="Views\Enrollment\Edit.cshtml" />
     <Content Include="Views\Enrollment\Delete.cshtml" />
     <Content Include="Views\Enrollment\Details.cshtml" />
-    <Content Include="Views\Calendar\Index.cshtml" />
-    <Content Include="Views\Event\Data.cshtml" />
-    <Content Include="Views\Calendar\Data.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -697,6 +762,57 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703272117030_ClinicalComplianceExpired.resx">
       <DependentUpon>201703272117030_ClinicalComplianceExpired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703272218451_AddedDocumentIdToClinicalCompliance.resx">
+      <DependentUpon>201703272218451_AddedDocumentIdToClinicalCompliance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703290146368_EventsStudent.resx">
+      <DependentUpon>201703290146368_EventsStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703291455345_udapplicaiton.resx">
+      <DependentUpon>201703291455345_udapplicaiton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703292344355_CCdoc.resx">
+      <DependentUpon>201703292344355_CCdoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703292349102_CCdoc1.resx">
+      <DependentUpon>201703292349102_CCdoc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703292352297_ccdoc2.resx">
+      <DependentUpon>201703292352297_ccdoc2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703300132528_docs.resx">
+      <DependentUpon>201703300132528_docs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704012329280_Status.resx">
+      <DependentUpon>201704012329280_Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704020050254_UDapplication.resx">
+      <DependentUpon>201704020050254_UDapplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704020112170_udapplicationmodelupdate.resx">
+      <DependentUpon>201704020112170_udapplicationmodelupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704020159439_Application.resx">
+      <DependentUpon>201704020159439_Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704051712330_StudentTodos.resx">
+      <DependentUpon>201704051712330_StudentTodos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704071431571_state.resx">
+      <DependentUpon>201704071431571_state.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704071720345_applicationstates.resx">
+      <DependentUpon>201704071720345_applicationstates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704071735124_campusstate.resx">
+      <DependentUpon>201704071735124_campusstate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704071812246_gradelist.resx">
+      <DependentUpon>201704071812246_gradelist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704080201505_Compliantstatus.resx">
+      <DependentUpon>201704080201505_Compliantstatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

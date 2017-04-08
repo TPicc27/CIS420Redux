@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<div class="panel panel-primary" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+<div class="panel" style="margin-top: 15px;">
+    <div class="panel-heading" style="background-color:  rgb(227, 27, 35); text-align: center">
         <h3>Campuses</h3>
     </div>
     </div>
 
     <div>
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal" style="color: black;">
 
             <dt>
                 @Html.DisplayNameFor(model => model.Title)
@@ -45,15 +45,14 @@
                 @Html.DisplayFor(model => model.Credits)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.ProgramId)
+                @Html.DisplayNameFor(model => model.Program.Name)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.ProgramId)
+                @Html.DisplayFor(model => model.Program.Name)
             </dd>
 
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Course")'">Back to List</button>
     </p>

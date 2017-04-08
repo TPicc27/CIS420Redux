@@ -4,35 +4,35 @@
     ViewBag.Title = "Manage Users";
 }
 
-<div class="panel panel-primary" style="margin-top: 15px;">
-    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
+<div class="panel" style="margin-top: 15px">
+    <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center">
         <h3>Users Roles</h3>
     </div>
 </div>
-<table align="center" class="col-md-12">
+<table class="table table-bordered table-responsive table-hover" style="color: #000000;">
+    <tr style="text-decoration: underline;">
     <thead class="col-md-12">
-        <tr>
-        <th class="col-md-4"><b>User Name</b></th>
-        <th class="col-md-4"><b>Roles</b></th>
-      </tr>
+        <tr style="text-decoration: underline;">
+            <th><b>User Name</b></th>
+            <th><b>Roles</b></th>
+        </tr>
     </thead>
     @{ var list = Model.ToList();
         for (int i = 0; i < list.Count; i++)
         {
-            <tbody class="col-md-12">
+            <tbody>
                 <tr>
-                <td class="col-md-4">@Html.DisplayFor(modelItem => list[i].UserName)</td>
-                <td class="col-md-4">
-                    @foreach (var role in list[i].Roles)
-                    {
-                        <p>@role.RoleName</p>
+                    <td>
+                        @foreach (var role in list[i].Roles)
+                        {
+                            <p>@role.RoleName</p>
 
-                    }
-                </td>
+                        }
+                    </td>
 
-                <td class="col-md-2">
-                    <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
-                </td>
+                    <td>
+                        <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
+                    </td>
                 </tr>
             </tbody>
         }

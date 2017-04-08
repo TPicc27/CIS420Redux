@@ -37,8 +37,10 @@ namespace CIS420Redux.Models.ViewModels
 
             public List<SelectRoleEditorViewModel> Roles { get; set; }
 
-            public string RoleName { get; set; }
+            public string AddRoleName { get; set; }
 
-            public IEnumerable<SelectListItem> RolesList { get; set; }
+            public string RemoveRoleName { get; set; }
+            
+        public IEnumerable<SelectListItem> RoleNames { get; set; }
         }
     }

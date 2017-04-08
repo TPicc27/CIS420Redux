@@ -3,17 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="panel panel-primary" style="margin-top: 15px;">
+<div class="panel" style="margin-top: 15px;">
     <div class="panel-heading" style="background-color: rgb(227, 27, 35); text-align: center;">
-        <h3>Alerts</h3>
+        <h3>To-Dos</h3>
     </div>
 </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="margin-left: 1%; margin-bottom: 4%">
+    <button class="btn btn-danger col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Event")'">Create New</button>
 </p>
-<table class="table">
-    <tr>
+<table class="table table-bordered table-responsive table-hover" style="color: #000000;">
+    <tr style="color: #000000; text-decoration: underline;">
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
@@ -26,24 +26,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-  
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
-           @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr style="color: #000000">
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id })|
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

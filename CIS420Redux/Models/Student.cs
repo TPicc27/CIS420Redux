@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CIS420Redux.Models
 {
@@ -51,7 +52,9 @@ namespace CIS420Redux.Models
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
 
-         public bool CPR_Compliant { get; set; }
+        public IEnumerable<SelectListItem> States { get; set; }
+
+        public bool CPR_Compliant { get; set; }
         public bool HIPPA_Compliant { get; set; }
         public bool Bloodbourne_Compliant { get; set; }
         public bool Liability_Compliant { get; set; }
