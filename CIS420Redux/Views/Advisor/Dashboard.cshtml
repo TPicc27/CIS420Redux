@@ -33,10 +33,10 @@
                 </div>
             </div> 
             <div class="col-md-6">
-                <div class="panel-primary">
-                    <div class="panel-heading" style=" background-color: rgb(227, 27, 35); min-width: 400px">
-                        <h3 style="text-align: center">To-Dos</h3>
-                    </div>   
+                <div class="panel" style="float: left; min-width: 400px">
+                    <div class="panel-heading" style="background-color: rgb(227, 27, 35)">
+                        <h3 style="text-align: center">To-Do's</h3>
+                    </div>
                     @if (Model.AdvisorTodosList != null && Model.AdvisorTodosList.Any())
                     {
                         @Html.Partial("AdvisorTodosPartial", Model.AdvisorTodosList)
@@ -44,8 +44,8 @@
                     else
                     {
                         <h5 align="center" style="color: #000000">No Available To-Dos</h5>
-                    }               
-                                        
+                    }
+
                 </div>
             </div>
         </div>

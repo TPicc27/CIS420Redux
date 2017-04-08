@@ -9,20 +9,20 @@
         <h3>Users Roles</h3>
     </div>
 </div>
-<table align="center" class="col-md-12 table table-bordered table-responsive table-hover" style="color: #000000">
+<table class="table table-bordered table-responsive table-hover" style="color: #000000;">
+    <tr style="text-decoration: underline;">
     <thead class="col-md-12">
-        <tr style="border-style: solid; border-width: 2px;border-color: #000000;">
-            <th class="col-md-4" style="color: #000000; border-style: solid; border-width: 2px;border-color: #000000; font-size: 15px"><b>User Name</b></th>
-            <th class="col-md-4" style="color: #000000;  border-style: solid; border-width: 2px;border-color: #000000;font-size: 15px"><b>Roles</b></th>
+        <tr style="text-decoration: underline;">
+            <th><b>User Name</b></th>
+            <th><b>Roles</b></th>
         </tr>
     </thead>
     @{ var list = Model.ToList();
         for (int i = 0; i < list.Count; i++)
         {
-            <tbody class="col-md-12" style="color: #000000;">
-                <tr >
-                    <td class="col-md-4"style="border-style: solid; border-width: 2px;border-color: #000000;">@Html.DisplayFor(modelItem => list[i].UserName)</td>
-                    <td class="col-md-4" style="border-style: solid; border-width: 2px;border-color: #000000;">
+            <tbody>
+                <tr>
+                    <td>
                         @foreach (var role in list[i].Roles)
                         {
                             <p>@role.RoleName</p>
@@ -30,7 +30,7 @@
                         }
                     </td>
 
-                    <td class="col-md-2"style="border-style: solid; border-width: 2px;border-color: #000000;">
+                    <td>
                         <a href="@Url.Action("Edit", "UserManagement",new { @id = Model.ToList()[i].Id})">Edit</a>
                     </td>
                 </tr>
