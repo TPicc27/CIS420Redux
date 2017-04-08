@@ -1,133 +1,90 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Helpers;
 using System.Web.Mvc;
-using DayPilot.Web.Mvc;
-using DayPilot.Web.Mvc.Enums;
+using System.Xml.Linq;
 using CIS420Redux.Models;
-using EventClickArgs = DayPilot.Web.Mvc.Events.Month.EventClickArgs;
-using EventMoveArgs = DayPilot.Web.Mvc.Events.Month.EventMoveArgs;
-using InitArgs = DayPilot.Web.Mvc.Events.Month.InitArgs;
-using TimeRangeSelectedArgs = DayPilot.Web.Mvc.Events.Month.TimeRangeSelectedArgs;
+using DHTMLX.Common;
+using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Data;
 
-namespace DeveloperUniversity.Controllers
+namespace CIS420Redux.Controllers
 {
     public class CalendarController : Controller
     {
-        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+        //Refer to this link in order to set up the Calendar.
+        //http://scheduler-net.com/docs/simple-.net-mvc-application-with-scheduler.html#step_2_add_the_scheduler_reference
 
-        // GET: Calendar
+        public readonly ApplicationDbContext _db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "Event");
+    
+            return View();
         }
 
-        public ActionResult Backend()
+        public JsonResult Data()
         {
-            return new Dpm().CallBack(this);
-        }
+            //Using Dxhtml JavaScript Edition (open source)
+            var events = _db.Events;
 
-        public ActionResult Edit(string id, string titleText)
-        {
-
-            var eventToModify = _db.Events.FirstOrDefault(ev => ev.Id.ToString() == id);
-
-            eventToModify.Name = titleText;
-            _db.SaveChanges();
-
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
-            //return new Dpm().CallBack(this);
-        }
-    }
-
-
-    public class Dpm : DayPilotMonth
-    {
-        private readonly ApplicationDbContext _db = new ApplicationDbContext();
-        protected override void OnInit(InitArgs e)
-        {
-            Events = from ev in _db.Events where !((ev.EndDate <= VisibleStart) || (ev.StartDate >= VisibleEnd)) select ev;
-
-            DataIdField = "Id";
-            DataTextField = "Name";
-            DataStartField = "StartDate";
-            DataEndField = "EndDate";
-
-            Update();
-        }
-
-        protected override void OnFinish()
-        {
-            if (UpdateType == CallBackUpdateType.None)
+            var formatedEvents = new List<object>();
+            foreach (var ev in events)
             {
-                return;
+                var formattingEvent = new
+                {
+                    id = ev.Id,
+                    start_date = ev.StartDate.ToString(),
+                    end_date = ev.EndDate.ToString(),
+                    //start_date = ev.start_date.Date.ToString("yyyy-MM-dd"),
+                    //end_date = ev.end_date.Date.ToString("yyyy-MM-dd"),
+                    text = ev.Name
+                };
+                formatedEvents.Add(formattingEvent);
             }
 
-            DataIdField = "Id";
-            DataStartField = "StartDate";
-            DataEndField = "EndDate";
-            DataTextField = "Name";
 
 
-            Events = from e in _db.Events where !((e.EndDate <= VisibleStart) || (e.StartDate >= VisibleEnd)) select e;
+            return Json(formatedEvents, JsonRequestBehavior.AllowGet);
+
+            //Using Dxhtml MVC Scheduler Edition (free trial)
+            //events for loading to scheduler
+            //return new SchedulerAjaxData(_db.Events);
         }
 
-
-        protected override void OnTimeRangeSelected(TimeRangeSelectedArgs e)
+        public ActionResult Save(string id, string text, string start_date, string end_date)
         {
-            if (string.IsNullOrEmpty((string)e.Data["name"]))
+
+            var existingEvent = _db.Events.FirstOrDefault(e => e.Id.ToString() == id);
+            var newStartDate = Convert.ToDateTime(start_date);
+            var newEndDate = Convert.ToDateTime(end_date);
+
+
+            if (existingEvent != null)
             {
-                return;
+                existingEvent.StartDate = newStartDate;
+                existingEvent.EndDate = newEndDate;
+                existingEvent.Name = text;
             }
-
-            var createdEvent = new Event()
+            else
             {
-                Name = (string)e.Data["name"],
-                StartDate = e.Start,
-                EndDate = e.End
-            };
 
-            _db.Events.Add(createdEvent);
+                var newEvent = new Event()
+                {
+                    StartDate = newStartDate,
+                    EndDate = newEndDate,
+                    Name = text
+                };
+                _db.Events.Add(newEvent);
+            }
 
             _db.SaveChanges();
 
-            Update();
+
+
+            return View("Index");
         }
 
-        protected override void OnEventMove(EventMoveArgs e)
-        {
-            var dbEvent = _db.Events.FirstOrDefault(ev => ev.Id.ToString() == e.Id);
-
-            if (dbEvent != null)
-            {
-
-                dbEvent.StartDate = e.NewStart;
-                dbEvent.EndDate = e.NewEnd;
-
-                _db.SaveChanges();
-            }
-
-            Update();
-        }
-
-        protected override void OnEventClick(EventClickArgs e)
-        {
-            if (string.IsNullOrEmpty(e.Text))
-            {
-                return;
-            }
-
-            var dbEvent = _db.Events.FirstOrDefault(ev => ev.Id.ToString() == e.Id);
-
-            if (dbEvent != null)
-            {
-                dbEvent.Name = e.Text;
-                dbEvent.StartDate = e.Start;
-                dbEvent.EndDate = e.End;
-
-                _db.SaveChanges();
-            }
-
-            Update();
-        }
     }
 }

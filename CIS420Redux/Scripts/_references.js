@@ -1,6 +1,5 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="bootstrap.js" />
-/// <reference path="daypilot-all.min.js" />
 /// <reference path="dhtmlxscheduler/dhtmlxscheduler.js" />
 /// <reference path="dhtmlxscheduler/dhtmlxscheduler_custom_lightbox.js" />
 /// <reference path="dhtmlxscheduler/ext/dhtmlxscheduler_active_links.js" />
