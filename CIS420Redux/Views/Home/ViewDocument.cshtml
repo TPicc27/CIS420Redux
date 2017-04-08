@@ -13,46 +13,48 @@
     <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("DocumentManagement","Home")'">Upload Document</button>
     <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href = '@Url.Action("GetStudentClinicalCompliances","Student")'">Back To List</button>
 </p>
-<table class="table">
-    <tr style="color: black;">
-        <th>
+<table class="table table-bordered table-responsive table-hover" style="color: #000000;">
+    <tr style="color: black; text-decoration: underline;">
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             Student Number
         </th>
-        <th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             Complaince Name
         </th>
-        <th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             Expiration Date
         </th>
-        <th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             File Name
         </th>
-        <th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
             Download Document
         </th>
-        <th></th>
+        <th style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+            Delete
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr style="color: black;">
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
                 @Html.DisplayFor(modelItem => item.Students.StudentNumber)
             </td>
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
-            <td>
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
                 @Html.DisplayFor(modelItem => item.FileName)
             </td>
-            <td>
-                @Html.ActionLink("Download Document", "GetDocument", "Home", new { documentId = item.Id}, new { @class = "btn btn-primary" })
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.ActionLink("Download Document", "GetDocument", "Home", new { documentId = item.Id }, new { @class = "btn btn-danger" })
             </td>
-            <td>
-                @Html.ActionLink("Delete Document", "DeleteDocument", "Home", new {id = item.Id }, new { @class = "btn btn-primary" })
+            <td style="border-style: solid; border-width: 2px; text-align:center; border-color: #000000">
+                @Html.ActionLink("Delete Document", "DeleteDocument", "Home", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

@@ -23,14 +23,14 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.StudentNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.StudentNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.StudentNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "ex: 1877777" } })
                                 @Html.ValidationMessageFor(model => model.StudentNumber, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "ex: John" } })
                                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control", @placeholder = "ex: Larry" } })
                                 @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "ex: Doe" } })
                                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" , @placeholder = "ex: student05@email.com" } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Address1, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control", @placeholder = "ex: 47 Cardinal Way" } })
                                 @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Address2, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control", @placeholder = "ex: 47 Cardinal Way" } })
                                 @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "Louisville" } })
                                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -86,11 +86,10 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
-                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(m => m.State, Model.StateList, "State", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
                         <div class="form-group">
                             @Html.LabelFor(model => model.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-3">
@@ -143,7 +142,10 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.CurrentCourses, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                What are the Current Courses you are taking?
+                            </p>
+                            @*@Html.LabelFor(model => model.CurrentCourses, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-left: 1px;"})*@
                             <div class="col-md-10">
                                 @Html.TextAreaFor(model => model.CurrentCourses, new { htmlAttributes = new { @class = "form-control", @row = 10, @column = 40 } })
                                 @* @Html.EditorFor(model => model.CurrentCourses, new { htmlAttributes = new { @class = "form-control", style="position: relative; bottom: -12px;", textarea="10 rows 40 columns" } })*@
@@ -152,7 +154,10 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.PersonalQualties, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Personal Qualties Essay.  Must be up to 500 words.
+                            </p>
+                            @*@Html.LabelFor(model => model.PersonalQualties, htmlAttributes: new { @class = "control-label col-md-20" })*@
                             <div class="col-md-10">
                                 @Html.TextAreaFor(model => model.PersonalQualties, new { htmlAttributes = new { @class = "form-control", @row = 10, @column = 40 } })
                                 @*@Html.EditorFor(model => model.PersonalQualties, new { htmlAttributes = new { @class = "form-control", style = "position: relative; bottom: -12px;" } })*@
@@ -161,7 +166,10 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.HealthCare, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Nursing or Health Care related experience.
+                            </p>
+                            @*@Html.LabelFor(model => model.HealthCare, htmlAttributes: new { @class = "control-label col-md-20" })*@
                             <div class="col-md-10">
                                 @Html.TextAreaFor(model => model.HealthCare, new { htmlAttributes = new { @class = "form-control", @row = 10, @column = 40 } })
                                 @* @Html.EditorFor(model => model.HealthCare, new { htmlAttributes = new { @class = "form-control" } })*@
@@ -170,7 +178,10 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Crimes, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Have you ever been arrested for, charged with, or convicted of any crime other than a minor traffic violation?
+                            </p>
+                            @*@Html.LabelFor(model => model.Crimes, htmlAttributes: new { @class = "control-label " })*@
                             <div class="col-md-10">
                                 <label> @Html.RadioButtonFor(model => model.Crimes, "Yes") Yes </label>
                                 <label> @Html.RadioButtonFor(model => model.Crimes, "No") No </label>
@@ -181,7 +192,10 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.SchoolTrouble, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Have you ever been dismissed, suspended, or otherwise disciplined by a college, university, or a graduate/professional school for any reason?
+                            </p>
+                            @*@Html.LabelFor(model => model.SchoolTrouble, htmlAttributes: new { @class = "control-label col-md-20" })*@
                             <div class="col-md-10">
                                 <label> @Html.RadioButtonFor(model => model.SchoolTrouble, "Yes") Yes </label>
                                 <label> @Html.RadioButtonFor(model => model.SchoolTrouble, "No") No </label>
@@ -191,7 +205,11 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.HonorablyDischarge, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Have you ever been other than honorably discharged from any armed service of the U.S.?
+                            </p>
+
+                            @*@Html.LabelFor(model => model.HonorablyDischarge, htmlAttributes: new { @class = "control-label col-md-20" })*@
                             <div class="col-md-10">
                                 <label> @Html.RadioButtonFor(model => model.HonorablyDischarge, "Yes") Yes </label>
                                 <label> @Html.RadioButtonFor(model => model.HonorablyDischarge, "No") No </label>
@@ -205,6 +223,7 @@
                                 Have you ever been discharged from employment, disciplined, or asked to resign from employment or any service program
                                 (VISTA, Peace Corps, etc.) for reasons of dishonesty, malfeasance or any other reason reflecting on your character?
                             </p>
+                        
                             @* @Html.LabelFor(model => model.DischargedEmployment, htmlAttributes: new { @class = "control-label col-md-20" , style = "position: relative; right: -15px;" })*@
                             <div class="col-md-10">
                                 <label> @Html.RadioButtonFor(model => model.DischargedEmployment, "Yes") Yes </label>
@@ -215,7 +234,10 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Harassment, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Have you ever been charged with or found guilty of sexual harassment or racial, ethnic, or gender bias in any proceeding?
+                            </p>
+                            @*@Html.LabelFor(model => model.Harassment, htmlAttributes: new { @class = "control-label col-md-20" })*@
                             <div class="col-md-10">
                                 <label> @Html.RadioButtonFor(model => model.Harassment, "Yes") Yes </label>
                                 <label> @Html.RadioButtonFor(model => model.Harassment, "No") No </label>
@@ -226,46 +248,50 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.DrugsOrAlcohol, htmlAttributes: new { @class = "control-label col-md-20" })
+                            <p style="font-weight: bold; position: relative; right: -15px;">
+                                Have you ever been subject to disciplinary or legal action related to use of drugs, including alcohol?
+                            </p>
+                            @*@Html.LabelFor(model => model.DrugsOrAlcohol, htmlAttributes: new { @class = "control-label col-md-20" })*@
                             <div class="col-md-10">
                                 <label> @Html.RadioButtonFor(model => model.DrugsOrAlcohol, "Yes") Yes </label>
                                 <label> @Html.RadioButtonFor(model => model.DrugsOrAlcohol, "No") No </label>
                                 @Html.ValidationMessageFor(model => model.DrugsOrAlcohol, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DrugsOrAlcoholEssay, htmlAttributes: new { @class = "control-label col-md-20"})
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.DrugsOrAlcoholEssay, new { htmlAttributes = new { @class = "form-control", @row = 10, @column = 40 } })
-                                @Html.ValidationMessageFor(model => model.DrugsOrAlcoholEssay, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <p style="font-weight: bold; position: relative; right: -15px;">
-                                I hereby declare that the information furnished above is completed and accurate to the best of my knowledge.
-                                I also authorize the release of information from any agency or individuals, who may have additional information on me.
+                                If you answered YES to any question(s) above, please provide an explanation below.
                             </p>
-                            @* @Html.LabelFor(model => model.AccurateKnowledge, htmlAttributes: new { @class = "control-label col-md-20", style = "position: relative; right: -15px;" })*@
-                            <div class="col-md-10">
-                                <label> @Html.RadioButtonFor(model => model.AccurateKnowledge, "Yes") Yes </label>
-                                <label> @Html.RadioButtonFor(model => model.AccurateKnowledge, "No") No </label>
-                                @Html.ValidationMessageFor(model => model.AccurateKnowledge, "", new { @class = "text-danger" })
+                                @*@Html.LabelFor(model => model.DrugsOrAlcoholEssay, htmlAttributes: new { @class = "control-label col-md-20"})*@
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.DrugsOrAlcoholEssay, new { htmlAttributes = new { @class = "form-control", @row = 10, @column = 40 } })
+                                    @Html.ValidationMessageFor(model => model.DrugsOrAlcoholEssay, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <p style="font-weight: bold; position: relative; right: -15px;">
+                                    I hereby declare that the information furnished above is completed and accurate to the best of my knowledge.
+                                    I also authorize the release of information from any agency or individuals, who may have additional information on me.
+                                </p>
+                                @* @Html.LabelFor(model => model.AccurateKnowledge, htmlAttributes: new { @class = "control-label col-md-20", style = "position: relative; right: -15px;" })*@
+                                <div class="col-md-10">
+                                    <label> @Html.RadioButtonFor(model => model.AccurateKnowledge, "Yes") Yes </label>
+                                    <label> @Html.RadioButtonFor(model => model.AccurateKnowledge, "No") No </label>
+                                    @Html.ValidationMessageFor(model => model.AccurateKnowledge, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
 
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Submit" class="btn btn-default" />
+                            <div class="form-group">
+                                <div class="col-md-offset-5 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-danger" />
+                                </div>
                             </div>
                         </div>
-                    </div>
                 }
 
                 <div>
-                    @Html.ActionLink("Back to List", "Index")
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Dashboard", "Student")'">Back To Dashboard</button>
                 </div>
             </div>
         </div>

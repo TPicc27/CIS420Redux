@@ -98,6 +98,7 @@ namespace CIS420Redux.Controllers
             //{
             //    return HttpNotFound();
             //}
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "LastName", pOS.StudentId);
             return View(viewModel);
         }
 

@@ -44,28 +44,37 @@ namespace CIS420Redux.Controllers
         }
 
         // GET: Student
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, string sortOrder)
         {
-            var students = db.Students.Select(s => new StudentIndexViewModel()
-            {
-                Id = s.Id,
-                StudentNumber = s.StudentNumber,
-                FirstName = s.FirstName,
-                MiddleName = s.MiddleName,
-                LastName = s.LastName,
-                Address = s.Address,
-                City = s.City,
-                State = s.State,
-                ZipCode = s.ZipCode,
-                Email = s.Email,
-                PhoneNumber = s.PhoneNumber,
-                EnrollmentDate = s.EnrollmentDate,
-                CampusId = s.CampusId,
-                ProgramId = s.ProgramId
-            });
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name1_desc" : "name";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var students = from s in db.Students
+                           select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                students = students.Where(s => s.LastName.Contains(searchString));
+                students = students.Where(s => s.LastName.Contains(searchString) || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.EnrollmentDate);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                case "name1_desc":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                case "name":
+                    students = students.OrderBy(s => s.FirstName);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.LastName);
+                    break;
             }
 
             return View(students.ToList());
@@ -139,11 +148,12 @@ namespace CIS420Redux.Controllers
         public ActionResult Create()
         {
             var states = GetAllStates();
-            var model = new ClincalCompliance();
-            //model.State = GetSelectListItems(types);
+            var model = new Student();
+            model.States = GetSelectListItems(states);
+
             ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name");
             ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name");
-            return View();
+            return View(model);
         }
 
         // POST: Student/Create
@@ -151,33 +161,20 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StudentCreateViewModel vm)
+        public ActionResult Create([Bind(Include = "Id,StudentNumber,LastName,FirstName,MiddleName,DateofBirth,Address,City,State,ZipCode,Email,PhoneNumber,EnrollmentDate,GPA,Standing,HasGraduated,CampusId,ProgramId")] Student student)
         {
-            if (ModelState.IsValid)
-            {
-                var student = new Student()
+            var states = GetAllStates();
+
+            student.States = GetSelectListItems(states);
+                if (ModelState.IsValid)
                 {
-                    StudentNumber = vm.StudentNumber,
-                    MiddleName = vm.MiddleName,
-                    Address = vm.Address,
-                    City = vm.City,
-                    EnrollmentDate = vm.EnrollmentDate,
-                    Email = vm.Email,
-                    FirstName = vm.FirstName,
-                    LastName = vm.LastName,
-                    PhoneNumber = vm.PhoneNumber,
-                    ZipCode = vm.ZipCode.ToString(),
-                    State = vm.State,
-                    CampusId = vm.CampusId,
-                    ProgramId = vm.ProgramId
-                };
-                db.Students.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Student");
-            }
-            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", vm.CampusId);
-            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", vm.ProgramId);
-            return View(vm);
+                    db.Students.Add(student);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", student.CampusId);
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", student.ProgramId);
+            return View(student);
         }
 
         // GET: Student/Edit/5
@@ -188,6 +185,10 @@ namespace CIS420Redux.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Students.Find(id);
+            var states = GetAllStates();
+
+            student.States = GetSelectListItems(states);
+
             if (student == null)
             {
                 return HttpNotFound();
@@ -202,32 +203,21 @@ namespace CIS420Redux.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(StudentIndexViewModel vm)
+        public ActionResult Edit([Bind(Include = "Id,StudentNumber,LastName,FirstName,MiddleName,DateofBirth,Address,City,State,ZipCode,Email,PhoneNumber,EnrollmentDate,GPA,Standing,HasGraduated,CampusId,ProgramId")] Student student)
         {
+            var states = GetAllStates();
+
+            student.States = GetSelectListItems(states);
+
             if (ModelState.IsValid)
             {
-                var student = db.Students.FirstOrDefault(s => s.Id == vm.Id);
-
-                if (student != null)
-                {
-                    student.FirstName = vm.FirstName;
-                    student.LastName = vm.LastName;
-                    student.MiddleName = vm.MiddleName;
-                    student.Address = vm.Address;
-                    student.Email = vm.Email;
-                    student.PhoneNumber = vm.PhoneNumber;
-                    student.EnrollmentDate = vm.EnrollmentDate;
-                    student.CampusId = vm.CampusId;
-                    student.ProgramId = vm.ProgramId;
-                }
-
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", vm.CampusId);
-            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", vm.ProgramId);
-            return View(vm);
+            }  
+            ViewBag.CampusId = new SelectList(db.Campus, "Id", "Name", student.CampusId);
+            ViewBag.ProgramId = new SelectList(db.Program, "Id", "Name", student.ProgramId);
+            return View(student);
         }
 
         // GET: Student/Delete/5
