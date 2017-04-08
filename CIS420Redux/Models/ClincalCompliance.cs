@@ -27,5 +27,7 @@ namespace CIS420Redux.Models
 
       public IEnumerable<SelectListItem> Types { get; set; }
 
+        public IEnumerable<SelectListItem> CompliantStatus { get; set; }
+
     }
 }

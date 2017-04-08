@@ -152,7 +152,7 @@ namespace CIS420Redux.Controllers
                 StudentNumber = c.Student.StudentNumber,
                 FirstName = c.Student.FirstName,
                 LastName = c.Student.LastName,
-                IsExpired = c.ExpirationDate < DateTime.Today ? false : true
+                IsExpired = c.ExpirationDate <= DateTime.Today ? true : false
             });
 
             foreach (var doc in documents)

@@ -17,6 +17,7 @@ namespace CIS420Redux.Models.ViewModels
 
         public DateTime ExpirationDate { get; set; }
 
+        public bool IsExpired { get; set; }
         public bool IsComplaint { get; set; }
         public string Type { get; set; }
         public int StudentNumber { get; set; }

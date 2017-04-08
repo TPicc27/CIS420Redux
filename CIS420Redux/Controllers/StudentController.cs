@@ -267,6 +267,7 @@ namespace CIS420Redux.Controllers
             {
                 ExpirationDate = c.ExpirationDate,
                 DocumentId = c.DocumentId,
+                IsExpired = c.IsExpired,
                 IsComplaint = c.IsCompliant,
                 ID = c.ID,                
                 Type = c.Type,
