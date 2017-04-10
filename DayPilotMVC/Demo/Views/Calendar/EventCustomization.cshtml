@@ -1,0 +1,24 @@
+
+@using DayPilot.Web.Mvc.Enums.Calendar
+@using DayPilot.Web.Mvc.Events.Calendar
+
+@section TitleContent {
+	Calendar Event Customization
+}
+
+@section HeadContent {
+    <style type="text/css">
+    .calendar_default_event_inner {
+        color: #333;
+    }
+
+</style>    
+}
+
+@(Html.DayPilotCalendar("dpc_customization", new DayPilotCalendarConfig { 
+    BackendUrl = Url.Content("~/Calendar/Backend"),
+    ViewType = DayPilot.Web.Mvc.Enums.Calendar.ViewType.Week,
+    EventMoveHandling = EventMoveHandlingType.CallBack,
+    EventResizeHandling = EventResizeHandlingType.CallBack,
+    DurationBarVisible = false
+}))

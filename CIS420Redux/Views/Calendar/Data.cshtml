@@ -1,0 +1,17 @@
+﻿
+@model IEnumerable<CIS420Redux.Models.Event>
+@{
+    ViewBag.Title = "Data";
+}
+
+
+<data>
+    @foreach (var ev in Model)
+    {
+        <event id="@ev.Id">
+            <start_date><![CDATA[@String.Format("{0:MM/dd/yyyy HH:mm}", @ev.StartDate)]]></start_date>
+            <end_date><![CDATA[@String.Format("{0:MM/dd/yyyy HH:mm}", @ev.EndDate)]]></end_date>
+            <text><![CDATA[@ev.Name]]></text>
+        </event>
+    }
+</data>
